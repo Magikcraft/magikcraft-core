@@ -1,19 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var server = __plugin.server;
-var Server = /** @class */ (function () {
-    function Server() {
-        this.executeCommand = function (command) {
-            return server.dispatchCommand(__plugin.server.consoleSender, command);
-        };
-        this.getPlugin = function (pluginName) {
-            return __plugin.server.getPluginManager().getPlugin(pluginName);
-        };
-        this.getWorldDir = function () { return server.getWorldContainer(); };
-        this.isPluginEnabled = function (name) { return server.getPluginManager().isPluginEnabled(name); };
-        this.getWorlds = function () { return Java.from(server.getWorlds()); };
-    }
-    return Server;
-}());
-var ServerInterface = new Server();
-exports.default = ServerInterface;
+var __server = __plugin.server;
+var Server = {
+    executeCommand: function (command) {
+        return __server.dispatchCommand(__server.consoleSender, command);
+    },
+    getPlugin: function (pluginName) { return __server.getPluginManager().getPlugin(pluginName); },
+    getWorldDir: function () { return __server.getWorldContainer(); },
+    isPluginEnabled: function (name) { return __server.getPluginManager().isPluginEnabled(name); },
+    getWorlds: function () { return Java.from(__server.getWorlds()); },
+};
+exports.default = Server;

@@ -1,10 +1,8 @@
-declare class Server {
-    constructor();
+declare const Server: {
     executeCommand: (command: any) => any;
     getPlugin: (pluginName: any) => any;
     getWorldDir: () => any;
     isPluginEnabled: (name: any) => any;
     getWorlds: () => any[];
-}
-declare const ServerInterface: Server;
-export default ServerInterface;
+};
+export default Server;

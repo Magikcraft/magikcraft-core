@@ -8,6 +8,22 @@
 npm install @magikcraft/core
 ```
 
+## Testing
+
+Use the SMA image in test mode to run the unit tests.
+
+Make sure you have the latest version of smac installed:
+
+```
+npm i -g smac
+```
+
+Then run the tests:
+
+```
+npm test
+```
+
 ## License
 
 Apache-2.0 © [Josh Wulf](https://github.com/Magikcraft)

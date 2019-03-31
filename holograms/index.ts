@@ -2,17 +2,13 @@ import server from '../server'
 declare const com: any
 const BukkitPlugin = 'HolographicDisplays'
 
-class HologramsAPI {
-	API: any
-	constructor() {
-		if (!server.isPluginEnabled(BukkitPlugin)) {
-			throw new Error(
-				'Holographics Display plugin not found on this server.'
-			)
-		}
-		this.API = com.gmail.filoghost.holographicdisplays.api.HologramsAPI
-	}
+if (!server.isPluginEnabled(BukkitPlugin)) {
+	throw new Error('Holographics Display plugin not found on this server.')
+}
 
+const API = com.gmail.filoghost.holographicdisplays.api.HologramsAPI
+
+const Holograms = {
 	/**
 	 * Creates a hologram at given location.
 	 *
@@ -27,11 +23,11 @@ class HologramsAPI {
 		lines: string[]
 		location: BukkitLocation
 	}): Hologram {
-		const hologram: Hologram = this.API.createHologram(__plugin, location)
+		const hologram: Hologram = API.createHologram(__plugin, location)
 		lines.forEach(line => hologram.appendTextLine(line))
 		hologram.refreshAll()
 		return hologram
-	}
+	},
 
 	/**
 	 * Finds all the holograms created by the plugin.
@@ -40,8 +36,8 @@ class HologramsAPI {
 	 * and modifying it has no effect on the holograms.
 	 */
 	getHolograms(): Hologram[] {
-		return Java.from(this.API.getHolograms(__plugin).toArray())
-	}
+		return Java.from(API.getHolograms(__plugin).toArray())
+	},
 
 	/**
 	 * Registers a new placeholder that can be used in holograms created with commands.
@@ -58,13 +54,13 @@ class HologramsAPI {
 		refreshRate: number,
 		replacer: { update: () => string }
 	) {
-		this.API.registerPlaceholder(
+		API.registerPlaceholder(
 			__plugin,
 			textPlaceholder,
 			refreshRate,
 			replacer
 		)
-	}
+	},
 
 	/**
 	 * Finds all the placeholders registered by this plugin.
@@ -72,8 +68,8 @@ class HologramsAPI {
 	 * @return a collection of placeholders registered by this plugin
 	 */
 	getRegisteredPlaceholders(): string[] {
-		return this.API.getRegisteredPlaceholders(__plugin)
-	}
+		return API.getRegisteredPlaceholders(__plugin)
+	},
 
 	/**
 	 * Unregister a placeholder created by a plugin.
@@ -82,8 +78,8 @@ class HologramsAPI {
 	 * @return true if found and removed, false otherwise
 	 */
 	unregisterPlaceholder(textPlaceholder: string): boolean {
-		return this.API.unregisterPlaceholder(__plugin, textPlaceholder)
-	}
+		return API.unregisterPlaceholder(__plugin, textPlaceholder)
+	},
 
 	/**
 	 * Resets and removes all the placeholders registered by a plugin. This is useful
@@ -92,8 +88,8 @@ class HologramsAPI {
 	 * @param plugin the plugin that owns the placeholders
 	 */
 	unregisterPlaceholders() {
-		this.API.unregisterPlaceholders(__plugin)
-	}
+		API.unregisterPlaceholders(__plugin)
+	},
 
 	/**
 	 * Checks if an entity is part of a hologram.
@@ -102,12 +98,11 @@ class HologramsAPI {
 	 * @return true if the entity is a part of a hologram
 	 */
 	isHologramEntity(bukkitEntity: any): boolean {
-		return this.API.isHologramEntity(bukkitEntity)
-	}
+		return API.isHologramEntity(bukkitEntity)
+	},
 }
 
-const APISurface = new HologramsAPI()
-export default APISurface
+export default Holograms
 
 interface TextLine {
 	getText(): string
@@ -135,7 +130,7 @@ interface HologramLine {
 type ItemLine = any
 type ItemStack = any
 
-interface Hologram {
+export interface Hologram {
 	/**
 	 * Appends a text line to end of this hologram.
 	 *
@@ -172,7 +167,7 @@ interface Hologram {
 	 * @return the new ItemLine inserted
 	 * @throws IndexOutOfBoundsException if the index is out of range (index &lt; 0 || index &gt;= size())
 	 */
-	insertItemLine: (index: number, itemStack: ItemStack) => ItemLine
+	insertItemLine(index: number, itemStack: ItemStack): ItemLine
 
 	/**
 	 * Finds the element at a given index in the lines.
@@ -247,14 +242,14 @@ interface Hologram {
 	 *
 	 * @return the Y coordinate of the hologram
 	 */
-	getY: () => number
+	getY(): number
 
 	/**
 	 * Returns the Z coordinate.
 	 *
 	 * @return the Z coordinate of the hologram
 	 */
-	getZ: () => number
+	getZ(): number
 
 	/**
 	 * Returns the world.
@@ -317,7 +312,7 @@ interface Hologram {
  * It allows to hide/show the hologram to certain players, and the default behaviour
  * (when a hologram is not specifically being hidden/shown to a player) can be customized.
  */
-interface VisibilityManager {
+export interface VisibilityManager {
 	/**
 	 * Returns if the hologram is visible by default. If not changed, this value
 	 * is true by default so the hologram is visible to everyone.

@@ -38,7 +38,7 @@ var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var log_1 = require("../log");
 var multiverse_1 = require("../multiverse");
-var log = log_1.Logger(__filename);
+var log = log_1.default(__filename);
 describe('@magikcraft/core/multiverse', function () {
     it('Can import a world', function () { return __awaiter(_this, void 0, void 0, function () {
         var testWorld, existingWorld, afterImport, noWorld;
@@ -46,21 +46,21 @@ describe('@magikcraft/core/multiverse', function () {
             switch (_a.label) {
                 case 0:
                     testWorld = 'mct1-start';
-                    multiverse_1.Multiverse.unloadWorld(testWorld); // unload from memory
-                    return [4 /*yield*/, multiverse_1.Multiverse.getMVWorld(testWorld)];
+                    multiverse_1.default.unloadWorld(testWorld); // unload from memory
+                    return [4 /*yield*/, multiverse_1.default.getMVWorld(testWorld)];
                 case 1:
                     existingWorld = _a.sent();
                     expect(existingWorld).toBeNull(); // assert that it is not loaded
-                    return [4 /*yield*/, multiverse_1.Multiverse.importWorld(testWorld)];
+                    return [4 /*yield*/, multiverse_1.default.importWorld(testWorld)];
                 case 2:
                     _a.sent();
-                    return [4 /*yield*/, multiverse_1.Multiverse.getMVWorld(testWorld)];
+                    return [4 /*yield*/, multiverse_1.default.getMVWorld(testWorld)];
                 case 3:
                     afterImport = _a.sent();
                     expect(afterImport).toBeTruthy(); // assert that it is loaded
                     // Cleanup
-                    multiverse_1.Multiverse.unloadWorld(testWorld); // unload from memory
-                    return [4 /*yield*/, multiverse_1.Multiverse.getMVWorld(testWorld)];
+                    multiverse_1.default.unloadWorld(testWorld); // unload from memory
+                    return [4 /*yield*/, multiverse_1.default.getMVWorld(testWorld)];
                 case 4:
                     noWorld = _a.sent();
                     expect(noWorld).toBeNull(); // assert that it is not loaded

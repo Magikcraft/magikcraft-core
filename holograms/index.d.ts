@@ -1,7 +1,5 @@
 /// <reference types="@scriptcraft/types" />
-declare class HologramsAPI {
-    API: any;
-    constructor();
+declare const Holograms: {
     /**
      * Creates a hologram at given location.
      *
@@ -60,9 +58,8 @@ declare class HologramsAPI {
      * @return true if the entity is a part of a hologram
      */
     isHologramEntity(bukkitEntity: any): boolean;
-}
-declare const APISurface: HologramsAPI;
-export default APISurface;
+};
+export default Holograms;
 interface TextLine {
     getText(): string;
     setText(line: string): any;
@@ -85,7 +82,7 @@ interface HologramLine {
 }
 declare type ItemLine = any;
 declare type ItemStack = any;
-interface Hologram {
+export interface Hologram {
     /**
      * Appends a text line to end of this hologram.
      *
@@ -119,7 +116,7 @@ interface Hologram {
      * @return the new ItemLine inserted
      * @throws IndexOutOfBoundsException if the index is out of range (index &lt; 0 || index &gt;= size())
      */
-    insertItemLine: (index: number, itemStack: ItemStack) => ItemLine;
+    insertItemLine(index: number, itemStack: ItemStack): ItemLine;
     /**
      * Finds the element at a given index in the lines.
      *
@@ -184,13 +181,13 @@ interface Hologram {
      *
      * @return the Y coordinate of the hologram
      */
-    getY: () => number;
+    getY(): number;
     /**
      * Returns the Z coordinate.
      *
      * @return the Z coordinate of the hologram
      */
-    getZ: () => number;
+    getZ(): number;
     /**
      * Returns the world.
      *
@@ -244,7 +241,7 @@ interface Hologram {
  * It allows to hide/show the hologram to certain players, and the default behaviour
  * (when a hologram is not specifically being hidden/shown to a player) can be customized.
  */
-interface VisibilityManager {
+export interface VisibilityManager {
     /**
      * Returns if the hologram is visible by default. If not changed, this value
      * is true by default so the hologram is visible to everyone.

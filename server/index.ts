@@ -1,15 +1,11 @@
-const server = __plugin.server
-class Server {
-	constructor() {}
-	executeCommand = command =>
-		server.dispatchCommand(__plugin.server.consoleSender, command)
-	getPlugin = pluginName =>
-		__plugin.server.getPluginManager().getPlugin(pluginName)
-	getWorldDir = () => server.getWorldContainer()
-	isPluginEnabled = name => server.getPluginManager().isPluginEnabled(name)
-	getWorlds = (): BukkitWorld[] => Java.from(server.getWorlds())
+const __server = __plugin.server
+const Server = {
+	executeCommand: command =>
+		__server.dispatchCommand(__server.consoleSender, command),
+	getPlugin: pluginName => __server.getPluginManager().getPlugin(pluginName),
+	getWorldDir: () => __server.getWorldContainer(),
+	isPluginEnabled: name => __server.getPluginManager().isPluginEnabled(name),
+	getWorlds: (): BukkitWorld[] => Java.from(__server.getWorlds()),
 }
 
-const ServerInterface = new Server()
-
-export default ServerInterface
+export default Server

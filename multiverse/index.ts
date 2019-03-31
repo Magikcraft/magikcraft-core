@@ -1,47 +1,48 @@
 import * as utils from 'utils'
-import * as fs from '../fs'
-import { Logger } from '../log'
+import fs from '../fs'
+import Logger from '../log'
 import server from '../server'
-import { Queue } from './queue'
 
 const log = Logger(__filename)
 
+const multiversePlugin: MultiverseCorePlugin = server.getPlugin(
+	'Multiverse-Core'
+)
+if (!multiversePlugin) {
+	throw new Error(
+		'Multiverse-Core plugin not found! Is it installed on this server?'
+	)
+}
+const worldmanager = multiversePlugin.getMVWorldManager()
+const q = queue()
+
 // https://github.com/Multiverse/Multiverse-Core
 
-class MultiverseClass {
-	private multiversePlugin: MultiverseCorePlugin
-	private worldmanager: WorldManager
-	private queue: Queue
-	constructor() {
-		this.multiversePlugin = server.getPlugin('Multiverse-Core')
-		if (!this.multiversePlugin) {
-			throw new Error(
-				'Multiverse-Core plugin not found! Is it installed on this server?'
-			)
-		}
-		this.worldmanager = this.multiversePlugin.getMVWorldManager()
-		this.queue = new Queue()
-	}
+const Multiverse = {
+	worldExistsOnDisk(worldName: string) {
+		const path = Multiverse.getWorldPath(worldName)
+		return fs.exists(path)
+	},
 
-	public async destroyWorld(worldName: string) {
+	destroyWorld(worldName: string) {
 		log(`Destroying world ${worldName}...`)
 		const world = utils.world(worldName)
 		if (world) {
 			log(`Deleting world ${worldName} from registry...`)
-			this.worldmanager.deleteWorld(worldName, true, true)
+			worldmanager.deleteWorld(worldName, true, true)
 			log(`Done.`)
 		}
-		if (this.worldExistsOnDisk(worldName)) {
+		if (Multiverse.worldExistsOnDisk(worldName)) {
 			log(`Deleting world ${worldName} from disk...`)
-			fs.remove(this.getWorldPath(worldName))
+			fs.remove(Multiverse.getWorldPath(worldName))
 			log(`Done.`)
 		}
 		log(`Successfully Destroyed world ${worldName}.`)
 
 		return new Promise(resolve => setTimeout(() => resolve(), 1))
-	}
+	},
 
-	public async importWorld(worldName: string) {
+	async importWorld(worldName: string) {
 		log(`Importing world ${worldName}...`)
 		let world, err
 		world = utils.world(worldName)
@@ -49,12 +50,12 @@ class MultiverseClass {
 			log(`World ${worldName} already imported.`)
 			return world
 		}
-		if (!this.worldExistsOnDisk(worldName)) {
+		if (!Multiverse.worldExistsOnDisk(worldName)) {
 			err = `Cannot import world ${worldName}: file not found`
 			log('err', err)
 			throw new Error(err)
 		}
-		await this.queue.queueOperation(() =>
+		await q.queueOperation(() =>
 			server.executeCommand(`mv import ${worldName} normal`)
 		)
 		world = utils.world(worldName)
@@ -66,12 +67,12 @@ class MultiverseClass {
 		log(`Successfully imported world ${worldName}`)
 
 		return new Promise(resolve => setTimeout(() => resolve(world), 1))
-	}
+	},
 
-	public async cloneWorld(worldName: string, templateWorldName: string) {
-		await this.destroyWorld(worldName)
+	async cloneWorld(worldName: string, templateWorldName: string) {
+		await Multiverse.destroyWorld(worldName)
 		log(`Cloning world ${worldName}`)
-		const templateWorld = await this.importWorld(templateWorldName)
+		const templateWorld = await Multiverse.importWorld(templateWorldName)
 		if (!templateWorld) {
 			log(`Cannot clone ${worldName}. ${templateWorldName} not found.`)
 			return
@@ -91,29 +92,59 @@ class MultiverseClass {
 
 		// Have to do this to ensure world fully built.
 		return new Promise(resolve => setTimeout(() => resolve(world), 1))
-	}
+	},
 
-	public async getMVWorld(name: string) {
-		return this.worldmanager.getMVWorld(name)
-	}
+	getMVWorld(name: string) {
+		return worldmanager.getMVWorld(name)
+	},
 
-	public unloadWorld(name: string) {
-		return this.worldmanager.unloadWorld(name, true)
-	}
+	unloadWorld(name: string) {
+		return worldmanager.unloadWorld(name, true)
+	},
 
-	private worldExistsOnDisk(worldName: string) {
-		const path = this.getWorldPath(worldName)
-		return fs.exists(path)
-	}
-
-	private getWorldPath(worldName: string) {
+	getWorldPath(worldName: string) {
 		const worldDir = server.getWorldDir()
 		const path = `${worldDir}/${worldName}`
 		return path
-	}
+	},
 }
 
-export const Multiverse = new MultiverseClass()
+export default Multiverse
+
+function queue() {
+	const PollIntervalMs = 500
+
+	let ready = false
+
+	function doCheck() {
+		ready = __plugin.server.getPluginCommand('mv')
+		if (!ready) {
+			log('Not ready to import worlds yet...')
+			return setTimeout(doCheck, PollIntervalMs)
+		} else {
+			log('Ready to operate.')
+		}
+	}
+
+	doCheck()
+
+	return {
+		queueOperation(fn: () => void) {
+			return new Promise(resolve => {
+				const awaiter = () => {
+					if (ready) {
+						fn()
+						resolve()
+					} else {
+						log('Delaying operation...')
+						setTimeout(awaiter, PollIntervalMs)
+					}
+				}
+				awaiter()
+			})
+		},
+	}
+}
 
 interface MultiverseCorePlugin {
 	cloneWorld(

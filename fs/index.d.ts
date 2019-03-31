@@ -1,5 +1,37 @@
-export { exists } from './lib/exists';
-export { readDir } from './lib/readDir';
-export { readFile } from './lib/readFile';
-export { remove } from './lib/remove';
-export { writeFile } from './lib/writeFile';
+declare const fs: {
+    readDir(path: any): string[];
+    /**
+     * exists
+     * @param {string} filename - path to file, relative to Minecraft server root
+     * @return {boolean}
+     *
+     * Checks if file or directory exists.
+     */
+    exists(filename: any): any;
+    /**
+     * readFile
+     * @param {string} filename - path to file, relative to Minecraft server root
+     * @return {string}
+     *
+     * Reads the contents of a file from the filesystem.
+     */
+    readFile(filename: any): string;
+    /**
+     * remove
+     * @param {string} filename - path to file, relative to Minecraft server root
+     * @return {boolean}
+     *
+     * Delete file or directory (recursive).
+     */
+    remove(filename: any): void;
+    /**
+     * writeFile
+     * @param {string} filename - path to file, relative to Minecraft server root
+     * @param {string} content - file content to write
+     * @return {void}
+     *
+     * Writes the contents of a file to the filesystem.
+     */
+    writeFile(filename: string, content: string): void;
+};
+export default fs;

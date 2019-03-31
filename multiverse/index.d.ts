@@ -1,15 +1,10 @@
-declare class MultiverseClass {
-    private multiversePlugin;
-    private worldmanager;
-    private queue;
-    constructor();
+declare const Multiverse: {
+    worldExistsOnDisk(worldName: string): any;
     destroyWorld(worldName: string): Promise<{}>;
     importWorld(worldName: string): Promise<any>;
     cloneWorld(worldName: string, templateWorldName: string): Promise<{} | undefined>;
-    getMVWorld(name: string): Promise<any>;
+    getMVWorld(name: string): any;
     unloadWorld(name: string): boolean;
-    private worldExistsOnDisk;
-    private getWorldPath;
-}
-export declare const Multiverse: MultiverseClass;
-export {};
+    getWorldPath(worldName: string): string;
+};
+export default Multiverse;

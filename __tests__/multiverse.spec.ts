@@ -1,5 +1,5 @@
-import { Logger } from '../log'
-import { Multiverse } from '../multiverse'
+import Logger from '../log'
+import Multiverse from '../multiverse'
 const log = Logger(__filename)
 
 describe('@magikcraft/core/multiverse', () => {
