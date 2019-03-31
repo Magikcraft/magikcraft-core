@@ -2,10 +2,64 @@
 declare class HologramsAPI {
     API: any;
     constructor();
+    /**
+     * Creates a hologram at given location.
+     *
+     * @param lines an array of lines of text
+     * @param location the location where it will appear
+     * @return the new hologram created
+     */
     createHologram({ lines, location, }: {
         lines: string[];
         location: BukkitLocation;
     }): Hologram;
+    /**
+     * Finds all the holograms created by the plugin.
+     *
+     * @return the holograms created the plugin. the Collection is a copy
+     * and modifying it has no effect on the holograms.
+     */
+    getHolograms(): Hologram[];
+    /**
+     * Registers a new placeholder that can be used in holograms created with commands.
+     * With this method, you can basically expand the core of HolographicDisplays.
+     *
+     * @param plugin the owner plugin of the placeholder
+     * @param textPlaceholder the text that the placeholder will be associated to (e.g.: "{onlinePlayers}")
+     * @param refreshRate the refresh rate of the placeholder, in seconds. Keep in mind that the minimum is 0.1 seconds, and that will be rounded to tenths of seconds
+     * @param replacer the implementation that will return the text to replace the placeholder, where the update() method is called every <b>refreshRate</b> seconds
+     * @return true if the registration was successfull, false if it was already registered
+     */
+    registerPlaceholder(textPlaceholder: string, refreshRate: number, replacer: {
+        update: () => string;
+    }): void;
+    /**
+     * Finds all the placeholders registered by this plugin.
+     *
+     * @return a collection of placeholders registered by this plugin
+     */
+    getRegisteredPlaceholders(): string[];
+    /**
+     * Unregister a placeholder created by a plugin.
+     *
+     * @param textPlaceholder the placeholder to remove
+     * @return true if found and removed, false otherwise
+     */
+    unregisterPlaceholder(textPlaceholder: string): boolean;
+    /**
+     * Resets and removes all the placeholders registered by a plugin. This is useful
+     * when you have configurable placeholders and you want to remove all of them.
+     *
+     * @param plugin the plugin that owns the placeholders
+     */
+    unregisterPlaceholders(): void;
+    /**
+     * Checks if an entity is part of a hologram.
+     *
+     * @param bukkitEntity the entity to check
+     * @return true if the entity is a part of a hologram
+     */
+    isHologramEntity(bukkitEntity: any): boolean;
 }
 declare const APISurface: HologramsAPI;
 export default APISurface;
@@ -150,6 +204,7 @@ interface Hologram {
      *
      * @return the VisibilityManager of this hologram
      */
+    getVisibilityManager(): VisibilityManager;
     /**
      * Returns when the hologram was created. Useful for removing old holograms.
      *
@@ -182,4 +237,59 @@ interface Hologram {
      * @return true if this hologram was deleted
      */
     isDeleted(): boolean;
+    refreshAll(): void;
+}
+/**
+ * This object is used to manage the visibility of a hologram.
+ * It allows to hide/show the hologram to certain players, and the default behaviour
+ * (when a hologram is not specifically being hidden/shown to a player) can be customized.
+ */
+interface VisibilityManager {
+    /**
+     * Returns if the hologram is visible by default. If not changed, this value
+     * is true by default so the hologram is visible to everyone.
+     *
+     * @return if the hologram hologram is visible by default
+     */
+    isVisibleByDefault(): boolean;
+    /**
+     * Sets if the hologram is visible by default. If not changed, this value
+     * is true by default so the hologram is visible to everyone.
+     *
+     * @param visibleByDefault the new behaviour
+     */
+    setVisibleByDefault(visibleByDefault: boolean): void;
+    /**
+     * Shows the hologram to a player, overriding the value of {@link #isVisibleByDefault()}.
+     * This is persistent if the players goes offline.
+     *
+     * @param player the involved player
+     */
+    showTo(player: BukkitPlayer): void;
+    /**
+     * Hides the hologram to a player, overriding the value of {@link #isVisibleByDefault()}.
+     * This is persistent if the players goes offline.
+     *
+     * @param player the involved player
+     */
+    hideTo(player: BukkitPlayer): void;
+    /**
+     * Checks if a hologram is visible to a player.
+     *
+     * @param player the involved player
+     * @return if the player can see the hologram
+     */
+    isVisibleTo(player: BukkitPlayer): boolean;
+    /**
+     * Resets the visibility to the default value. If you previously called {@link #showTo(Player)}
+     * or {@link #hideTo(Player)} to override the default visibility, this method will reset it
+     * to reflect the value of {@link #isVisibleByDefault()}.
+     *
+     * @param player the involved player
+     */
+    resetVisibility(player: BukkitPlayer): void;
+    /**
+     * Resets the visibility for all the players. See {@link #resetVisibility(Player)} for more details.
+     */
+    resetVisibilityAll(): void;
 }

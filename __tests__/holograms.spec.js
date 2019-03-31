@@ -7,13 +7,27 @@ describe('HologramsAPI', function () {
         expect(holograms_1.default).toBeTruthy();
         expect(holograms_1.default.createHologram).toBeTruthy();
     });
-    it('can create a new Hologram', function () {
-        var location = server_1.default.getWorlds()[0].getSpawnLocation();
+    it('can create and remove a new Hologram', function () {
+        var location = findEmptySpace();
         expect(typeof location.x).toBe('number');
+        var atStart = holograms_1.default.getHolograms().length;
         var h = holograms_1.default.createHologram({
-            lines: ['Hello'],
+            lines: ['Jasmine Unit Test', 'of', 'Holographic Displays'],
             location: location,
         });
-        expect(h.getLocation().x).toBe(location.x);
+        var now = holograms_1.default.getHolograms().length;
+        expect(now).toBe(atStart + 1);
+        // Clean-up
+        h.delete();
+        var final = holograms_1.default.getHolograms().length;
+        expect(final).toBe(atStart);
     });
 });
+function findEmptySpace() {
+    var location = server_1.default.getWorlds()[0].getSpawnLocation();
+    location.setY(location.getY() + 4);
+    while (location.getBlock().getType() != Java.type('org.bukkit.Material').AIR) {
+        location.setY(location.getY() + 2);
+    }
+    return location;
+}
