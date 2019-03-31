@@ -1,0 +1,54 @@
+{
+	"name": "@magikcraft/core",
+	"version": "0.0.2",
+	"description": "Magikcraft core library for SMA plugins",
+	"homepage": "https://www.magikcraft.io",
+	"author": {
+		"name": "Josh Wulf",
+		"email": "josh@magikcraft.io",
+		"url": "https://github.com/jwulf"
+	},
+	"main": "lib/index.js",
+	"keywords": [
+		"scriptcraft",
+		"magikcraft",
+		"minecraft"
+	],
+	"devDependencies": {
+		"@magikcraft/op-all": "^1.0.0",
+		"@scriptcraft/types": "^1.0.1",
+		"husky": "^1.3.1",
+		"lint-staged": "^8.1.5",
+		"prettier": "^1.16.4"
+	},
+	"smaPluginConfig": {},
+	"husky": {
+		"hooks": {
+			"pre-commit": "tsc && lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{ts,json,css,md},!*.d.ts": [
+			"prettier --write",
+			"git add"
+		],
+		"*.js": [
+			"git add"
+		],
+		"*.json": [
+			"prettier --write",
+			"git add"
+		]
+	},
+	"scripts": {
+		"test": "jest"
+	},
+	"repository": "Magikcraft/core",
+	"jest": {
+		"testEnvironment": "node"
+	},
+	"license": "Apache-2.0",
+	"dependencies": {
+		"@types/jasmine": "^3.3.12"
+	}
+}

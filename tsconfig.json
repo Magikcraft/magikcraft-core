@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"module": "commonjs",
+		"lib": ["es2015", "es2018.promise"],
+		"declaration": true,
+		"removeComments": false,
+		"strict": true,
+		"noImplicitAny": false,
+		"noImplicitThis": false,
+		"alwaysStrict": true,
+		"baseUrl": ".",
+		"paths": {
+			"@magikcraft/core/*": ["./*"]
+		},
+		"types": ["@scriptcraft/types", "jasmine"]
+	}
+}
