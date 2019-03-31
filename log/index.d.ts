@@ -11,5 +11,4 @@
  *
  * @param namespace
  */
-declare const Logger: (namespace: string) => (msg: string, toLog?: any) => void;
-export default Logger;
+export declare const logger: (namespace: string) => (msg: string, toLog?: any) => void;

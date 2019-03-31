@@ -1,4 +1,4 @@
-import fs from '../fs'
+import { fs } from '../fs'
 
 const testDir = `./__test_dir__`
 const testFile = testDir + '/test.txt'

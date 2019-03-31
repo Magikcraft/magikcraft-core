@@ -1,9 +1,9 @@
 import * as utils from 'utils'
-import fs from '../fs'
-import Logger from '../log'
-import server from '../server'
+import { fs } from '../fs'
+import { logger } from '../log'
+import { server } from '../server'
 
-const log = Logger(__filename)
+const log = logger(__filename)
 
 const multiversePlugin: MultiverseCorePlugin = server.getPlugin(
 	'Multiverse-Core'
@@ -18,9 +18,9 @@ const q = queue()
 
 // https://github.com/Multiverse/Multiverse-Core
 
-const Multiverse = {
+export const multiverse = {
 	worldExistsOnDisk(worldName: string) {
-		const path = Multiverse.getWorldPath(worldName)
+		const path = multiverse.getWorldPath(worldName)
 		return fs.exists(path)
 	},
 
@@ -32,9 +32,9 @@ const Multiverse = {
 			worldmanager.deleteWorld(worldName, true, true)
 			log(`Done.`)
 		}
-		if (Multiverse.worldExistsOnDisk(worldName)) {
+		if (multiverse.worldExistsOnDisk(worldName)) {
 			log(`Deleting world ${worldName} from disk...`)
-			fs.remove(Multiverse.getWorldPath(worldName))
+			fs.remove(multiverse.getWorldPath(worldName))
 			log(`Done.`)
 		}
 		log(`Successfully Destroyed world ${worldName}.`)
@@ -50,7 +50,7 @@ const Multiverse = {
 			log(`World ${worldName} already imported.`)
 			return world
 		}
-		if (!Multiverse.worldExistsOnDisk(worldName)) {
+		if (!multiverse.worldExistsOnDisk(worldName)) {
 			err = `Cannot import world ${worldName}: file not found`
 			log('err', err)
 			throw new Error(err)
@@ -70,9 +70,9 @@ const Multiverse = {
 	},
 
 	async cloneWorld(worldName: string, templateWorldName: string) {
-		await Multiverse.destroyWorld(worldName)
+		await multiverse.destroyWorld(worldName)
 		log(`Cloning world ${worldName}`)
-		const templateWorld = await Multiverse.importWorld(templateWorldName)
+		const templateWorld = await multiverse.importWorld(templateWorldName)
 		if (!templateWorld) {
 			log(`Cannot clone ${worldName}. ${templateWorldName} not found.`)
 			return
@@ -108,8 +108,6 @@ const Multiverse = {
 		return path
 	},
 }
-
-export default Multiverse
 
 function queue() {
 	const PollIntervalMs = 500

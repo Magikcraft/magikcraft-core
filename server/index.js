@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var __server = __plugin.server;
-var Server = {
+exports.server = {
     executeCommand: function (command) {
         return __server.dispatchCommand(__server.consoleSender, command);
     },
@@ -10,4 +10,3 @@ var Server = {
     isPluginEnabled: function (name) { return __server.getPluginManager().isPluginEnabled(name); },
     getWorlds: function () { return Java.from(__server.getWorlds()); },
 };
-exports.default = Server;

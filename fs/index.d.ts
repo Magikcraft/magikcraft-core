@@ -1,4 +1,4 @@
-declare const fs: {
+export declare const fs: {
     readDir(path: any): string[];
     /**
      * exists
@@ -34,4 +34,3 @@ declare const fs: {
      */
     writeFile(filename: string, content: string): void;
 };
-export default fs;

@@ -1,4 +1,4 @@
-declare const Multiverse: {
+export declare const multiverse: {
     worldExistsOnDisk(worldName: string): any;
     destroyWorld(worldName: string): Promise<{}>;
     importWorld(worldName: string): Promise<any>;
@@ -7,4 +7,3 @@ declare const Multiverse: {
     unloadWorld(name: string): boolean;
     getWorldPath(worldName: string): string;
 };
-export default Multiverse;

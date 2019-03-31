@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var File = Java.type('java.io.File');
-var fs = {
+exports.fs = {
     readDir: function (path) {
         var folder = new File(path);
         var listOfFiles = folder.listFiles();
@@ -59,7 +59,7 @@ var fs = {
                 // Recursively delete all files in dir.
                 var files = Java.from(file.listFiles());
                 files.forEach(function (_file) {
-                    fs.remove(_file.getPath());
+                    exports.fs.remove(_file.getPath());
                 });
                 // Now delete empty dir
                 file.delete();
@@ -86,4 +86,3 @@ var fs = {
         fw.close();
     },
 };
-exports.default = fs;

@@ -1,6 +1,6 @@
 const File = Java.type('java.io.File')
 
-const fs = {
+export const fs = {
 	readDir(path) {
 		const folder = new File(path)
 		const listOfFiles = folder.listFiles()
@@ -89,5 +89,3 @@ const fs = {
 		fw.close()
 	},
 }
-
-export default fs

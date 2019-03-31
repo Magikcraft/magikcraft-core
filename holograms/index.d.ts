@@ -1,5 +1,5 @@
 /// <reference types="@scriptcraft/types" />
-declare const Holograms: {
+export declare const holograms: {
     /**
      * Creates a hologram at given location.
      *
@@ -59,7 +59,6 @@ declare const Holograms: {
      */
     isHologramEntity(bukkitEntity: any): boolean;
 };
-export default Holograms;
 interface TextLine {
     getText(): string;
     setText(line: string): any;
@@ -290,3 +289,4 @@ export interface VisibilityManager {
      */
     resetVisibilityAll(): void;
 }
+export {};

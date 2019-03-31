@@ -1,30 +1,30 @@
-import HologramsAPI from '../holograms'
-import Server from '../server'
+import { holograms } from '../holograms'
+import { server } from '../server'
 
-describe('HologramsAPI', () => {
+describe('holograms', () => {
 	it('returns a new HologramAPI interface', () => {
-		expect(HologramsAPI).toBeTruthy()
-		expect(HologramsAPI.createHologram).toBeTruthy()
+		expect(holograms).toBeTruthy()
+		expect(holograms.createHologram).toBeTruthy()
 	})
 	it('can create and remove a new Hologram', () => {
 		const location = findEmptySpace()
 		expect(typeof location.x).toBe('number')
-		const atStart = HologramsAPI.getHolograms().length
-		const h = HologramsAPI.createHologram({
+		const atStart = holograms.getHolograms().length
+		const h = holograms.createHologram({
 			lines: ['Jasmine Unit Test', 'of', 'Holographic Displays'],
 			location,
 		})
-		const now = HologramsAPI.getHolograms().length
+		const now = holograms.getHolograms().length
 		expect(now).toBe(atStart + 1)
 		// Clean-up
 		h.delete()
-		const final = HologramsAPI.getHolograms().length
+		const final = holograms.getHolograms().length
 		expect(final).toBe(atStart)
 	})
 })
 
 function findEmptySpace() {
-	const location = Server.getWorlds()[0].getSpawnLocation()
+	const location = server.getWorlds()[0].getSpawnLocation()
 	location.setY(location.getY() + 4)
 
 	while (

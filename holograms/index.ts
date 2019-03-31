@@ -1,4 +1,4 @@
-import server from '../server'
+import { server } from '../server'
 declare const com: any
 const BukkitPlugin = 'HolographicDisplays'
 
@@ -8,7 +8,7 @@ if (!server.isPluginEnabled(BukkitPlugin)) {
 
 const API = com.gmail.filoghost.holographicdisplays.api.HologramsAPI
 
-const Holograms = {
+export const holograms = {
 	/**
 	 * Creates a hologram at given location.
 	 *
@@ -101,8 +101,6 @@ const Holograms = {
 		return API.isHologramEntity(bukkitEntity)
 	},
 }
-
-export default Holograms
 
 interface TextLine {
 	getText(): string

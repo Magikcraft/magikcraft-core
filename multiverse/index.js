@@ -39,18 +39,18 @@ var utils = require("utils");
 var fs_1 = require("../fs");
 var log_1 = require("../log");
 var server_1 = require("../server");
-var log = log_1.default(__filename);
-var multiversePlugin = server_1.default.getPlugin('Multiverse-Core');
+var log = log_1.logger(__filename);
+var multiversePlugin = server_1.server.getPlugin('Multiverse-Core');
 if (!multiversePlugin) {
     throw new Error('Multiverse-Core plugin not found! Is it installed on this server?');
 }
 var worldmanager = multiversePlugin.getMVWorldManager();
 var q = queue();
 // https://github.com/Multiverse/Multiverse-Core
-var Multiverse = {
+exports.multiverse = {
     worldExistsOnDisk: function (worldName) {
-        var path = Multiverse.getWorldPath(worldName);
-        return fs_1.default.exists(path);
+        var path = exports.multiverse.getWorldPath(worldName);
+        return fs_1.fs.exists(path);
     },
     destroyWorld: function (worldName) {
         log("Destroying world " + worldName + "...");
@@ -60,9 +60,9 @@ var Multiverse = {
             worldmanager.deleteWorld(worldName, true, true);
             log("Done.");
         }
-        if (Multiverse.worldExistsOnDisk(worldName)) {
+        if (exports.multiverse.worldExistsOnDisk(worldName)) {
             log("Deleting world " + worldName + " from disk...");
-            fs_1.default.remove(Multiverse.getWorldPath(worldName));
+            fs_1.fs.remove(exports.multiverse.getWorldPath(worldName));
             log("Done.");
         }
         log("Successfully Destroyed world " + worldName + ".");
@@ -80,13 +80,13 @@ var Multiverse = {
                             log("World " + worldName + " already imported.");
                             return [2 /*return*/, world];
                         }
-                        if (!Multiverse.worldExistsOnDisk(worldName)) {
+                        if (!exports.multiverse.worldExistsOnDisk(worldName)) {
                             err = "Cannot import world " + worldName + ": file not found";
                             log('err', err);
                             throw new Error(err);
                         }
                         return [4 /*yield*/, q.queueOperation(function () {
-                                return server_1.default.executeCommand("mv import " + worldName + " normal");
+                                return server_1.server.executeCommand("mv import " + worldName + " normal");
                             })];
                     case 1:
                         _a.sent();
@@ -107,11 +107,11 @@ var Multiverse = {
             var templateWorld, cloned, world;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, Multiverse.destroyWorld(worldName)];
+                    case 0: return [4 /*yield*/, exports.multiverse.destroyWorld(worldName)];
                     case 1:
                         _a.sent();
                         log("Cloning world " + worldName);
-                        return [4 /*yield*/, Multiverse.importWorld(templateWorldName)];
+                        return [4 /*yield*/, exports.multiverse.importWorld(templateWorldName)];
                     case 2:
                         templateWorld = _a.sent();
                         if (!templateWorld) {
@@ -138,12 +138,11 @@ var Multiverse = {
         return worldmanager.unloadWorld(name, true);
     },
     getWorldPath: function (worldName) {
-        var worldDir = server_1.default.getWorldDir();
+        var worldDir = server_1.server.getWorldDir();
         var path = worldDir + "/" + worldName;
         return path;
     },
 };
-exports.default = Multiverse;
 function queue() {
     var PollIntervalMs = 500;
     var ready = false;

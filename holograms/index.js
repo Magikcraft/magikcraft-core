@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var server_1 = require("../server");
 var BukkitPlugin = 'HolographicDisplays';
-if (!server_1.default.isPluginEnabled(BukkitPlugin)) {
+if (!server_1.server.isPluginEnabled(BukkitPlugin)) {
     throw new Error('Holographics Display plugin not found on this server.');
 }
 var API = com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
-var Holograms = {
+exports.holograms = {
     /**
      * Creates a hologram at given location.
      *
@@ -79,4 +79,3 @@ var Holograms = {
         return API.isHologramEntity(bukkitEntity);
     },
 };
-exports.default = Holograms;
