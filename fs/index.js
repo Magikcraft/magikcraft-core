@@ -1,7 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var File = Java.type('java.io.File');
+var Files = Java.type('java.nio.file.Files');
+var Paths = Java.type('java.nio.file.Paths');
 exports.fs = {
+    // Hail Stackoverflow!
+    // https://stackoverflow.com/a/50418060
+    copyDir: function (srcPath, destPath) {
+        var copy = function (source, dest) {
+            try {
+                Files.copy(source, dest);
+            }
+            catch (e) {
+                e.printStackTrace();
+            }
+        };
+        return new Promise(function (resolve, reject) {
+            var src = Paths.get(srcPath);
+            var dest = Paths.get(destPath);
+            Files.walk(src).forEach(function (source) { return copy(source, dest.resolve(src.relativize(source))); });
+            resolve();
+        });
+    },
     readDir: function (path) {
         var folder = new File(path);
         var listOfFiles = folder.listFiles();

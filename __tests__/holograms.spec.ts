@@ -1,4 +1,4 @@
-import { holograms } from '../holograms'
+import holograms from '../holograms'
 import { server } from '../server'
 
 describe('holograms', () => {

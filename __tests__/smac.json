@@ -1,0 +1,31 @@
+{
+	"name": "magikcraft-core-test",
+	"version": "1.0.0",
+	"keywords": ["scriptcraft", "scriptcraft-sma", "server"],
+	"author": "",
+	"license": "ISC",
+	"smaServerConfig": {
+		"dockerTag": "latest",
+		"port": "25565",
+		"serverName": "magikcraft-core-test",
+		"serverType": "bukkit",
+		"node_modules": false,
+		"testMode": true,
+		"bind": [
+			{
+				"src": "../",
+				"dst": "scriptcraft-plugins/@magikcraft/core"
+			}
+		],
+		"worlds": [
+			{
+				"downloadUrl": "https://sitapatis-sydney-storage.s3.amazonaws.com/MCT1/mct1-worlds-0.2.0.zip",
+				"version": "0.2.0",
+				"name": "mct1"
+			}
+		]
+	},
+	"dependencies": {
+		"@magikcraft/op-all": "^1.0.0"
+	}
+}

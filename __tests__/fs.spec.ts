@@ -23,4 +23,19 @@ describe('fs', () => {
 		fs.remove(testDir)
 		expect(fs.exists(testDir)).toBe(false)
 	})
+	it('can copy an entire directory recursively', () => {
+		if (fs.exists(testDir)) {
+			fs.remove(testDir)
+		}
+		expect(fs.exists(testDir)).toBe(false)
+		fs.writeFile(testFile, testContent)
+		expect(fs.exists(testFile)).toBe(true)
+		const destDir = testDir + '1'
+		const destFile = destDir + '/test.txt'
+		expect(fs.exists(destFile)).toBe(false)
+		fs.copyDir(testDir, destDir)
+		expect(fs.exists(destFile)).toBe(true)
+		fs.remove(destDir)
+		expect(fs.exists(destFile)).toBe(false)
+	})
 })

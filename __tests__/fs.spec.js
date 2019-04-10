@@ -23,4 +23,19 @@ describe('fs', function () {
         fs_1.fs.remove(testDir);
         expect(fs_1.fs.exists(testDir)).toBe(false);
     });
+    it('can copy an entire directory recursively', function () {
+        if (fs_1.fs.exists(testDir)) {
+            fs_1.fs.remove(testDir);
+        }
+        expect(fs_1.fs.exists(testDir)).toBe(false);
+        fs_1.fs.writeFile(testFile, testContent);
+        expect(fs_1.fs.exists(testFile)).toBe(true);
+        var destDir = testDir + '1';
+        var destFile = destDir + '/test.txt';
+        expect(fs_1.fs.exists(destFile)).toBe(false);
+        fs_1.fs.copyDir(testDir, destDir);
+        expect(fs_1.fs.exists(destFile)).toBe(true);
+        fs_1.fs.remove(destDir);
+        expect(fs_1.fs.exists(destFile)).toBe(false);
+    });
 });
