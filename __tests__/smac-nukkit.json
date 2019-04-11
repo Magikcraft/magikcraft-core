@@ -15,13 +15,10 @@
 			{
 				"src": "../",
 				"dst": "scriptcraft-plugins/@magikcraft/core"
-			}
-		],
-		"worlds": [
+			},
 			{
-				"downloadUrl": "https://sitapatis-sydney-storage.s3.amazonaws.com/MCT1/mct1-worlds-0.2.0.zip",
-				"version": "0.2.0",
-				"name": "mct1"
+				"src": "../../../../Public/nukkit/mct1-start/mct1-start",
+				"dst": "worlds/mct1-start"
 			}
 		]
 	},

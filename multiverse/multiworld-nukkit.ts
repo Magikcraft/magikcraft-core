@@ -49,9 +49,7 @@ export class NukkitWorldManager {
 
 	unloadWorld(worldName: string) {
 		const level = this.server.getLevelByName(worldName)
-		const path = this.getWorldPath(worldName)
-		const exists = fs.exists(path)
-		if (exists) {
+		if (level) {
 			this.server.unloadLevel(level)
 		}
 	}

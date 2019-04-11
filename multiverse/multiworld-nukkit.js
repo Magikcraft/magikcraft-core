@@ -80,9 +80,7 @@ var NukkitWorldManager = /** @class */ (function () {
     };
     NukkitWorldManager.prototype.unloadWorld = function (worldName) {
         var level = this.server.getLevelByName(worldName);
-        var path = this.getWorldPath(worldName);
-        var exists = fs_1.fs.exists(path);
-        if (exists) {
+        if (level) {
             this.server.unloadLevel(level);
         }
     };
