@@ -1,15 +1,16 @@
 import { server } from '../server'
 declare const com: any
 const BukkitPlugin = 'HolographicDisplays'
-const API = com.gmail.filoghost.holographicdisplays.api.HologramsAPI
 
 export class BukkitHologramManager {
+	API: any
 	constructor() {
 		if (!server.isPluginEnabled(BukkitPlugin)) {
 			throw new Error(
 				'Holographics Display plugin not found on this server.'
 			)
 		}
+		this.API = com.gmail.filoghost.holographicdisplays.api.HologramsAPI
 	}
 	/**
 	 * Creates a hologram at given location.
@@ -25,7 +26,7 @@ export class BukkitHologramManager {
 		lines: string[]
 		location: BukkitLocation
 	}): Hologram {
-		const hologram: Hologram = API.createHologram(__plugin, location)
+		const hologram: Hologram = this.API.createHologram(__plugin, location)
 		lines.forEach(line => hologram.appendTextLine(line))
 		hologram.refreshAll()
 		return hologram
@@ -38,7 +39,7 @@ export class BukkitHologramManager {
 	 * and modifying it has no effect on the holograms.
 	 */
 	getHolograms(): Hologram[] {
-		return Java.from(API.getHolograms(__plugin).toArray())
+		return Java.from(this.API.getHolograms(__plugin).toArray())
 	}
 
 	/**
@@ -56,7 +57,7 @@ export class BukkitHologramManager {
 		refreshRate: number,
 		replacer: { update: () => string }
 	) {
-		API.registerPlaceholder(
+		this.API.registerPlaceholder(
 			__plugin,
 			textPlaceholder,
 			refreshRate,
@@ -70,7 +71,7 @@ export class BukkitHologramManager {
 	 * @return a collection of placeholders registered by this plugin
 	 */
 	getRegisteredPlaceholders(): string[] {
-		return API.getRegisteredPlaceholders(__plugin)
+		return this.API.getRegisteredPlaceholders(__plugin)
 	}
 
 	/**
@@ -80,7 +81,7 @@ export class BukkitHologramManager {
 	 * @return true if found and removed, false otherwise
 	 */
 	unregisterPlaceholder(textPlaceholder: string): boolean {
-		return API.unregisterPlaceholder(__plugin, textPlaceholder)
+		return this.API.unregisterPlaceholder(__plugin, textPlaceholder)
 	}
 
 	/**
@@ -90,7 +91,7 @@ export class BukkitHologramManager {
 	 * @param plugin the plugin that owns the placeholders
 	 */
 	unregisterPlaceholders() {
-		API.unregisterPlaceholders(__plugin)
+		this.API.unregisterPlaceholders(__plugin)
 	}
 
 	/**
@@ -100,7 +101,7 @@ export class BukkitHologramManager {
 	 * @return true if the entity is a part of a hologram
 	 */
 	isHologramEntity(bukkitEntity: any): boolean {
-		return API.isHologramEntity(bukkitEntity)
+		return this.API.isHologramEntity(bukkitEntity)
 	}
 }
 

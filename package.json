@@ -28,7 +28,7 @@
 		"port": "25565",
 		"serverName": "magikcraft-core-dev",
 		"test": true,
-		"dockerTag": "0.3.0",
+		"dockerTag": "latest",
 		"bind": [
 			{
 				"src": "./",

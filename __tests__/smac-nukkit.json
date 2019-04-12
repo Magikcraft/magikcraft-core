@@ -15,10 +15,6 @@
 			{
 				"src": "../",
 				"dst": "scriptcraft-plugins/@magikcraft/core"
-			},
-			{
-				"src": "../../../../Public/nukkit/mct1-start/mct1-start",
-				"dst": "worlds/mct1-start"
 			}
 		]
 	},

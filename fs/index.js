@@ -105,4 +105,8 @@ exports.fs = {
         fw.write(content);
         fw.close();
     },
+    readJson: function (path, options) {
+        var stringContent = exports.fs.readFile(path);
+        return;
+    },
 };

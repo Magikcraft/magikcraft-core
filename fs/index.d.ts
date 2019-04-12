@@ -34,4 +34,5 @@ export declare const fs: {
      * Writes the contents of a file to the filesystem.
      */
     writeFile(filename: string, content: string): void;
+    readJson(path: string, options: any): void;
 };
