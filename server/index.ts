@@ -1,9 +1,34 @@
-const __server = __plugin.server
-export const server = {
-	executeCommand: command =>
-		__server.dispatchCommand(__server.consoleSender, command),
-	getPlugin: pluginName => __server.getPluginManager().getPlugin(pluginName),
-	getWorldDir: () => __server.getWorldContainer(),
-	isPluginEnabled: name => __server.getPluginManager().isPluginEnabled(name),
-	getWorlds: (): BukkitWorld[] => Java.from(__server.getWorlds()),
+import * as environment from '../environment'
+import { BukkitServer } from './BukkitServer'
+import { NukkitServer } from './NukkitServer'
+
+class Server {
+	implementation: NukkitServer | BukkitServer
+	constructor() {
+		this.implementation = environment.IS_NUKKIT
+			? new NukkitServer()
+			: new BukkitServer()
+	}
+
+	getWorlds() {
+		return this.implementation.getWorlds()
+	}
+
+	getWorldDir() {
+		return this.implementation.getWorldDir()
+	}
+
+	executeCommand(command: string) {
+		return this.implementation.executeCommand(command)
+	}
+
+	getPlugin(name: string) {
+		return this.implementation.getPlugin(name)
+	}
+
+	isPluginEnabled(name: string) {
+		return this.implementation.isPluginEnabled(name)
+	}
 }
+
+export default new Server()

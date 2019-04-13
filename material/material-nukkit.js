@@ -1,6 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.material = {
+module.exports = {
     AIR: Java.type('cn.nukkit.block.BlockAir'),
     STONE: Java.type('cn.nukkit.block.BlockStone'),
     GRASS: Java.type('cn.nukkit.block.BlockGrass'),

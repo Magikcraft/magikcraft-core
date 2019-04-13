@@ -37,13 +37,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var utils = require("utils");
 var fs_1 = require("../fs");
-var server_1 = require("../server");
 var log_1 = require("../log");
+var server_1 = require("../server");
 var log = log_1.logger(__filename);
 // https://github.com/Multiverse/Multiverse-Core
 var BukkitWorldManager = /** @class */ (function () {
     function BukkitWorldManager() {
-        this.multiversePlugin = server_1.server.getPlugin('Multiverse-Core');
+        this.multiversePlugin = server_1.default.getPlugin('Multiverse-Core');
         if (!this.multiversePlugin) {
             throw new Error('Multiverse-Core plugin not found! Is it installed on this server?');
         }
@@ -51,7 +51,7 @@ var BukkitWorldManager = /** @class */ (function () {
         this.q = queue();
     }
     BukkitWorldManager.prototype.getWorldPath = function (worldName) {
-        var worldDir = server_1.server.getWorldDir();
+        var worldDir = server_1.default.getWorldDir();
         var path = worldDir + "/" + worldName;
         return path;
     };
@@ -93,7 +93,7 @@ var BukkitWorldManager = /** @class */ (function () {
                             throw new Error(err);
                         }
                         return [4 /*yield*/, this.q.queueOperation(function () {
-                                return server_1.server.executeCommand("mv import " + worldName + " normal");
+                                return server_1.default.executeCommand("mv import " + worldName + " normal");
                             })];
                     case 1:
                         _a.sent();

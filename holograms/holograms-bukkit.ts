@@ -1,4 +1,4 @@
-import { server } from '../server'
+import server from '../server'
 declare const com: any
 const BukkitPlugin = 'HolographicDisplays'
 

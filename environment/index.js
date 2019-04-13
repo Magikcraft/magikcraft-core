@@ -58,7 +58,7 @@ try {
 catch (e) {
     hologramNukkit = false;
 }
-if (server_1.server.isPluginEnabled(BukkitPlugin)) {
+if (server_1.default.isPluginEnabled(BukkitPlugin)) {
     hasHolograms = true;
     hologramBukkit = true;
 }

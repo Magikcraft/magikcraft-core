@@ -1,4 +1,4 @@
-import { server } from '../server'
+import server from '../server'
 
 // The various plugins
 const pluginManager = __plugin.server.pluginManager

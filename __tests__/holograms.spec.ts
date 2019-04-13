@@ -1,5 +1,5 @@
 import holograms from '../holograms'
-import { server } from '../server'
+import server from '../server'
 
 describe('holograms', () => {
 	it('returns a new HologramAPI interface', () => {
@@ -9,11 +9,13 @@ describe('holograms', () => {
 	it('can create and remove a new Hologram', () => {
 		const location = findEmptySpace()
 		expect(typeof location.x).toBe('number')
+		;(console as any).log('location', location.x) // @DEBUG
 		const atStart = holograms.getHolograms().length
 		const h = holograms.createHologram({
 			lines: ['Jasmine Unit Test', 'of', 'Holographic Displays'],
 			location,
 		})
+		console.log(h) // @DEBUG
 		const now = holograms.getHolograms().length
 		expect(now).toBe(atStart + 1)
 		// Clean-up

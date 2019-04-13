@@ -38,13 +38,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var utils = require("utils");
 var fs_1 = require("../fs");
 var log_1 = require("../log");
+var server_1 = require("../server");
 var log = log_1.logger(__filename);
 var NukkitWorldManager = /** @class */ (function () {
     function NukkitWorldManager() {
         this.server = __plugin.server.nukkit;
     }
     NukkitWorldManager.prototype.getWorldPath = function (worldName) {
-        return this.server.getDataPath() + 'worlds/' + worldName;
+        return server_1.default.getWorldDir() + worldName;
     };
     NukkitWorldManager.prototype.getMVWorld = function (worldName) {
         var level = this.server.getLevelByName(worldName);

@@ -1,4 +1,6 @@
-declare const _default: {
+declare const materialImpl: NukkitMaterial | BukkitMaterial;
+export default materialImpl;
+interface NukkitMaterial {
     AIR: any;
     STONE: any;
     GRASS: any;
@@ -227,5 +229,7 @@ declare const _default: {
     STONECUTTER: any;
     GLOWING_OBSIDIAN: any;
     OBSERVER: any;
-};
-export = _default;
+}
+interface BukkitMaterial {
+    AIR: any;
+}

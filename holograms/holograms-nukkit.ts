@@ -37,8 +37,10 @@ export class NukkitHologramManager {
 			.putString('hologramId', hologramId)
 		const text = new ArrayList()
 		lines.map(line => {
+			console.log(line) // @DEBUG
 			text.add(line)
 		})
+		console.log(lines) // @DEBUG
 		const hologram = new Hologram(hologramId, text)
 		this.plugin.getInternalHolograms().putIfAbsent(hologramId, hologram)
 		return hologram

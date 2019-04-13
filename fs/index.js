@@ -18,7 +18,9 @@ exports.fs = {
         return new Promise(function (resolve, reject) {
             var src = Paths.get(srcPath);
             var dest = Paths.get(destPath);
-            Files.walk(src).forEach(function (source) { return copy(source, dest.resolve(src.relativize(source))); });
+            Files.walk(src).forEach(function (source) {
+                return copy(source, dest.resolve(src.relativize(source)));
+            });
             resolve();
         });
     },
@@ -106,7 +108,19 @@ exports.fs = {
         fw.close();
     },
     readJson: function (path, options) {
+        if (options === void 0) { options = { throwException: true }; }
         var stringContent = exports.fs.readFile(path);
-        return;
+        try {
+            return JSON.parse(stringContent);
+        }
+        catch (e) {
+            if (options.throwException) {
+                throw e;
+            }
+            return null;
+        }
+    },
+    writeJSON: function (path, json) {
+        exports.fs.writeFile(path, JSON.stringify(json));
     },
 };

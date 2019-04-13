@@ -1,12 +1,29 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var __server = __plugin.server;
-exports.server = {
-    executeCommand: function (command) {
-        return __server.dispatchCommand(__server.consoleSender, command);
-    },
-    getPlugin: function (pluginName) { return __server.getPluginManager().getPlugin(pluginName); },
-    getWorldDir: function () { return __server.getWorldContainer(); },
-    isPluginEnabled: function (name) { return __server.getPluginManager().isPluginEnabled(name); },
-    getWorlds: function () { return Java.from(__server.getWorlds()); },
-};
+var environment = require("../environment");
+var BukkitServer_1 = require("./BukkitServer");
+var NukkitServer_1 = require("./NukkitServer");
+var Server = /** @class */ (function () {
+    function Server() {
+        this.implementation = environment.IS_NUKKIT
+            ? new NukkitServer_1.NukkitServer()
+            : new BukkitServer_1.BukkitServer();
+    }
+    Server.prototype.getWorlds = function () {
+        return this.implementation.getWorlds();
+    };
+    Server.prototype.getWorldDir = function () {
+        return this.implementation.getWorldDir();
+    };
+    Server.prototype.executeCommand = function (command) {
+        return this.implementation.executeCommand(command);
+    };
+    Server.prototype.getPlugin = function (name) {
+        return this.implementation.getPlugin(name);
+    };
+    Server.prototype.isPluginEnabled = function (name) {
+        return this.implementation.isPluginEnabled(name);
+    };
+    return Server;
+}());
+exports.default = new Server();

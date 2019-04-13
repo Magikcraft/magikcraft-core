@@ -1,8 +1,7 @@
 import * as utils from 'utils'
-
-import { server } from '../server'
 import { fs } from '../fs'
 import { logger } from '../log'
+import server from '../server'
 
 const log = logger(__filename)
 
@@ -14,7 +13,7 @@ export class NukkitWorldManager {
 	}
 
 	getWorldPath(worldName: string) {
-		return this.server.getDataPath() + 'worlds/' + worldName
+		return server.getWorldDir() + worldName
 	}
 
 	getMVWorld(worldName: string) {

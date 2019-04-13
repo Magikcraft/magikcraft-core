@@ -1,4 +1,4 @@
-export const material = {
+export = {
 	AIR: Java.type('cn.nukkit.block.BlockAir'), //0
 	STONE: Java.type('cn.nukkit.block.BlockStone'), //1
 	GRASS: Java.type('cn.nukkit.block.BlockGrass'), //2

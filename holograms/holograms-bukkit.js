@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var server_1 = require("../server");
 var BukkitPlugin = 'HolographicDisplays';
-var API = com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 var BukkitHologramManager = /** @class */ (function () {
     function BukkitHologramManager() {
-        if (!server_1.server.isPluginEnabled(BukkitPlugin)) {
+        if (!server_1.default.isPluginEnabled(BukkitPlugin)) {
             throw new Error('Holographics Display plugin not found on this server.');
         }
+        this.API = com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
     }
     /**
      * Creates a hologram at given location.
@@ -18,7 +18,7 @@ var BukkitHologramManager = /** @class */ (function () {
      */
     BukkitHologramManager.prototype.createHologram = function (_a) {
         var _b = _a.lines, lines = _b === void 0 ? [] : _b, location = _a.location;
-        var hologram = API.createHologram(__plugin, location);
+        var hologram = this.API.createHologram(__plugin, location);
         lines.forEach(function (line) { return hologram.appendTextLine(line); });
         hologram.refreshAll();
         return hologram;
@@ -30,7 +30,7 @@ var BukkitHologramManager = /** @class */ (function () {
      * and modifying it has no effect on the holograms.
      */
     BukkitHologramManager.prototype.getHolograms = function () {
-        return Java.from(API.getHolograms(__plugin).toArray());
+        return Java.from(this.API.getHolograms(__plugin).toArray());
     };
     /**
      * Registers a new placeholder that can be used in holograms created with commands.
@@ -43,7 +43,7 @@ var BukkitHologramManager = /** @class */ (function () {
      * @return true if the registration was successfull, false if it was already registered
      */
     BukkitHologramManager.prototype.registerPlaceholder = function (textPlaceholder, refreshRate, replacer) {
-        API.registerPlaceholder(__plugin, textPlaceholder, refreshRate, replacer);
+        this.API.registerPlaceholder(__plugin, textPlaceholder, refreshRate, replacer);
     };
     /**
      * Finds all the placeholders registered by this plugin.
@@ -51,7 +51,7 @@ var BukkitHologramManager = /** @class */ (function () {
      * @return a collection of placeholders registered by this plugin
      */
     BukkitHologramManager.prototype.getRegisteredPlaceholders = function () {
-        return API.getRegisteredPlaceholders(__plugin);
+        return this.API.getRegisteredPlaceholders(__plugin);
     };
     /**
      * Unregister a placeholder created by a plugin.
@@ -60,7 +60,7 @@ var BukkitHologramManager = /** @class */ (function () {
      * @return true if found and removed, false otherwise
      */
     BukkitHologramManager.prototype.unregisterPlaceholder = function (textPlaceholder) {
-        return API.unregisterPlaceholder(__plugin, textPlaceholder);
+        return this.API.unregisterPlaceholder(__plugin, textPlaceholder);
     };
     /**
      * Resets and removes all the placeholders registered by a plugin. This is useful
@@ -69,7 +69,7 @@ var BukkitHologramManager = /** @class */ (function () {
      * @param plugin the plugin that owns the placeholders
      */
     BukkitHologramManager.prototype.unregisterPlaceholders = function () {
-        API.unregisterPlaceholders(__plugin);
+        this.API.unregisterPlaceholders(__plugin);
     };
     /**
      * Checks if an entity is part of a hologram.
@@ -78,7 +78,7 @@ var BukkitHologramManager = /** @class */ (function () {
      * @return true if the entity is a part of a hologram
      */
     BukkitHologramManager.prototype.isHologramEntity = function (bukkitEntity) {
-        return API.isHologramEntity(bukkitEntity);
+        return this.API.isHologramEntity(bukkitEntity);
     };
     return BukkitHologramManager;
 }());

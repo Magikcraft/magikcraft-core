@@ -1,7 +1,7 @@
 import * as utils from 'utils'
 import { fs } from '../fs'
-import { server } from '../server'
 import { logger } from '../log'
+import server from '../server'
 
 const log = logger(__filename)
 

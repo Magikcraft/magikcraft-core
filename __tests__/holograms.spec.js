@@ -10,11 +10,13 @@ describe('holograms', function () {
     it('can create and remove a new Hologram', function () {
         var location = findEmptySpace();
         expect(typeof location.x).toBe('number');
+        console.log('location', location.x); // @DEBUG
         var atStart = holograms_1.default.getHolograms().length;
         var h = holograms_1.default.createHologram({
             lines: ['Jasmine Unit Test', 'of', 'Holographic Displays'],
             location: location,
         });
+        console.log(h); // @DEBUG
         var now = holograms_1.default.getHolograms().length;
         expect(now).toBe(atStart + 1);
         // Clean-up
@@ -24,7 +26,7 @@ describe('holograms', function () {
     });
 });
 function findEmptySpace() {
-    var location = server_1.server.getWorlds()[0].getSpawnLocation();
+    var location = server_1.default.getWorlds()[0].getSpawnLocation();
     location.setY(location.getY() + 4);
     while (location.getBlock().getType() != Java.type('org.bukkit.Material').AIR) {
         location.setY(location.getY() + 2);

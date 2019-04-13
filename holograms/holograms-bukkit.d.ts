@@ -1,5 +1,6 @@
 /// <reference types="@scriptcraft/types" />
 export declare class BukkitHologramManager {
+    API: any;
     constructor();
     /**
      * Creates a hologram at given location.
