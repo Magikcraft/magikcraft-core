@@ -1,3 +1,6 @@
+import { getType } from '../reflection'
+import { HashMapToObject } from '../convert'
+
 export class NukkitHologramManager {
 	plugin: any
 	constructor() {
@@ -15,6 +18,12 @@ export class NukkitHologramManager {
 		const UUID = Java.type('java.util.UUID')
 		const ArrayList = Java.type('java.util.ArrayList')
 
+		const plugin = this.plugin
+		const HologramPlus = (Java as any).extend(Hologram, {
+			delete: () => {
+				plugin.getHolograms()
+			},
+		})
 		const hologramId = UUID.randomUUID()
 		const nbt = new CompoundTag()
 			.putList(
@@ -35,13 +44,15 @@ export class NukkitHologramManager {
 					.add(new FloatTag('1', location.getPitch()))
 			)
 			.putString('hologramId', hologramId)
+		const pages = new ArrayList()
 		const text = new ArrayList()
+		pages.add(text)
 		lines.map(line => {
-			console.log(line) // @DEBUG
 			text.add(line)
 		})
-		console.log(lines) // @DEBUG
-		const hologram = new Hologram(hologramId, text)
+
+		const hologram = new Hologram(hologramId, pages)
+		hologram.setUpdateInterval()
 		this.plugin.getInternalHolograms().putIfAbsent(hologramId, hologram)
 		return hologram
 	}

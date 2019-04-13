@@ -1,5 +1,7 @@
 import holograms from '../holograms'
 import server from '../server'
+import { sizeOf } from '../convert'
+import { getMethods } from '../reflection'
 
 describe('holograms', () => {
 	it('returns a new HologramAPI interface', () => {
@@ -9,18 +11,18 @@ describe('holograms', () => {
 	it('can create and remove a new Hologram', () => {
 		const location = findEmptySpace()
 		expect(typeof location.x).toBe('number')
-		;(console as any).log('location', location.x) // @DEBUG
-		const atStart = holograms.getHolograms().length
+		const atStart = sizeOf(holograms.getHolograms())
 		const h = holograms.createHologram({
 			lines: ['Jasmine Unit Test', 'of', 'Holographic Displays'],
 			location,
 		})
 		console.log(h) // @DEBUG
-		const now = holograms.getHolograms().length
+		const now = sizeOf(holograms.getHolograms())
 		expect(now).toBe(atStart + 1)
 		// Clean-up
+		console.log(h.getName()) // @DEBUG
 		h.delete()
-		const final = holograms.getHolograms().length
+		const final = sizeOf(holograms.getHolograms())
 		expect(final).toBe(atStart)
 	})
 })

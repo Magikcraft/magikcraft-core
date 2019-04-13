@@ -15,6 +15,12 @@ var NukkitHologramManager = /** @class */ (function () {
         var Hologram = Java.type('gt.creeperface.holograms.Hologram');
         var UUID = Java.type('java.util.UUID');
         var ArrayList = Java.type('java.util.ArrayList');
+        var plugin = this.plugin;
+        var HologramPlus = Java.extend(Hologram, {
+            delete: function () {
+                plugin.getHolograms();
+            },
+        });
         var hologramId = UUID.randomUUID();
         var nbt = new CompoundTag()
             .putList(new ListTag('Pos')
@@ -29,13 +35,14 @@ var NukkitHologramManager = /** @class */ (function () {
             .add(new FloatTag('0', location.getYaw()))
             .add(new FloatTag('1', location.getPitch())))
             .putString('hologramId', hologramId);
+        var pages = new ArrayList();
         var text = new ArrayList();
+        pages.add(text);
         lines.map(function (line) {
-            console.log(line); // @DEBUG
             text.add(line);
         });
-        console.log(lines); // @DEBUG
-        var hologram = new Hologram(hologramId, text);
+        var hologram = new Hologram(hologramId, pages);
+        hologram.setUpdateInterval();
         this.plugin.getInternalHolograms().putIfAbsent(hologramId, hologram);
         return hologram;
     };

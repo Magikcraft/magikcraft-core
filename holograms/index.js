@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var environment = require("../environment");
 var holograms_bukkit_1 = require("./holograms-bukkit");
 var holograms_nukkit_1 = require("./holograms-nukkit");
+var convert_1 = require("../convert");
 var HologramManager = /** @class */ (function () {
     function HologramManager() {
         this.implementation = environment.IS_NUKKIT
@@ -14,7 +15,7 @@ var HologramManager = /** @class */ (function () {
         return this.implementation.createHologram({ lines: lines, location: location });
     };
     HologramManager.prototype.getHolograms = function () {
-        return this.implementation.getHolograms();
+        return convert_1.HashMapToObject(this.implementation.getHolograms());
     };
     return HologramManager;
 }());
