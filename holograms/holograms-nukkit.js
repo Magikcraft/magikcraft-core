@@ -41,7 +41,7 @@ var NukkitHologramManager = /** @class */ (function () {
         });
         var hologram = new Hologram(hologramId, translations);
         hologram.setUpdateInterval(-1);
-        console.log(plugin.getInternalHolograms().putIfAbsent(hologramId, hologram));
+        plugin.getInternalHolograms().putIfAbsent(hologramId, hologram);
         var entity = new HologramEntity(PokkitLocation.toNukkit(location).chunk, nbt);
         entity.spawnToAll();
         plugin.update(hologramId, translations);

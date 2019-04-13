@@ -55,9 +55,7 @@ export class NukkitHologramManager {
 		const hologram = new Hologram(hologramId, translations)
 		hologram.setUpdateInterval(-1)
 
-		console.log(
-			plugin.getInternalHolograms().putIfAbsent(hologramId, hologram)
-		)
+		plugin.getInternalHolograms().putIfAbsent(hologramId, hologram)
 
 		const entity = new HologramEntity(
 			PokkitLocation.toNukkit(location).chunk,
