@@ -2,6 +2,7 @@ import * as utils from 'utils'
 import { fs } from '../fs'
 import { logger } from '../log'
 import server from '../server'
+import AsyncTask = require('../utils/nukkit/AsyncTask')
 
 const log = logger(__filename)
 
@@ -58,8 +59,7 @@ export class NukkitWorldManager {
 			const path = this.getWorldPath(worldName)
 			this.unloadWorld(worldName)
 			let error = false
-			var AsyncTask = Java.type('cn.nukkit.scheduler.AsyncTask')
-			const destruction = (Java as any).extend(AsyncTask, {
+			const destruction = AsyncTask({
 				onRun: () => {
 					try {
 						fs.remove(path)

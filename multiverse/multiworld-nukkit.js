@@ -39,6 +39,7 @@ var utils = require("utils");
 var fs_1 = require("../fs");
 var log_1 = require("../log");
 var server_1 = require("../server");
+var AsyncTask = require("../utils/nukkit/AsyncTask");
 var log = log_1.logger(__filename);
 var NukkitWorldManager = /** @class */ (function () {
     function NukkitWorldManager() {
@@ -93,8 +94,7 @@ var NukkitWorldManager = /** @class */ (function () {
                         var path = _this.getWorldPath(worldName);
                         _this.unloadWorld(worldName);
                         var error = false;
-                        var AsyncTask = Java.type('cn.nukkit.scheduler.AsyncTask');
-                        var destruction = Java.extend(AsyncTask, {
+                        var destruction = AsyncTask({
                             onRun: function () {
                                 try {
                                     fs_1.fs.remove(path);

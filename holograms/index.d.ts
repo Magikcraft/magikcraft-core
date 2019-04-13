@@ -6,7 +6,9 @@ declare class HologramManager {
     createHologram({ lines, location }: {
         lines: any;
         location: any;
-    }): any;
+    }): {
+        delete: () => any;
+    };
     getHolograms(): any;
 }
 declare const _default: HologramManager;

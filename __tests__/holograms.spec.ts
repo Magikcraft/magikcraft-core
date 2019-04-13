@@ -1,7 +1,6 @@
 import holograms from '../holograms'
 import server from '../server'
-import { sizeOf } from '../convert'
-import { getMethods } from '../reflection'
+import { sizeOf } from '../utils/convert'
 
 describe('holograms', () => {
 	it('returns a new HologramAPI interface', () => {
@@ -16,11 +15,9 @@ describe('holograms', () => {
 			lines: ['Jasmine Unit Test', 'of', 'Holographic Displays'],
 			location,
 		})
-		console.log(h) // @DEBUG
 		const now = sizeOf(holograms.getHolograms())
 		expect(now).toBe(atStart + 1)
 		// Clean-up
-		console.log(h.getName()) // @DEBUG
 		h.delete()
 		const final = sizeOf(holograms.getHolograms())
 		expect(final).toBe(atStart)

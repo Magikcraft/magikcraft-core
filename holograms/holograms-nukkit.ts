@@ -1,5 +1,6 @@
-import { getType } from '../reflection'
-import { HashMapToObject } from '../convert'
+import AsyncTask = require('../utils/nukkit/AsyncTask')
+import { HashMapToJSObject } from '../utils/convert'
+import reflection = require('../utils/reflection')
 
 export class NukkitHologramManager {
 	plugin: any
@@ -15,16 +16,16 @@ export class NukkitHologramManager {
 		const FloatTag = Java.type('cn.nukkit.nbt.tag.FloatTag')
 		const DoubleTag = Java.type('cn.nukkit.nbt.tag.DoubleTag')
 		const Hologram = Java.type('gt.creeperface.holograms.Hologram')
+		const HologramEntity = Java.type(
+			'gt.creeperface.holograms.entity.HologramEntity'
+		)
+		const PokkitLocation = Java.type('nl.rutgerkok.pokkit.PokkitLocation')
 		const UUID = Java.type('java.util.UUID')
 		const ArrayList = Java.type('java.util.ArrayList')
 
 		const plugin = this.plugin
-		const HologramPlus = (Java as any).extend(Hologram, {
-			delete: () => {
-				plugin.getHolograms()
-			},
-		})
-		const hologramId = UUID.randomUUID()
+
+		const hologramId = UUID.randomUUID().toString()
 		const nbt = new CompoundTag()
 			.putList(
 				new ListTag('Pos')
@@ -44,20 +45,50 @@ export class NukkitHologramManager {
 					.add(new FloatTag('1', location.getPitch()))
 			)
 			.putString('hologramId', hologramId)
-		const pages = new ArrayList()
-		const text = new ArrayList()
-		pages.add(text)
+		const translations = new ArrayList()
+		const englishText = new ArrayList()
+		translations.add(englishText)
 		lines.map(line => {
-			text.add(line)
+			englishText.add(line)
 		})
 
-		const hologram = new Hologram(hologramId, pages)
-		hologram.setUpdateInterval()
-		this.plugin.getInternalHolograms().putIfAbsent(hologramId, hologram)
-		return hologram
+		const hologram = new Hologram(hologramId, translations)
+		hologram.setUpdateInterval(-1)
+
+		console.log(
+			plugin.getInternalHolograms().putIfAbsent(hologramId, hologram)
+		)
+
+		const entity = new HologramEntity(
+			PokkitLocation.toNukkit(location).chunk,
+			nbt
+		)
+		entity.spawnToAll()
+
+		plugin.update(hologramId, translations)
+		return {
+			delete: function() {
+				return Java.from(
+					plugin
+						.getServer()
+						.getLevels()
+						.values()
+				).map(level =>
+					Java.from(level.getEntities()).map(entity => {
+						if (entity instanceof HologramEntity) {
+							if (entity.getHologramId().equals(hologramId)) {
+								entity.close()
+								entity.despawnFromAll()
+								plugin.getInternalHolograms().remove(hologramId)
+							}
+						}
+					})
+				)
+			},
+		}
 	}
 
 	getHolograms() {
-		return this.plugin.getInternalHolograms()
+		return HashMapToJSObject(this.plugin.getInternalHolograms())
 	}
 }

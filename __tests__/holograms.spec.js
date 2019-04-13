@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var holograms_1 = require("../holograms");
 var server_1 = require("../server");
-var convert_1 = require("../convert");
+var convert_1 = require("../utils/convert");
 describe('holograms', function () {
     it('returns a new HologramAPI interface', function () {
         expect(holograms_1.default).toBeTruthy();
@@ -16,11 +16,9 @@ describe('holograms', function () {
             lines: ['Jasmine Unit Test', 'of', 'Holographic Displays'],
             location: location,
         });
-        console.log(h); // @DEBUG
         var now = convert_1.sizeOf(holograms_1.default.getHolograms());
         expect(now).toBe(atStart + 1);
         // Clean-up
-        console.log(h.getName()); // @DEBUG
         h.delete();
         var final = convert_1.sizeOf(holograms_1.default.getHolograms());
         expect(final).toBe(atStart);

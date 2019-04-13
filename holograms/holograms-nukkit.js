@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var convert_1 = require("../utils/convert");
 var NukkitHologramManager = /** @class */ (function () {
     function NukkitHologramManager() {
         this.plugin = __plugin.server.nukkit
@@ -13,15 +14,12 @@ var NukkitHologramManager = /** @class */ (function () {
         var FloatTag = Java.type('cn.nukkit.nbt.tag.FloatTag');
         var DoubleTag = Java.type('cn.nukkit.nbt.tag.DoubleTag');
         var Hologram = Java.type('gt.creeperface.holograms.Hologram');
+        var HologramEntity = Java.type('gt.creeperface.holograms.entity.HologramEntity');
+        var PokkitLocation = Java.type('nl.rutgerkok.pokkit.PokkitLocation');
         var UUID = Java.type('java.util.UUID');
         var ArrayList = Java.type('java.util.ArrayList');
         var plugin = this.plugin;
-        var HologramPlus = Java.extend(Hologram, {
-            delete: function () {
-                plugin.getHolograms();
-            },
-        });
-        var hologramId = UUID.randomUUID();
+        var hologramId = UUID.randomUUID().toString();
         var nbt = new CompoundTag()
             .putList(new ListTag('Pos')
             .add(new DoubleTag('0', location.x))
@@ -35,19 +33,39 @@ var NukkitHologramManager = /** @class */ (function () {
             .add(new FloatTag('0', location.getYaw()))
             .add(new FloatTag('1', location.getPitch())))
             .putString('hologramId', hologramId);
-        var pages = new ArrayList();
-        var text = new ArrayList();
-        pages.add(text);
+        var translations = new ArrayList();
+        var englishText = new ArrayList();
+        translations.add(englishText);
         lines.map(function (line) {
-            text.add(line);
+            englishText.add(line);
         });
-        var hologram = new Hologram(hologramId, pages);
-        hologram.setUpdateInterval();
-        this.plugin.getInternalHolograms().putIfAbsent(hologramId, hologram);
-        return hologram;
+        var hologram = new Hologram(hologramId, translations);
+        hologram.setUpdateInterval(-1);
+        console.log(plugin.getInternalHolograms().putIfAbsent(hologramId, hologram));
+        var entity = new HologramEntity(PokkitLocation.toNukkit(location).chunk, nbt);
+        entity.spawnToAll();
+        plugin.update(hologramId, translations);
+        return {
+            delete: function () {
+                return Java.from(plugin
+                    .getServer()
+                    .getLevels()
+                    .values()).map(function (level) {
+                    return Java.from(level.getEntities()).map(function (entity) {
+                        if (entity instanceof HologramEntity) {
+                            if (entity.getHologramId().equals(hologramId)) {
+                                entity.close();
+                                entity.despawnFromAll();
+                                plugin.getInternalHolograms().remove(hologramId);
+                            }
+                        }
+                    });
+                });
+            },
+        };
     };
     NukkitHologramManager.prototype.getHolograms = function () {
-        return this.plugin.getInternalHolograms();
+        return convert_1.HashMapToJSObject(this.plugin.getInternalHolograms());
     };
     return NukkitHologramManager;
 }());

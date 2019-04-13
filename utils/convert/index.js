@@ -1,16 +1,16 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * These are utilities to convert Java objects to native JavaScript types
  */
-function HashMapToObject(hm) {
+Object.defineProperty(exports, "__esModule", { value: true });
+function HashMapToJSObject(hm) {
     var nativeJSObject = {};
     hm.keySet().forEach(function (key) {
         nativeJSObject[key] = hm.get(key);
     });
     return nativeJSObject;
 }
-exports.HashMapToObject = HashMapToObject;
+exports.HashMapToJSObject = HashMapToJSObject;
 function sizeOf(object) {
     if (typeof object === 'object' &&
         Object.keys(object) &&

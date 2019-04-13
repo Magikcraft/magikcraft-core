@@ -1,10 +1,8 @@
-import { getType } from '../reflection'
-
 /**
  * These are utilities to convert Java objects to native JavaScript types
  */
 
-export function HashMapToObject(hm) {
+export function HashMapToJSObject(hm) {
 	const nativeJSObject = {} as any
 	hm.keySet().forEach(key => {
 		nativeJSObject[key] = hm.get(key)

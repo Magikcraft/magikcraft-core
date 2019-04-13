@@ -4,6 +4,8 @@ export declare class NukkitHologramManager {
     createHologram({ lines, location }: {
         lines: any;
         location: any;
-    }): any;
+    }): {
+        delete: () => any;
+    };
     getHolograms(): any;
 }
