@@ -1,0 +1,28 @@
+{
+	"name": "magikcraft-core-test",
+	"version": "1.0.0",
+	"keywords": ["scriptcraft", "scriptcraft-sma", "server"],
+	"author": "",
+	"license": "ISC",
+	"smaServerConfig": {
+		"dockerTag": "latest",
+		"serverName": "magikcraft-core-test",
+		"serverType": "nukkit",
+		"node_modules": false,
+		"memory": "1024",
+		"testMode": true,
+		"bind": [
+			{
+				"src": "./",
+				"dst": "scriptcraft-plugins/@magikcraft/core"
+			},
+			{
+				"src": "../node_modules/@magikcraft/op-all",
+				"dst": "scriptcraft-plugins/@magikcraft/op-all"
+			}
+		]
+	},
+	"dependencies": {
+		"@magikcraft/op-all": "^1.0.0"
+	}
+}

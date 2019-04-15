@@ -1,6 +1,27 @@
 const File = Java.type('java.io.File')
+const Files = Java.type('java.nio.file.Files')
+const Paths = Java.type('java.nio.file.Paths')
 
 export const fs = {
+	// Hail Stackoverflow!
+	// https://stackoverflow.com/a/50418060
+	copyDir(srcPath: string, destPath: string) {
+		const copy = (source: string, dest: string) => {
+			try {
+				Files.copy(source, dest)
+			} catch (e) {
+				e.printStackTrace()
+			}
+		}
+		return new Promise((resolve, reject) => {
+			const src = Paths.get(srcPath)
+			const dest = Paths.get(destPath)
+			Files.walk(src).forEach(source =>
+				copy(source, dest.resolve(src.relativize(source)))
+			)
+			resolve()
+		})
+	},
 	readDir(path) {
 		const folder = new File(path)
 		const listOfFiles = folder.listFiles()
@@ -87,5 +108,21 @@ export const fs = {
 		const fw = new FileWriter(filename)
 		fw.write(content)
 		fw.close()
+	},
+
+	readJson(path: string, options = { throwException: true }) {
+		const stringContent = fs.readFile(path)
+		try {
+			return JSON.parse(stringContent)
+		} catch (e) {
+			if (options.throwException) {
+				throw e
+			}
+			return null
+		}
+	},
+
+	writeJSON(path: string, json: object) {
+		fs.writeFile(path, JSON.stringify(json))
 	},
 }

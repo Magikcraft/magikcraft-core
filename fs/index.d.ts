@@ -1,4 +1,5 @@
 export declare const fs: {
+    copyDir(srcPath: string, destPath: string): Promise<{}>;
     readDir(path: any): string[];
     /**
      * exists
@@ -33,4 +34,8 @@ export declare const fs: {
      * Writes the contents of a file to the filesystem.
      */
     writeFile(filename: string, content: string): void;
+    readJson(path: string, options?: {
+        throwException: boolean;
+    }): any;
+    writeJSON(path: string, json: object): void;
 };

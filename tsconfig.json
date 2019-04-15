@@ -12,7 +12,7 @@
 		"alwaysStrict": true,
 		"baseUrl": ".",
 		"paths": {
-			"@magikcraft/core/*": ["./*"]
+			"@magikcraft/core": ["."]
 		},
 		"types": ["@scriptcraft/types", "jasmine"]
 	}

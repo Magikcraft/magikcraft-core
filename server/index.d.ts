@@ -1,7 +1,13 @@
-export declare const server: {
-    executeCommand: (command: any) => any;
-    getPlugin: (pluginName: any) => any;
-    getWorldDir: () => any;
-    isPluginEnabled: (name: any) => any;
-    getWorlds: () => any[];
-};
+import { BukkitServer } from './BukkitServer';
+import { NukkitServer } from './NukkitServer';
+declare class Server {
+    implementation: NukkitServer | BukkitServer;
+    constructor();
+    getWorlds(): any[];
+    getWorldDir(): any;
+    executeCommand(command: string): any;
+    getPlugin(name: string): any;
+    isPluginEnabled(name: string): any;
+}
+declare const _default: Server;
+export default _default;
