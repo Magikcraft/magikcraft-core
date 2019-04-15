@@ -2,6 +2,10 @@
  * These are methods for examining Java objects via Reflection
  */
 export = {
+	/**
+	 * Returns an array of methods
+	 * @param object The Java object to reflect
+	 */
 	getMethods(object) {
 		const methods = [] as any[]
 		const deets = this.getMethodsDetailed(object)

@@ -1,5 +1,9 @@
 "use strict";
 module.exports = {
+    /**
+     * Returns an array of methods
+     * @param object The Java object to reflect
+     */
     getMethods: function (object) {
         var methods = [];
         var deets = this.getMethodsDetailed(object);
