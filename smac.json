@@ -9,11 +9,12 @@
 		"port": "25565",
 		"serverName": "magikcraft-core-test",
 		"serverType": "bukkit",
+		"memory": "1024",
 		"node_modules": false,
 		"testMode": true,
 		"bind": [
 			{
-				"src": "../",
+				"src": "./",
 				"dst": "scriptcraft-plugins/@magikcraft/core"
 			}
 		],

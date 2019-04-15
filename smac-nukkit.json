@@ -13,7 +13,7 @@
 		"testMode": true,
 		"bind": [
 			{
-				"src": "../",
+				"src": "./",
 				"dst": "scriptcraft-plugins/@magikcraft/core"
 			},
 			{
