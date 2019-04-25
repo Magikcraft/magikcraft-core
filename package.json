@@ -1,6 +1,6 @@
 {
 	"name": "@magikcraft/core",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"description": "Magikcraft core library for SMA plugins",
 	"homepage": "https://www.magikcraft.io",
 	"author": {

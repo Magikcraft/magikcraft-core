@@ -1,5 +1,9 @@
 "use strict";
-module.exports = {
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * These are methods for examining Java objects via Reflection
+ */
+exports.default = {
     /**
      * Returns an array of methods
      * @param object The Java object to reflect

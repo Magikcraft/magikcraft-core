@@ -12,4 +12,4 @@ declare const _default: {
 /**
  * These are methods for examining Java objects via Reflection
  */
-export = _default;
+export default _default;

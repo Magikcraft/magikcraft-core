@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>VisibilityManager | @magikcraft/core</title>
+	<title>IBossBar | @magikcraft/core</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,31 +54,29 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="visibilitymanager.html">VisibilityManager</a>
+					<a href="ibossbar.html">IBossBar</a>
 				</li>
 			</ul>
-			<h1>Interface VisibilityManager</h1>
+			<h1>Interface IBossBar</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>This object is used to manage the visibility of a hologram.
-							It allows to hide/show the hologram to certain players, and the default behaviour
-						(when a hologram is not specifically being hidden/shown to a player) can be customized.</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">VisibilityManager</span>
+						<span class="target">IBossBar</span>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implemented by</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../classes/bar.html" class="tsd-signature-type">Bar</a></li>
+					<li><a href="../classes/nukkitbossbar.html" class="tsd-signature-type">NukkitBossBar</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -88,13 +86,13 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="visibilitymanager.html#hideto" class="tsd-kind-icon">hide<wbr>To</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="visibilitymanager.html#isvisiblebydefault" class="tsd-kind-icon">is<wbr>Visible<wbr>ByDefault</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="visibilitymanager.html#isvisibleto" class="tsd-kind-icon">is<wbr>Visible<wbr>To</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="visibilitymanager.html#resetvisibility" class="tsd-kind-icon">reset<wbr>Visibility</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="visibilitymanager.html#resetvisibilityall" class="tsd-kind-icon">reset<wbr>Visibility<wbr>All</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="visibilitymanager.html#setvisiblebydefault" class="tsd-kind-icon">set<wbr>Visible<wbr>ByDefault</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="visibilitymanager.html#showto" class="tsd-kind-icon">show<wbr>To</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="ibossbar.html#color" class="tsd-kind-icon">color</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="ibossbar.html#progress" class="tsd-kind-icon">progress</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="ibossbar.html#remove" class="tsd-kind-icon">remove</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="ibossbar.html#removeallbars" class="tsd-kind-icon">remove<wbr>All<wbr>Bars</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="ibossbar.html#render" class="tsd-kind-icon">render</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="ibossbar.html#style" class="tsd-kind-icon">style</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="ibossbar.html#text" class="tsd-kind-icon">text</a></li>
 							</ul>
 						</section>
 					</div>
@@ -103,209 +101,145 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="hideto" class="tsd-anchor"></a>
-					<h3>hide<wbr>To</h3>
+					<a name="color" class="tsd-anchor"></a>
+					<h3>color</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">hide<wbr>To<span class="tsd-signature-symbol">(</span>player<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BukkitPlayer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">color<span class="tsd-signature-symbol">(</span>theColor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">color</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Magikcraft/magikcraft-core/blob/25af204/holograms/holograms-bukkit.ts#L347">holograms/holograms-bukkit.ts:347</a></li>
+									<li>Defined in <a href="https://github.com/Magikcraft/magikcraft-core/blob/25af204/bossbar/bossbar.ts#L5">bossbar/bossbar.ts:5</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Hides the hologram to a player, overriding the value of {@link #isVisibleByDefault()}.
-									This is persistent if the players goes offline.</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>player: <span class="tsd-signature-type">BukkitPlayer</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the involved player</p>
-									</div>
+									<h5>theColor: <span class="tsd-signature-type">color</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="isvisiblebydefault" class="tsd-anchor"></a>
-					<h3>is<wbr>Visible<wbr>ByDefault</h3>
+					<a name="progress" class="tsd-anchor"></a>
+					<h3>progress</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Visible<wbr>ByDefault<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">progress<span class="tsd-signature-symbol">(</span>progress<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Magikcraft/magikcraft-core/blob/25af204/holograms/holograms-bukkit.ts#L323">holograms/holograms-bukkit.ts:323</a></li>
+									<li>Defined in <a href="https://github.com/Magikcraft/magikcraft-core/blob/25af204/bossbar/bossbar.ts#L8">bossbar/bossbar.ts:8</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Returns if the hologram is visible by default. If not changed, this value
-									is true by default so the hologram is visible to everyone.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-							<p>if the hologram hologram is visible by default</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="isvisibleto" class="tsd-anchor"></a>
-					<h3>is<wbr>Visible<wbr>To</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Visible<wbr>To<span class="tsd-signature-symbol">(</span>player<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BukkitPlayer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/Magikcraft/magikcraft-core/blob/25af204/holograms/holograms-bukkit.ts#L355">holograms/holograms-bukkit.ts:355</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Checks if a hologram is visible to a player.</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>player: <span class="tsd-signature-type">BukkitPlayer</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the involved player</p>
-									</div>
+									<h5>progress: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-							<p>if the player can see the hologram</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="resetvisibility" class="tsd-anchor"></a>
-					<h3>reset<wbr>Visibility</h3>
+					<a name="remove" class="tsd-anchor"></a>
+					<h3>remove</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">reset<wbr>Visibility<span class="tsd-signature-symbol">(</span>player<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BukkitPlayer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Magikcraft/magikcraft-core/blob/25af204/holograms/holograms-bukkit.ts#L364">holograms/holograms-bukkit.ts:364</a></li>
+									<li>Defined in <a href="https://github.com/Magikcraft/magikcraft-core/blob/25af204/bossbar/bossbar.ts#L10">bossbar/bossbar.ts:10</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Resets the visibility to the default value. If you previously called {@link #showTo(Player)}
-										or {@link #hideTo(Player)} to override the default visibility, this method will reset it
-									to reflect the value of {@link #isVisibleByDefault()}.</p>
-								</div>
-							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="removeallbars" class="tsd-anchor"></a>
+					<h3>remove<wbr>All<wbr>Bars</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>All<wbr>Bars<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Magikcraft/magikcraft-core/blob/25af204/bossbar/bossbar.ts#L9">bossbar/bossbar.ts:9</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="render" class="tsd-anchor"></a>
+					<h3>render</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">render<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Magikcraft/magikcraft-core/blob/25af204/bossbar/bossbar.ts#L4">bossbar/bossbar.ts:4</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="style" class="tsd-anchor"></a>
+					<h3>style</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">style<span class="tsd-signature-symbol">(</span>theStyle<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">style</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Magikcraft/magikcraft-core/blob/25af204/bossbar/bossbar.ts#L6">bossbar/bossbar.ts:6</a></li>
+								</ul>
+							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>player: <span class="tsd-signature-type">BukkitPlayer</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the involved player</p>
-									</div>
+									<h5>theStyle: <span class="tsd-signature-type">style</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="resetvisibilityall" class="tsd-anchor"></a>
-					<h3>reset<wbr>Visibility<wbr>All</h3>
+					<a name="text" class="tsd-anchor"></a>
+					<h3>text</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">reset<wbr>Visibility<wbr>All<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">text<span class="tsd-signature-symbol">(</span>msg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Magikcraft/magikcraft-core/blob/25af204/holograms/holograms-bukkit.ts#L369">holograms/holograms-bukkit.ts:369</a></li>
+									<li>Defined in <a href="https://github.com/Magikcraft/magikcraft-core/blob/25af204/bossbar/bossbar.ts#L7">bossbar/bossbar.ts:7</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Resets the visibility for all the players. See {@link #resetVisibility(Player)} for more details.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="setvisiblebydefault" class="tsd-anchor"></a>
-					<h3>set<wbr>Visible<wbr>ByDefault</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Visible<wbr>ByDefault<span class="tsd-signature-symbol">(</span>visibleByDefault<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/Magikcraft/magikcraft-core/blob/25af204/holograms/holograms-bukkit.ts#L331">holograms/holograms-bukkit.ts:331</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Sets if the hologram is visible by default. If not changed, this value
-									is true by default so the hologram is visible to everyone.</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>visibleByDefault: <span class="tsd-signature-type">boolean</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the new behaviour</p>
-									</div>
+									<h5>msg: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="showto" class="tsd-anchor"></a>
-					<h3>show<wbr>To</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">show<wbr>To<span class="tsd-signature-symbol">(</span>player<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BukkitPlayer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/Magikcraft/magikcraft-core/blob/25af204/holograms/holograms-bukkit.ts#L339">holograms/holograms-bukkit.ts:339</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Shows the hologram to a player, overriding the value of {@link #isVisibleByDefault()}.
-									This is persistent if the players goes offline.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>player: <span class="tsd-signature-type">BukkitPlayer</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the involved player</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -324,28 +258,28 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="visibilitymanager.html" class="tsd-kind-icon">Visibility<wbr>Manager</a>
+						<a href="ibossbar.html" class="tsd-kind-icon">IBoss<wbr>Bar</a>
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="visibilitymanager.html#hideto" class="tsd-kind-icon">hide<wbr>To</a>
+								<a href="ibossbar.html#color" class="tsd-kind-icon">color</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="visibilitymanager.html#isvisiblebydefault" class="tsd-kind-icon">is<wbr>Visible<wbr>ByDefault</a>
+								<a href="ibossbar.html#progress" class="tsd-kind-icon">progress</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="visibilitymanager.html#isvisibleto" class="tsd-kind-icon">is<wbr>Visible<wbr>To</a>
+								<a href="ibossbar.html#remove" class="tsd-kind-icon">remove</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="visibilitymanager.html#resetvisibility" class="tsd-kind-icon">reset<wbr>Visibility</a>
+								<a href="ibossbar.html#removeallbars" class="tsd-kind-icon">remove<wbr>All<wbr>Bars</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="visibilitymanager.html#resetvisibilityall" class="tsd-kind-icon">reset<wbr>Visibility<wbr>All</a>
+								<a href="ibossbar.html#render" class="tsd-kind-icon">render</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="visibilitymanager.html#setvisiblebydefault" class="tsd-kind-icon">set<wbr>Visible<wbr>ByDefault</a>
+								<a href="ibossbar.html#style" class="tsd-kind-icon">style</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="visibilitymanager.html#showto" class="tsd-kind-icon">show<wbr>To</a>
+								<a href="ibossbar.html#text" class="tsd-kind-icon">text</a>
 							</li>
 						</ul>
 					</li>

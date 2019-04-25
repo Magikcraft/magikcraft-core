@@ -1,5 +1,4 @@
-import holograms from '../holograms'
-import server from '../server'
+import { holograms, server } from '..'
 import { sizeOf } from '../utils/convert'
 
 describe('holograms', () => {

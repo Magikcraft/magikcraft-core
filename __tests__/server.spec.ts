@@ -1,4 +1,4 @@
-import server from '../server'
+import { server } from '..'
 import { IS_NUKKIT } from './../environment/index'
 
 const worldType = IS_NUKKIT

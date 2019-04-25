@@ -1,7 +1,7 @@
 /**
  * These are methods for examining Java objects via Reflection
  */
-export = {
+export default {
 	/**
 	 * Returns an array of methods
 	 * @param object The Java object to reflect
