@@ -1,6 +1,6 @@
 {
 	"name": "@magikcraft/core",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"description": "Magikcraft core library for SMA plugins",
 	"homepage": "https://www.magikcraft.io",
 	"author": {
@@ -62,7 +62,7 @@
 		]
 	},
 	"scripts": {
-		"test": "smac start -t",
+		"test": "tsc && smac start -t -e",
 		"start": "tsc -w",
 		"docs": "typedoc --out ./docs --tsconfig ./tsconfig.json --excludePrivate --excludeNotExported --mode file"
 	},

@@ -9,6 +9,9 @@ var Server = /** @class */ (function () {
             ? new NukkitServer_1.NukkitServer()
             : new BukkitServer_1.BukkitServer();
     }
+    Server.prototype.getBaseDir = function () {
+        return this.implementation.getBaseDir();
+    };
     Server.prototype.getWorlds = function () {
         return this.implementation.getWorlds();
     };

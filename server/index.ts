@@ -10,6 +10,10 @@ class Server {
 			: new BukkitServer()
 	}
 
+	getBaseDir() {
+		return this.implementation.getBaseDir()
+	}
+
 	getWorlds() {
 		return this.implementation.getWorlds()
 	}

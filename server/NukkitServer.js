@@ -13,8 +13,11 @@ var NukkitServer = /** @class */ (function () {
     NukkitServer.prototype.getPlugin = function (pluginName) {
         return this.nukkit.getPluginManager().getPlugin(pluginName);
     };
+    NukkitServer.prototype.getBaseDir = function () {
+        return this.nukkit.getDataPath();
+    };
     NukkitServer.prototype.getWorldDir = function () {
-        var dir = this.nukkit.getDataPath() + 'worlds/';
+        var dir = this.getBaseDir() + 'worlds/';
         return dir.toString();
     };
     NukkitServer.prototype.isPluginEnabled = function (name) {

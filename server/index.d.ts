@@ -3,6 +3,7 @@ import { NukkitServer } from './NukkitServer';
 declare class Server {
     implementation: NukkitServer | BukkitServer;
     constructor();
+    getBaseDir(): any;
     getWorlds(): any[];
     getWorldDir(): any;
     executeCommand(command: string): any;

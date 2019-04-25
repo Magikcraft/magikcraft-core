@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var File = java.io.File;
 var BukkitServer = /** @class */ (function () {
     function BukkitServer() {
         this.isBukkit = true;
@@ -11,6 +12,9 @@ var BukkitServer = /** @class */ (function () {
     };
     BukkitServer.prototype.getPlugin = function (pluginName) {
         return this.server.getPluginManager().getPlugin(pluginName);
+    };
+    BukkitServer.prototype.getBaseDir = function () {
+        return new File('.').getAbsolutePath();
     };
     BukkitServer.prototype.getWorldDir = function () {
         return this.server.getWorldContainer();

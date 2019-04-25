@@ -7,6 +7,7 @@ export declare class NukkitServer {
     constructor();
     executeCommand(command: any): any;
     getPlugin(pluginName: any): any;
+    getBaseDir(): any;
     getWorldDir(): string;
     isPluginEnabled(name: string): boolean;
     getWorlds(): BukkitWorld[];

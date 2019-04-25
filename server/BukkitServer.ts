@@ -1,3 +1,5 @@
+const File = java.io.File
+
 export class BukkitServer {
 	server: any
 	isBukkit = true
@@ -10,6 +12,9 @@ export class BukkitServer {
 	}
 	getPlugin(pluginName) {
 		return this.server.getPluginManager().getPlugin(pluginName)
+	}
+	getBaseDir() {
+		return new File('.').getAbsolutePath()
 	}
 	getWorldDir() {
 		return this.server.getWorldContainer()

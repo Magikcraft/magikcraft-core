@@ -13,8 +13,11 @@ export class NukkitServer {
 	getPlugin(pluginName) {
 		return this.nukkit.getPluginManager().getPlugin(pluginName)
 	}
+	getBaseDir() {
+		return this.nukkit.getDataPath()
+	}
 	getWorldDir() {
-		const dir = this.nukkit.getDataPath() + 'worlds/'
+		const dir = this.getBaseDir() + 'worlds/'
 		return dir.toString()
 	}
 	isPluginEnabled(name: string) {
