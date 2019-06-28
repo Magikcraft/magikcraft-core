@@ -26,9 +26,9 @@ exports.ComponentBuilder = function (msg) {
 exports.bar = function (msg, player) { return new Bar(msg, player); };
 var Bar = /** @class */ (function () {
     function Bar(msg, player) {
+        var _this = this;
         if (msg === void 0) { msg = ''; }
         if (player === void 0) { player = global.self; }
-        var _this = this;
         this.barColor = bossbar_1.color.RED;
         this.barStyle = bossbar_1.style.NOTCHED_20;
         this.init = false;

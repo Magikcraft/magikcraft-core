@@ -3,14 +3,14 @@ export declare class BukkitWorldManager {
     multiversePlugin: MultiverseCorePlugin;
     worldmanager: WorldManager;
     q: {
-        queueOperation(fn: () => void): Promise<{}>;
+        queueOperation(fn: () => void): Promise<unknown>;
     };
     constructor();
     getWorldPath(worldName: string): string;
     worldExistsOnDisk(worldName: string): any;
-    destroyWorld(worldName: string): Promise<{}>;
+    destroyWorld(worldName: string): Promise<unknown>;
     importWorld(worldName: string): Promise<any>;
-    cloneWorld(worldName: string, templateWorldName: string): Promise<{} | undefined>;
+    cloneWorld(worldName: string, templateWorldName: string): Promise<unknown>;
     getMVWorld(name: string): any;
     unloadWorld(name: string): boolean;
 }

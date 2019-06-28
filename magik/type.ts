@@ -1,1 +1,1 @@
-export const type = name => Java.type('org.bukkit.' + name)
+export const type = name => Java.type(`org.bukkit.${name}`)

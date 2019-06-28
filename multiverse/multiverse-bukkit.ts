@@ -10,7 +10,7 @@ const log = logger(__filename)
 export class BukkitWorldManager {
 	multiversePlugin: MultiverseCorePlugin
 	worldmanager: WorldManager
-	q: { queueOperation(fn: () => void): Promise<{}> }
+	q: { queueOperation(fn: () => void): Promise<unknown> }
 	constructor() {
 		this.multiversePlugin = server.getPlugin('Multiverse-Core')
 		if (!this.multiversePlugin) {

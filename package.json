@@ -1,6 +1,6 @@
 {
 	"name": "@magikcraft/core",
-	"version": "0.0.7",
+	"version": "0.1.0",
 	"description": "Magikcraft core library for SMA plugins",
 	"homepage": "https://www.magikcraft.io",
 	"author": {
@@ -23,7 +23,9 @@
 		"prettier": "^1.16.4",
 		"typedoc": "^0.14.2"
 	},
-	"smaPluginConfig": {},
+	"smaPluginConfig": {
+		"scriptcraft_autoload_dir": "autoload"
+	},
 	"smaServerConfig": {
 		"port": "25565",
 		"serverName": "magikcraft-core-dev",
