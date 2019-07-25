@@ -1,13 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var environment = require("../environment");
 var BukkitServer_1 = require("./BukkitServer");
 var NukkitServer_1 = require("./NukkitServer");
 var Server = /** @class */ (function () {
     function Server() {
-        this.implementation = environment.IS_NUKKIT
-            ? new NukkitServer_1.NukkitServer()
-            : new BukkitServer_1.BukkitServer();
+        var isNukkit = __plugin.server.pluginManager.getPlugin('Pokkit') != null;
+        this.implementation = isNukkit ? new NukkitServer_1.NukkitServer() : new BukkitServer_1.BukkitServer();
     }
     Server.prototype.getBaseDir = function () {
         return this.implementation.getBaseDir();

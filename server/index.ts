@@ -5,9 +5,9 @@ import { NukkitServer } from './NukkitServer'
 class Server {
 	implementation: NukkitServer | BukkitServer
 	constructor() {
-		this.implementation = environment.IS_NUKKIT
-			? new NukkitServer()
-			: new BukkitServer()
+		const isNukkit =
+			__plugin.server.pluginManager.getPlugin('Pokkit') != null
+		this.implementation = isNukkit ? new NukkitServer() : new BukkitServer()
 	}
 
 	getBaseDir() {
