@@ -1,7 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var server_1 = require("../server");
+var utils = require("utils");
+var text_1 = require("text");
+var ChatMessageType = Java.type('net.md_5.bungee.api.ChatMessageType');
 function actionbar(playername, text, color) {
-    server_1.default.executeCommand("title " + playername + " actionbar {\"text\":\"" + text + "\",\"color\":\"" + color + "\"}\n    ");
+    utils
+        .player(playername)
+        .spigot()
+        .sendMessage(ChatMessageType.ACTION_BAR, text_1.ComponentBuilder(text)
+        .color(color)
+        .create());
 }
 exports.actionbar = actionbar;

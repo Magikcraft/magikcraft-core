@@ -8,6 +8,7 @@ import magik from '../magik'
 import multiverse from '../multiverse'
 import server from '../server'
 import utils from '../utils'
+import { TextColor } from '../text'
 
 export {
 	actionbar,
@@ -20,4 +21,5 @@ export {
 	multiverse,
 	server,
 	utils,
+	TextColor,
 }

@@ -11,7 +11,7 @@ export declare class BukkitWorldManager {
     destroyWorld(worldName: string): Promise<unknown>;
     importWorld(worldName: string): Promise<any>;
     cloneWorld(worldName: string, templateWorldName: string): Promise<unknown>;
-    getMVWorld(name: string): any;
+    getMVWorld(name: string): BukkitWorld | null;
     unloadWorld(name: string): boolean;
 }
 interface MultiverseCorePlugin {

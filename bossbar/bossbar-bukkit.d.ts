@@ -1,9 +1,7 @@
 /// <reference types="@scriptcraft/types" />
-import { IBossBar } from './bossbar';
-export declare const TextComponent: any;
+import { BossBarColor, IBossBar, BossBarStyle } from './bossbar';
 export declare type TextComponent = any;
-export declare const ComponentBuilder: (msg: string) => IComponentBuilder;
-export declare const bar: (msg?: string | undefined, player?: any) => Bar;
+export declare const bar: (msg?: string | undefined, player?: BukkitPlayer | undefined) => Bar;
 export declare class Bar implements IBossBar {
     private bar;
     private barColor;
@@ -14,10 +12,10 @@ export declare class Bar implements IBossBar {
     private barTextComponent;
     private hasTextComponent;
     private player;
-    constructor(msg?: string, player?: any);
+    constructor(msg?: string, player?: BukkitPlayer);
     render(): this;
-    color(theColor: color): this;
-    style(theStyle: style): this;
+    color(theColor: BossBarColor): this;
+    style(theStyle: BossBarStyle): this;
     textComponent(msg: TextComponent): this;
     text(msg: string): this;
     progress(progress?: number): this;

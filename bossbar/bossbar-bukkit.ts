@@ -1,38 +1,24 @@
-import { color, IBossBar, style } from './bossbar';
-import * as environment from '../environment';
+import { BossBarColor, IBossBar, BossBarStyle } from './bossbar'
+import * as environment from '../environment'
 
 const hasBukkitBossBar = environment.HAS_BOSSBAR_BUKKIT
 
 const BossBarAPI = hasBukkitBossBar
 	? Java.type(environment.BUKKIT_BOSSBAR_TYPE)
-	: {Color: {}, Style: {}}
+	: { Color: {}, Style: {} }
 
-// Requires the Spigot server or a plugin that provides this
-export const TextComponent = hasBukkitBossBar
-	? Java.type('net.md_5.bungee.api.chat.TextComponent')
-	: undefined
 export type TextComponent = any
 
 import { logger } from '../log'
+import { TextComponent } from '../text'
 const log = logger(__filename)
-
-/**
- *
- * new ComponentBuilder( "Hello " ).color( ChatColor.RED ).bold( true )
- * .append( "world" ).color( ChatColor.BLUE ).append( "!" ).color( ChatColor.RED ).create();
- */
-const ComponentBuilderClass = hasBukkitBossBar
-	? Java.type('net.md_5.bungee.api.chat.ComponentBuilder')
-	: undefined
-export const ComponentBuilder = (msg: string): IComponentBuilder =>
-	new ComponentBuilderClass(msg)
 
 export const bar = (msg?: string, player?: BukkitPlayer) => new Bar(msg, player)
 
 export class Bar implements IBossBar {
 	private bar
-	private barColor = color.RED
-	private barStyle = style.NOTCHED_20
+	private barColor = BossBarColor.RED
+	private barStyle = BossBarStyle.NOTCHED_20
 	private init = false
 	private msg
 	private barProgress = 0.5
@@ -61,14 +47,14 @@ export class Bar implements IBossBar {
 		this.init = true
 		return this
 	}
-	public color(theColor: color) {
+	public color(theColor: BossBarColor) {
 		this.barColor = BossBarAPI.Color[theColor]
 		if (this.init) {
 			this.bar.setColor(this.barColor)
 		}
 		return this
 	}
-	public style(theStyle: style) {
+	public style(theStyle: BossBarStyle) {
 		this.barStyle = theStyle
 		return this
 	}

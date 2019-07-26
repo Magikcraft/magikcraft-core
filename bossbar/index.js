@@ -13,6 +13,6 @@ if (environment.HAS_BOSSBAR_NUKKIT) {
 }
 exports.BossBar = {
     bar: bar,
-    color: bossbar_1.color,
-    style: bossbar_1.style
+    color: bossbar_1.BossBarColor,
+    style: bossbar_1.BossBarStyle,
 };

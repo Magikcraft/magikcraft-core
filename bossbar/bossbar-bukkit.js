@@ -6,31 +6,17 @@ var hasBukkitBossBar = environment.HAS_BOSSBAR_BUKKIT;
 var BossBarAPI = hasBukkitBossBar
     ? Java.type(environment.BUKKIT_BOSSBAR_TYPE)
     : { Color: {}, Style: {} };
-// Requires the Spigot server or a plugin that provides this
-exports.TextComponent = hasBukkitBossBar
-    ? Java.type('net.md_5.bungee.api.chat.TextComponent')
-    : undefined;
 var log_1 = require("../log");
+var text_1 = require("../text");
 var log = log_1.logger(__filename);
-/**
- *
- * new ComponentBuilder( "Hello " ).color( ChatColor.RED ).bold( true )
- * .append( "world" ).color( ChatColor.BLUE ).append( "!" ).color( ChatColor.RED ).create();
- */
-var ComponentBuilderClass = hasBukkitBossBar
-    ? Java.type('net.md_5.bungee.api.chat.ComponentBuilder')
-    : undefined;
-exports.ComponentBuilder = function (msg) {
-    return new ComponentBuilderClass(msg);
-};
 exports.bar = function (msg, player) { return new Bar(msg, player); };
 var Bar = /** @class */ (function () {
     function Bar(msg, player) {
         var _this = this;
         if (msg === void 0) { msg = ''; }
         if (player === void 0) { player = global.self; }
-        this.barColor = bossbar_1.color.RED;
-        this.barStyle = bossbar_1.style.NOTCHED_20;
+        this.barColor = bossbar_1.BossBarColor.RED;
+        this.barStyle = bossbar_1.BossBarStyle.NOTCHED_20;
         this.init = false;
         this.barProgress = 0.5;
         this.hasTextComponent = false;
@@ -43,8 +29,8 @@ var Bar = /** @class */ (function () {
             return this;
         }
         this.barTextComponent = this.hasTextComponent
-            ? new exports.TextComponent(this.barTextComponent)
-            : new exports.TextComponent(this.msg + '');
+            ? new text_1.TextComponent(this.barTextComponent)
+            : new text_1.TextComponent(this.msg + '');
         this.bar = BossBarAPI.addBar(this.player, this.barTextComponent, this.barColor, this.barStyle, this.barProgress // Progress (0.0 - 1.0)
         );
         this.init = true;

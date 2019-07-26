@@ -8,4 +8,5 @@ import magik from '../magik';
 import multiverse from '../multiverse';
 import server from '../server';
 import utils from '../utils';
-export { actionbar, commando, environment, fs, holograms, log, magik, multiverse, server, utils, };
+import { TextColor } from '../text';
+export { actionbar, commando, environment, fs, holograms, log, magik, multiverse, server, utils, TextColor, };

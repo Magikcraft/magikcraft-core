@@ -1,10 +1,15 @@
 import server from '../server'
-
-export function actionbar(
-	playername: string,
-	text: string,
-	color: 'red' | 'yellow' | 'green' | 'blue'
-) {
-	server.executeCommand(`title ${playername} actionbar {"text":"${text}","color":"${color}"}
-    `)
+import * as utils from 'utils'
+import { ComponentBuilder, TextColor } from 'text'
+const ChatMessageType = Java.type('net.md_5.bungee.api.ChatMessageType')
+export function actionbar(playername: string, text: string, color: TextColor) {
+	utils
+		.player(playername)
+		.spigot()
+		.sendMessage(
+			ChatMessageType.ACTION_BAR,
+			ComponentBuilder(text)
+				.color(color)
+				.create()
+		)
 }

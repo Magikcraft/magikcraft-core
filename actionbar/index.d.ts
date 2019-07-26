@@ -1,1 +1,2 @@
-export declare function actionbar(playername: string, text: string, color: 'red' | 'yellow' | 'green' | 'blue'): void;
+import { TextColor } from 'text';
+export declare function actionbar(playername: string, text: string, color: TextColor): void;

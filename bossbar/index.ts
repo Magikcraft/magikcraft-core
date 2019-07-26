@@ -1,5 +1,5 @@
-import * as environment from '../environment';
-import { color, IBossBar, style } from './bossbar';
+import * as environment from '../environment'
+import { BossBarColor, IBossBar, BossBarStyle } from './bossbar'
 
 let bar = (msg, player) => ({} as IBossBar)
 
@@ -15,6 +15,6 @@ if (environment.HAS_BOSSBAR_NUKKIT) {
 
 export let BossBar = {
 	bar,
-	color,
-	style
+	color: BossBarColor,
+	style: BossBarStyle,
 }

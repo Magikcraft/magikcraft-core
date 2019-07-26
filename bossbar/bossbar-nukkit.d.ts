@@ -1,6 +1,6 @@
 /// <reference types="@scriptcraft/types" />
 import { IBossBar } from './bossbar';
-export declare const bar: (msg: string | undefined, player: any) => NukkitBossBar;
+export declare const bar: (msg: string | undefined, player: BukkitPlayer) => NukkitBossBar;
 export declare class NukkitBossBar implements IBossBar {
     private static BossBar;
     private bar;
