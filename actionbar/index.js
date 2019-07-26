@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var utils = require("utils");
-var text_1 = require("text");
+var text_1 = require("../text");
 var ChatMessageType = Java.type('net.md_5.bungee.api.ChatMessageType');
 function actionbar(playername, text, color) {
     utils
