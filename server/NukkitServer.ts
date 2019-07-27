@@ -24,7 +24,7 @@ export class NukkitServer {
 		const plugins = this.nukkit.getPluginManager().getPlugins()
 		return Object.keys(plugins).includes(name)
 	}
-	getWorlds(): BukkitWorld[] {
+	getWorlds(): World[] {
 		return Java.from(this.server.getWorlds())
 	}
 }

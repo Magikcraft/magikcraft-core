@@ -5,7 +5,7 @@ declare class Server {
     implementation: NukkitServer | BukkitServer;
     constructor();
     getBaseDir(): any;
-    getWorlds(): BukkitWorld[];
+    getWorlds(): World[];
     getWorldDir(): any;
     executeCommand(command: string): any;
     getPlugin(name: string): any;

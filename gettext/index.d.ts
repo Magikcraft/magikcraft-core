@@ -1,1 +1,2 @@
-export declare const gettext: (msg: string, ...args: (string | number)[]) => string;
+/// <reference types="@scriptcraft/types" />
+export declare const gettext: (msg: string, ...args: msgarg[]) => string;

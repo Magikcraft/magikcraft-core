@@ -22,7 +22,7 @@ export class BukkitServer {
 	isPluginEnabled(name: string) {
 		return this.server.getPluginManager().isPluginEnabled(name)
 	}
-	getWorlds(): BukkitWorld[] {
+	getWorlds(): World[] {
 		return Java.from(this.server.getWorlds())
 	}
 }

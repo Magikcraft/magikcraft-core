@@ -7,20 +7,20 @@ export declare class BukkitWorldManager {
     };
     constructor();
     getWorldPath(worldName: string): string;
-    worldExistsOnDisk(worldName: string): any;
-    destroyWorld(worldName: string): Promise<{}>;
+    worldExistsOnDisk(worldName: string): boolean;
+    destroyWorld(worldName: string): Promise<unknown>;
     importWorld(worldName: string): Promise<any>;
-    cloneWorld(worldName: string, templateWorldName: string): Promise<{} | undefined>;
-    getMVWorld(name: string): BukkitWorld | null;
+    cloneWorld(worldName: string, templateWorldName: string): Promise<unknown>;
+    getMVWorld(name: string): World | null;
     unloadWorld(name: string): boolean;
 }
 interface MultiverseCorePlugin {
-    cloneWorld(templateWorldName: string, worldName: string, mode: 'normal'): BukkitWorld;
+    cloneWorld(templateWorldName: string, worldName: string, mode: 'normal'): World;
     getMVWorldManager(): WorldManager;
 }
 interface WorldManager {
     deleteWorld(worldName: string, removeFromConfig: boolean, deleteWorldFolder: boolean): any;
-    getMVWorld(name: string): BukkitWorld | null;
+    getMVWorld(name: string): World | null;
     unloadWorld(name: string, unloadBukkit: boolean): boolean;
 }
 export {};

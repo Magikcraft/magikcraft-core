@@ -151,7 +151,7 @@ interface MultiverseCorePlugin {
 		templateWorldName: string,
 		worldName: string,
 		mode: 'normal'
-	): BukkitWorld
+	): World
 	getMVWorldManager(): WorldManager
 }
 
@@ -161,6 +161,6 @@ interface WorldManager {
 		removeFromConfig: boolean,
 		deleteWorldFolder: boolean
 	)
-	getMVWorld(name: string): BukkitWorld | null
+	getMVWorld(name: string): World | null
 	unloadWorld(name: string, unloadBukkit: boolean): boolean // true if unloaded. False if never loaded
 }

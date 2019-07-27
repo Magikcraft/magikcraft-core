@@ -10,5 +10,5 @@ export declare class NukkitServer {
     getBaseDir(): any;
     getWorldDir(): string;
     isPluginEnabled(name: string): boolean;
-    getWorlds(): BukkitWorld[];
+    getWorlds(): World[];
 }

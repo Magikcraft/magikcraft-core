@@ -1,12 +1,12 @@
 /// <reference types="@scriptcraft/types" />
 import { IBossBar } from './bossbar';
-export declare const bar: (msg: string | undefined, player: BukkitPlayer) => NukkitBossBar;
+export declare const bar: (msg: string | undefined, player: Player) => NukkitBossBar;
 export declare class NukkitBossBar implements IBossBar {
     private static BossBar;
     private bar;
     private id;
     private player;
-    constructor(msg: string, player: BukkitPlayer);
+    constructor(msg: string, player: Player);
     render(): this;
     color(color: any): this;
     style(): this;

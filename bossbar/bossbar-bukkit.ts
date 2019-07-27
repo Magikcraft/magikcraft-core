@@ -13,7 +13,7 @@ import { logger } from '../log'
 import { TextComponent } from '../text'
 const log = logger(__filename)
 
-export const bar = (msg?: string, player?: BukkitPlayer) => new Bar(msg, player)
+export const bar = (msg?: string, player?: Player) => new Bar(msg, player)
 
 export class Bar implements IBossBar {
 	private bar

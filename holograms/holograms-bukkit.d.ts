@@ -11,7 +11,7 @@ export declare class BukkitHologramManager {
      */
     createHologram({ lines, location, }: {
         lines: string[];
-        location: BukkitLocation;
+        location: Location;
     }): Hologram;
     /**
      * Finds all the holograms created by the plugin.
@@ -154,7 +154,7 @@ export interface Hologram {
      *
      * @param location the new location
      */
-    teleport(location: BukkitLocation): void;
+    teleport(location: Location): void;
     /**
      * Teleports a hologram to the given location.
      *
@@ -164,13 +164,13 @@ export interface Hologram {
      * @param y the Y coordinate
      * @param z the Z coordinate
      */
-    teleport(world: BukkitWorld, x: number, y: number, z: number): void;
+    teleport(world: World, x: number, y: number, z: number): void;
     /**
      * Returns the position of the hologram.
      *
      * @return the Location of the hologram
      */
-    getLocation(): BukkitLocation;
+    getLocation(): Location;
     /**
      * Returns the X coordinate.
      *
@@ -194,7 +194,7 @@ export interface Hologram {
      *
      * @return the world of the hologram
      */
-    getWorld(): BukkitWorld;
+    getWorld(): World;
     /**
      * Returns the {@link VisibilityManager} of this hologram.
      * <br><b style = "color: red">Note</b>: the usage of the VisibilityManager requires ProtocolLib.
@@ -263,21 +263,21 @@ export interface VisibilityManager {
      *
      * @param player the involved player
      */
-    showTo(player: BukkitPlayer): void;
+    showTo(player: Player): void;
     /**
      * Hides the hologram to a player, overriding the value of {@link #isVisibleByDefault()}.
      * This is persistent if the players goes offline.
      *
      * @param player the involved player
      */
-    hideTo(player: BukkitPlayer): void;
+    hideTo(player: Player): void;
     /**
      * Checks if a hologram is visible to a player.
      *
      * @param player the involved player
      * @return if the player can see the hologram
      */
-    isVisibleTo(player: BukkitPlayer): boolean;
+    isVisibleTo(player: Player): boolean;
     /**
      * Resets the visibility to the default value. If you previously called {@link #showTo(Player)}
      * or {@link #hideTo(Player)} to override the default visibility, this method will reset it
@@ -285,7 +285,7 @@ export interface VisibilityManager {
      *
      * @param player the involved player
      */
-    resetVisibility(player: BukkitPlayer): void;
+    resetVisibility(player: Player): void;
     /**
      * Resets the visibility for all the players. See {@link #resetVisibility(Player)} for more details.
      */

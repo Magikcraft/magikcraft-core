@@ -9,5 +9,5 @@ export declare class BukkitServer {
     getBaseDir(): any;
     getWorldDir(): any;
     isPluginEnabled(name: string): any;
-    getWorlds(): BukkitWorld[];
+    getWorlds(): World[];
 }

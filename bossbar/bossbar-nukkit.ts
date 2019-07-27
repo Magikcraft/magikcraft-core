@@ -1,7 +1,7 @@
-import * as environment from '../environment';
-import { logger } from '../log';
+import * as environment from '../environment'
+import { logger } from '../log'
 
-import { IBossBar } from './bossbar';
+import { IBossBar } from './bossbar'
 
 const log = logger(__filename)
 
@@ -18,7 +18,7 @@ try {
 
 const toNukkitPlayer = player => PokkitPlayer.toNukkit(player)
 
-export const bar = (msg = '', player: BukkitPlayer) => new NukkitBossBar(msg, player)
+export const bar = (msg = '', player: Player) => new NukkitBossBar(msg, player)
 
 export class NukkitBossBar implements IBossBar {
 	private static BossBar = Java.type(environment.NUKKIT_BOSSBAR_TYPE)
@@ -26,10 +26,15 @@ export class NukkitBossBar implements IBossBar {
 	private id: number
 	private player: NukkitPlayer
 
-	constructor(msg: string, player: BukkitPlayer) {
+	constructor(msg: string, player: Player) {
 		this.id = barID
-		barID ++
-		this.bar = new NukkitBossBar.BossBar(player.getName() + this.id, msg, 0, 100)
+		barID++
+		this.bar = new NukkitBossBar.BossBar(
+			player.getName() + this.id,
+			msg,
+			0,
+			100
+		)
 		this.player = toNukkitPlayer(player)
 		return this
 	}

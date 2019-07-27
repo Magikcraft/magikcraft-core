@@ -1,5 +1,5 @@
 export declare const fs: {
-    copyDir(srcPath: string, destPath: string): Promise<{}>;
+    copyDir(srcPath: string, destPath: string): Promise<unknown>;
     readDir(path: any): string[];
     /**
      * exists
@@ -8,7 +8,7 @@ export declare const fs: {
      *
      * Checks if file or directory exists.
      */
-    exists(filename: any): any;
+    exists(filename: any): boolean;
     /**
      * readFile
      * @param {string} filename - path to file, relative to Minecraft server root

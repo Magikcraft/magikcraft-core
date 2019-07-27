@@ -1,4 +1,5 @@
+/// <reference types="@scriptcraft/types" />
 declare const _default: {
-    AIR: any;
+    AIR: Material;
 };
 export = _default;
