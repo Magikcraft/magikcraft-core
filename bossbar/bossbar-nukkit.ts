@@ -18,7 +18,15 @@ try {
 
 const toNukkitPlayer = player => PokkitPlayer.toNukkit(player)
 
-export const bar = (msg = '', player: Player) => new NukkitBossBar(msg, player)
+const NukkitColors = {
+	PINK: 0,
+	BLUE: 1,
+	RED: 2,
+	GREEN: 3,
+	YELLOW: 4,
+	PURPLE: 5,
+	WHITE: 6,
+}
 
 export class NukkitBossBar implements IBossBar {
 	private static BossBar = Java.type(environment.NUKKIT_BOSSBAR_TYPE)
@@ -46,7 +54,7 @@ export class NukkitBossBar implements IBossBar {
 	public color(color) {
 		// Nukkit has no bar color - it's always purple
 		// We have a method for it, and it may work in a future update of the client
-		this.bar.setColor(this.player, this.id, color)
+		this.bar.setColor(this.player, this.id, NukkitColors[color])
 		this.bar.sendTo(this.player)
 		return this
 	}

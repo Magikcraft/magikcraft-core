@@ -12,9 +12,9 @@ var log = log_1.logger(__filename);
 exports.bar = function (msg, player) { return new Bar(msg, player); };
 var Bar = /** @class */ (function () {
     function Bar(msg, player) {
+        var _this = this;
         if (msg === void 0) { msg = ''; }
         if (player === void 0) { player = global.self; }
-        var _this = this;
         this.barColor = bossbar_1.BossBarColor.RED;
         this.barStyle = bossbar_1.BossBarStyle.NOTCHED_20;
         this.init = false;
@@ -44,7 +44,7 @@ var Bar = /** @class */ (function () {
         return this;
     };
     Bar.prototype.style = function (theStyle) {
-        this.barStyle = theStyle;
+        this.barStyle = BossBarAPI.Style[theStyle];
         return this;
     };
     Bar.prototype.textComponent = function (msg) {

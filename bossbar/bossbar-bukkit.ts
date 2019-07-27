@@ -1,4 +1,3 @@
-import { BossBarColor, IBossBar, BossBarStyle } from './bossbar'
 import * as environment from '../environment'
 
 const hasBukkitBossBar = environment.HAS_BOSSBAR_BUKKIT
@@ -11,25 +10,50 @@ export type TextComponent = any
 
 import { logger } from '../log'
 import { TextComponent } from '../text'
+import { IBossBar, BossBarStyle, BossBarColor } from './bossbar'
 const log = logger(__filename)
 
-export const bar = (msg?: string, player?: Player) => new Bar(msg, player)
-
-export class Bar implements IBossBar {
+export class BukkitBossBar implements IBossBar {
 	private bar
-	private barColor = BossBarColor.RED
-	private barStyle = BossBarStyle.NOTCHED_20
+	private barColor
+	private barStyle
 	private init = false
 	private msg
 	private barProgress = 0.5
 	private barTextComponent
 	private hasTextComponent = false
 	private player
-
-	constructor(msg = '', player = global.self) {
-		this.msg = msg
-		this.player = player
+	BossBarStyle: { NOTCHED_10: any; NOTCHED_12: any; NOTCHED_20: any }
+	BossBarColor: {
+		BLUE: any
+		GREEN: any
+		PINK: any
+		PURPLE: any
+		RED: any
+		WHITE: any
+		YELLOW: any
 	}
+
+	constructor(player = global.self) {
+		this.player = player
+		this.BossBarStyle = {
+			NOTCHED_10: BossBarAPI.Style.NOTCHED_10,
+			NOTCHED_12: BossBarAPI.Style.NOTCHED_12,
+			NOTCHED_20: BossBarAPI.Style.NOTCHED_20,
+		}
+		this.BossBarColor = {
+			BLUE: BossBarAPI.Color.BLUE,
+			GREEN: BossBarAPI.Color.GREEN,
+			PINK: BossBarAPI.Color.PINK,
+			PURPLE: BossBarAPI.Color.PURPLE,
+			RED: BossBarAPI.Color.RED,
+			WHITE: BossBarAPI.Color.WHITE,
+			YELLOW: BossBarAPI.Color.YELLOW,
+		}
+		this.barColor = this.BossBarColor.RED
+		this.barStyle = this.BossBarStyle.NOTCHED_20
+	}
+
 	public render() {
 		if (this.init) {
 			return this
@@ -47,15 +71,18 @@ export class Bar implements IBossBar {
 		this.init = true
 		return this
 	}
-	public color(theColor: BossBarColor) {
-		this.barColor = BossBarAPI.Color[theColor]
+	public color(color: BossBarColor) {
+		this.barColor = this.BossBarColor[color]
 		if (this.init) {
 			this.bar.setColor(this.barColor)
 		}
 		return this
 	}
-	public style(theStyle: BossBarStyle) {
-		this.barStyle = BossBarAPI.Style[theStyle]
+	public style(style: BossBarStyle) {
+		this.barStyle = BossBarAPI.Style[style]
+		if (this.init) {
+			this.bar.setStyle(this.barStyle)
+		}
 		return this
 	}
 	public textComponent(msg: TextComponent) {
