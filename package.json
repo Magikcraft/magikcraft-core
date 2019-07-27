@@ -1,6 +1,6 @@
 {
 	"name": "@magikcraft/core",
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"description": "Magikcraft core library for SMA plugins",
 	"homepage": "https://www.magikcraft.io",
 	"author": {
@@ -16,7 +16,7 @@
 	],
 	"devDependencies": {
 		"@magikcraft/op-all": "^1.0.0",
-		"@scriptcraft/types": "^1.1.2",
+		"@scriptcraft/types": "^1.1.4",
 		"@types/jasmine": "^3.3.12",
 		"husky": "^1.3.1",
 		"lint-staged": "^8.1.5",
