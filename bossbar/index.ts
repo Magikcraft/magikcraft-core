@@ -26,7 +26,7 @@ export class BossBar implements IBossBar {
 		RED: 'RED',
 		WHITE: 'WHITE',
 	}
-	static Style = {
+	static Style: { [index: string]: BossBarStyle } = {
 		NOTCHED_10: 'NOTCHED_10',
 		NOTCHED_12: 'NOTCHED_12',
 		NOTCHED_20: 'NOTCHED_20',

@@ -90,18 +90,19 @@ export class BukkitBossBar implements IBossBar {
 		this.hasTextComponent = true
 		this.msg = null
 		if (this.init) {
-			this.remove()
+			this.bar.setTitle()
 			this.render()
 		}
 		return this
 	}
 	public text(msg: string) {
 		this.msg = msg + ''
-		this.barTextComponent = null
-		this.hasTextComponent = false
+		// this.barTextComponent = null
+		// this.hasTextComponent = false
 		if (this.init) {
-			this.remove()
-			this.render()
+			this.bar.setTitle(new TextComponent(this.msg + ''))
+			// this.remove()
+			// this.render()
 		}
 		return this
 	}

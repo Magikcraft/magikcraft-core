@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var bossbar_1 = require("./bossbar");
 var environment = require("../environment");
 var hasBukkitBossBar = environment.HAS_BOSSBAR_BUKKIT;
 var BossBarAPI = hasBukkitBossBar
@@ -9,22 +8,33 @@ var BossBarAPI = hasBukkitBossBar
 var log_1 = require("../log");
 var text_1 = require("../text");
 var log = log_1.logger(__filename);
-exports.bar = function (msg, player) { return new Bar(msg, player); };
-var Bar = /** @class */ (function () {
-    function Bar(msg, player) {
+var BukkitBossBar = /** @class */ (function () {
+    function BukkitBossBar(player) {
         var _this = this;
-        if (msg === void 0) { msg = ''; }
         if (player === void 0) { player = global.self; }
-        this.barColor = bossbar_1.BossBarColor.RED;
-        this.barStyle = bossbar_1.BossBarStyle.NOTCHED_20;
         this.init = false;
         this.barProgress = 0.5;
         this.hasTextComponent = false;
         this.removeAllBars = function () { return BossBarAPI.removeAllBars(_this.player); };
-        this.msg = msg;
         this.player = player;
+        this.BossBarStyle = {
+            NOTCHED_10: BossBarAPI.Style.NOTCHED_10,
+            NOTCHED_12: BossBarAPI.Style.NOTCHED_12,
+            NOTCHED_20: BossBarAPI.Style.NOTCHED_20,
+        };
+        this.BossBarColor = {
+            BLUE: BossBarAPI.Color.BLUE,
+            GREEN: BossBarAPI.Color.GREEN,
+            PINK: BossBarAPI.Color.PINK,
+            PURPLE: BossBarAPI.Color.PURPLE,
+            RED: BossBarAPI.Color.RED,
+            WHITE: BossBarAPI.Color.WHITE,
+            YELLOW: BossBarAPI.Color.YELLOW,
+        };
+        this.barColor = this.BossBarColor.RED;
+        this.barStyle = this.BossBarStyle.NOTCHED_20;
     }
-    Bar.prototype.render = function () {
+    BukkitBossBar.prototype.render = function () {
         if (this.init) {
             return this;
         }
@@ -36,38 +46,42 @@ var Bar = /** @class */ (function () {
         this.init = true;
         return this;
     };
-    Bar.prototype.color = function (theColor) {
-        this.barColor = BossBarAPI.Color[theColor];
+    BukkitBossBar.prototype.color = function (color) {
+        this.barColor = this.BossBarColor[color];
         if (this.init) {
             this.bar.setColor(this.barColor);
         }
         return this;
     };
-    Bar.prototype.style = function (theStyle) {
-        this.barStyle = BossBarAPI.Style[theStyle];
+    BukkitBossBar.prototype.style = function (style) {
+        this.barStyle = BossBarAPI.Style[style];
+        if (this.init) {
+            this.bar.setStyle(this.barStyle);
+        }
         return this;
     };
-    Bar.prototype.textComponent = function (msg) {
+    BukkitBossBar.prototype.textComponent = function (msg) {
         this.barTextComponent = msg;
         this.hasTextComponent = true;
         this.msg = null;
         if (this.init) {
-            this.remove();
+            this.bar.setTitle();
             this.render();
         }
         return this;
     };
-    Bar.prototype.text = function (msg) {
+    BukkitBossBar.prototype.text = function (msg) {
         this.msg = msg + '';
-        this.barTextComponent = null;
-        this.hasTextComponent = false;
+        // this.barTextComponent = null
+        // this.hasTextComponent = false
         if (this.init) {
-            this.remove();
-            this.render();
+            this.bar.setTitle(new text_1.TextComponent(this.msg + ''));
+            // this.remove()
+            // this.render()
         }
         return this;
     };
-    Bar.prototype.progress = function (progress) {
+    BukkitBossBar.prototype.progress = function (progress) {
         if (progress === void 0) { progress = 50; }
         var _progress = Math.min(progress / 100, 0.99);
         var progressRounded = Math.round(_progress * 100) / 100;
@@ -77,23 +91,23 @@ var Bar = /** @class */ (function () {
         }
         return this;
     };
-    Bar.prototype.show = function () {
+    BukkitBossBar.prototype.show = function () {
         if (this.init) {
             this.bar.setVisible(true);
         }
     };
-    Bar.prototype.hide = function () {
+    BukkitBossBar.prototype.hide = function () {
         if (this.init) {
             this.bar.setVisible(false);
         }
     };
-    Bar.prototype.remove = function () {
+    BukkitBossBar.prototype.remove = function () {
         if (this.init) {
             this.bar.removePlayer(this.player);
             this.init = false;
         }
         return undefined;
     };
-    return Bar;
+    return BukkitBossBar;
 }());
-exports.Bar = Bar;
+exports.BukkitBossBar = BukkitBossBar;

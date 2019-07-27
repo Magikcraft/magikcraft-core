@@ -7,17 +7,5 @@ export interface IBossBar {
     removeAllBars(): any;
     remove(): any;
 }
-export declare enum BossBarColor {
-    'BLUE',
-    'GREEN',
-    'PINK',
-    'PURPLE',
-    'RED',
-    'WHITE',
-    'YELLOW'
-}
-export declare enum BossBarStyle {
-    'NOTCHED_10',
-    'NOTCHED_12',
-    'NOTCHED_20'
-}
+export declare type BossBarColor = 'BLUE' | 'GREEN' | 'PINK' | 'PURPLE' | 'RED' | 'WHITE';
+export declare type BossBarStyle = 'NOTCHED_10' | 'NOTCHED_12' | 'NOTCHED_20';

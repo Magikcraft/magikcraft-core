@@ -12,9 +12,14 @@ catch (e) {
     console.log('No Pokkit Bar'); // tslint:disable-line
 }
 var toNukkitPlayer = function (player) { return PokkitPlayer.toNukkit(player); };
-exports.bar = function (msg, player) {
-    if (msg === void 0) { msg = ''; }
-    return new NukkitBossBar(msg, player);
+var NukkitColors = {
+    PINK: 0,
+    BLUE: 1,
+    RED: 2,
+    GREEN: 3,
+    YELLOW: 4,
+    PURPLE: 5,
+    WHITE: 6,
 };
 var NukkitBossBar = /** @class */ (function () {
     function NukkitBossBar(msg, player) {
@@ -32,7 +37,7 @@ var NukkitBossBar = /** @class */ (function () {
     NukkitBossBar.prototype.color = function (color) {
         // Nukkit has no bar color - it's always purple
         // We have a method for it, and it may work in a future update of the client
-        this.bar.setColor(this.player, this.id, color);
+        this.bar.setColor(this.player, this.id, NukkitColors[color]);
         this.bar.sendTo(this.player);
         return this;
     };
