@@ -4,11 +4,11 @@ import { IBossBar, BossBarColor, BossBarStyle } from './bossbar'
 let BossBarImpl: new (player: Player) => IBossBar
 
 if (environment.HAS_BOSSBAR_BUKKIT) {
-	BossBarImpl = require('./bossbar-bukkit') // tslint:disable-line
+	BossBarImpl = require('./bossbar-bukkit').BukkitBossBar // tslint:disable-line
 }
 
 if (environment.HAS_BOSSBAR_NUKKIT) {
-	BossBarImpl = require('./bossbar-nukkit') // tslint:disable-line
+	BossBarImpl = require('./bossbar-nukkit').NukkitBossBar // tslint:disable-line
 }
 
 // export let BossBar = {

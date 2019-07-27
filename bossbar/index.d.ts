@@ -9,11 +9,11 @@ export declare class BossBar implements IBossBar {
     };
     private BossBarImpl;
     constructor(player: Player);
-    render(): void;
-    color(color: BossBarColor): void;
-    style(style: BossBarStyle): void;
-    text(msg: string): void;
-    progress(progress: number): void;
-    removeAllBars(): void;
-    remove(): void;
+    render(): any;
+    color(color: BossBarColor): any;
+    style(style: BossBarStyle): any;
+    text(msg: string): any;
+    progress(progress: number): any;
+    removeAllBars(): any;
+    remove(): any;
 }

@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var environment = require("../environment");
 var BossBarImpl;
 if (environment.HAS_BOSSBAR_BUKKIT) {
-    BossBarImpl = require('./bossbar-bukkit'); // tslint:disable-line
+    BossBarImpl = require('./bossbar-bukkit').BukkitBossBar; // tslint:disable-line
 }
 if (environment.HAS_BOSSBAR_NUKKIT) {
-    BossBarImpl = require('./bossbar-nukkit'); // tslint:disable-line
+    BossBarImpl = require('./bossbar-nukkit').NukkitBossBar; // tslint:disable-line
 }
 // export let BossBar = {
 // 	bar,
@@ -18,25 +18,25 @@ var BossBar = /** @class */ (function () {
         this.BossBarImpl = new BossBarImpl(player);
     }
     BossBar.prototype.render = function () {
-        this.BossBarImpl.render();
+        return this.BossBarImpl.render();
     };
     BossBar.prototype.color = function (color) {
-        this.BossBarImpl.color(color);
+        return this.BossBarImpl.color(color);
     };
     BossBar.prototype.style = function (style) {
-        this.BossBarImpl.style(style);
+        return this.BossBarImpl.style(style);
     };
     BossBar.prototype.text = function (msg) {
-        this.BossBarImpl.text(msg);
+        return this.BossBarImpl.text(msg);
     };
     BossBar.prototype.progress = function (progress) {
-        this.BossBarImpl.progress(progress);
+        return this.BossBarImpl.progress(progress);
     };
     BossBar.prototype.removeAllBars = function () {
-        this.BossBarImpl.removeAllBars();
+        return this.BossBarImpl.removeAllBars();
     };
     BossBar.prototype.remove = function () {
-        this.BossBarImpl.remove();
+        return this.BossBarImpl.remove();
     };
     BossBar.Color = {
         BLUE: 'BLUE',

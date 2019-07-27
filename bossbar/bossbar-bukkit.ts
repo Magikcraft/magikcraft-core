@@ -6,7 +6,7 @@ const BossBarAPI = hasBukkitBossBar
 	? Java.type(environment.BUKKIT_BOSSBAR_TYPE)
 	: { Color: {}, Style: {} }
 
-export type TextComponent = any
+type TextComponent = any
 
 import { logger } from '../log'
 import { TextComponent } from '../text'
