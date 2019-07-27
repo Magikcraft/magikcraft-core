@@ -55,7 +55,7 @@ export class Bar implements IBossBar {
 		return this
 	}
 	public style(theStyle: BossBarStyle) {
-		this.barStyle = theStyle
+		this.barStyle = BossBarAPI.Style[theStyle]
 		return this
 	}
 	public textComponent(msg: TextComponent) {
