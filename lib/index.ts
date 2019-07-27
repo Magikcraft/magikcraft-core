@@ -1,5 +1,6 @@
 import { actionbar } from '../actionbar'
 import { commando } from '../commando'
+import { BossBar } from '../bossbar'
 import * as environment from '../environment'
 import { fs } from '../fs'
 import holograms from '../holograms'
@@ -12,6 +13,7 @@ import { TextColor } from '../text'
 
 export {
 	actionbar,
+	BossBar,
 	commando,
 	environment,
 	fs,
