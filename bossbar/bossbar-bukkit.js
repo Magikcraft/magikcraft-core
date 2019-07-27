@@ -10,8 +10,8 @@ var text_1 = require("../text");
 var log = log_1.logger(__filename);
 var BukkitBossBar = /** @class */ (function () {
     function BukkitBossBar(player) {
-        var _this = this;
         if (player === void 0) { player = global.self; }
+        var _this = this;
         this.init = false;
         this.barProgress = 0.5;
         this.hasTextComponent = false;

@@ -36,24 +36,24 @@ export class BossBar implements IBossBar {
 		this.BossBarImpl = new BossBarImpl(player)
 	}
 	render() {
-		this.BossBarImpl.render()
+		return this.BossBarImpl.render()
 	}
 	color(color: BossBarColor) {
-		this.BossBarImpl.color(color)
+		return this.BossBarImpl.color(color)
 	}
 	style(style: BossBarStyle) {
-		this.BossBarImpl.style(style)
+		return this.BossBarImpl.style(style)
 	}
 	text(msg: string) {
-		this.BossBarImpl.text(msg)
+		return this.BossBarImpl.text(msg)
 	}
 	progress(progress: number) {
-		this.BossBarImpl.progress(progress)
+		return this.BossBarImpl.progress(progress)
 	}
 	removeAllBars() {
-		this.BossBarImpl.removeAllBars()
+		return this.BossBarImpl.removeAllBars()
 	}
 	remove() {
-		this.BossBarImpl.remove()
+		return this.BossBarImpl.remove()
 	}
 }
