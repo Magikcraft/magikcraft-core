@@ -21,7 +21,6 @@ export class BukkitBossBar implements IBossBar {
 			console.log(b as any)
 			const key = b.getKey()
 			console.log(key.toString())
-			__plugin.server.removeBossBar(key)
 		}
 	}
 

@@ -26,7 +26,6 @@ var BukkitBossBar = /** @class */ (function () {
             console.log(b);
             var key = b.getKey();
             console.log(key.toString());
-            __plugin.server.removeBossBar(key);
         }
     };
     BukkitBossBar.prototype.color = function (color) {
