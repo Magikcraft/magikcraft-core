@@ -20,6 +20,7 @@ export enum BossBarColorIndex {
 	PURPLE = 'PURPLE',
 	RED = 'RED',
 	WHITE = 'WHITE',
+	YELLOW = 'YELLOW',
 }
 
 export enum BossBarStyleIndex {
