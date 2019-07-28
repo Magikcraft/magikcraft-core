@@ -12,8 +12,8 @@ var log_1 = require("../log");
 var log = log_1.logger(__filename);
 var BukkitBossBar = /** @class */ (function () {
     function BukkitBossBar(player, namespace, key) {
-        if (player === void 0) { player = global.self; }
         var _this = this;
+        if (player === void 0) { player = global.self; }
         this.init = false;
         this.barProgress = 0.5;
         this.hasTextComponent = false;
@@ -61,23 +61,17 @@ var BukkitBossBar = /** @class */ (function () {
     // }
     BukkitBossBar.prototype.color = function (color) {
         this.barColor = this.BossBarColor[color];
-        if (this.init) {
-            this.bar.setColor(this.barColor);
-        }
+        this.bar.setColor(this.barColor);
         return this;
     };
     BukkitBossBar.prototype.style = function (style) {
         this.barStyle = BossBarAPI.Style[style];
-        if (this.init) {
-            this.bar.setStyle(this.barStyle);
-        }
+        this.bar.setStyle(this.barStyle);
         return this;
     };
     BukkitBossBar.prototype.text = function (msg) {
         this.msg = msg;
-        if (this.init) {
-            this.bar.setTitle(msg);
-        }
+        this.bar.setTitle(msg);
         return this;
     };
     BukkitBossBar.prototype.progress = function (progress) {
@@ -85,26 +79,17 @@ var BukkitBossBar = /** @class */ (function () {
         var _progress = Math.min(progress / 100, 0.99);
         var progressRounded = Math.round(_progress * 100) / 100;
         this.barProgress = progressRounded;
-        if (this.init) {
-            this.bar.setProgress(this.barProgress);
-        }
+        this.bar.setProgress(this.barProgress);
         return this;
     };
     BukkitBossBar.prototype.show = function () {
-        if (this.init) {
-            this.bar.setVisible(true);
-        }
+        this.bar.setVisible(true);
     };
     BukkitBossBar.prototype.hide = function () {
-        if (this.init) {
-            this.bar.setVisible(false);
-        }
+        this.bar.setVisible(false);
     };
     BukkitBossBar.prototype.remove = function () {
-        if (this.init) {
-            this.bar.removePlayer(this.player);
-            this.init = false;
-        }
+        this.bar.removePlayer(this.player);
         return undefined;
     };
     return BukkitBossBar;

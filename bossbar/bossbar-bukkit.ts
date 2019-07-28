@@ -88,24 +88,21 @@ export class BukkitBossBar implements IBossBar {
 	// }
 	public color(color: BossBarColor) {
 		this.barColor = this.BossBarColor[color]
-		if (this.init) {
-			this.bar.setColor(this.barColor)
-		}
+		this.bar.setColor(this.barColor)
+
 		return this
 	}
 	public style(style: BossBarStyle) {
 		this.barStyle = BossBarAPI.Style[style]
-		if (this.init) {
-			this.bar.setStyle(this.barStyle)
-		}
+		this.bar.setStyle(this.barStyle)
+
 		return this
 	}
 
 	public text(msg: string) {
 		this.msg = msg
-		if (this.init) {
-			this.bar.setTitle(msg)
-		}
+		this.bar.setTitle(msg)
+
 		return this
 	}
 
@@ -113,27 +110,19 @@ export class BukkitBossBar implements IBossBar {
 		const _progress = Math.min(progress / 100, 0.99)
 		const progressRounded = Math.round(_progress * 100) / 100
 		this.barProgress = progressRounded
-		if (this.init) {
-			this.bar.setProgress(this.barProgress)
-		}
+		this.bar.setProgress(this.barProgress)
 		return this
 	}
+
 	public removeAllBars = () => BossBarAPI.removeAllBars(this.player)
 	public show() {
-		if (this.init) {
-			this.bar.setVisible(true)
-		}
+		this.bar.setVisible(true)
 	}
 	public hide() {
-		if (this.init) {
-			this.bar.setVisible(false)
-		}
+		this.bar.setVisible(false)
 	}
 	public remove() {
-		if (this.init) {
-			this.bar.removePlayer(this.player)
-			this.init = false
-		}
+		this.bar.removePlayer(this.player)
 		return undefined
 	}
 }

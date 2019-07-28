@@ -6,7 +6,7 @@ declare class WorldManager {
     getMVWorld(worldName: string): any;
     getWorldPath(worldName: string): string;
     importWorld(worldName: string): Promise<any>;
-    destroyWorld(worldName: string): Promise<{}>;
+    destroyWorld(worldName: string): Promise<unknown>;
     unloadWorld(worldName: string): boolean | void;
 }
 declare const _default: WorldManager;
