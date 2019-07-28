@@ -1,5 +1,4 @@
 /// <reference types="@scriptcraft/types" />
-export declare type TextComponent = any;
 import { IBossBar, BossBarStyle, BossBarColor } from './bossbar';
 export declare class BukkitBossBar implements IBossBar {
     private bar;
@@ -25,11 +24,9 @@ export declare class BukkitBossBar implements IBossBar {
         WHITE: any;
         YELLOW: any;
     };
-    constructor(player?: Player);
-    render(): this;
+    constructor(player: Player | undefined, namespace: string, key: string);
     color(color: BossBarColor): this;
     style(style: BossBarStyle): this;
-    textComponent(msg: TextComponent): this;
     text(msg: string): this;
     progress(progress?: number): this;
     removeAllBars: () => any;

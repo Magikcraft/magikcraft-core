@@ -1,8 +1,9 @@
+/// <reference types="@scriptcraft/types" />
 export declare const plugins: {
-    BossBarAPI: any;
-    Pokkit: any;
-    Scriptcraft: any;
-    ScriptcraftMultiEngine: any;
+    BossBarAPI: Plugin;
+    Pokkit: Plugin;
+    Scriptcraft: Plugin;
+    ScriptcraftMultiEngine: Plugin;
 };
 export declare const IS_NUKKIT: boolean;
 export declare const IS_BUKKIT: boolean;

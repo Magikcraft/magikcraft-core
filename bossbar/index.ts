@@ -35,9 +35,9 @@ export class BossBar implements IBossBar {
 	constructor(player: Player) {
 		this.BossBarImpl = new BossBarImpl(player)
 	}
-	render() {
-		return this.BossBarImpl.render()
-	}
+	// render() {
+	// 	return this.BossBarImpl.render()
+	// }
 	color(color: BossBarColor) {
 		return this.BossBarImpl.color(color)
 	}

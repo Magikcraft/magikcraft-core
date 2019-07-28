@@ -9,8 +9,7 @@ export declare class BossBar implements IBossBar {
     };
     private BossBarImpl;
     constructor(player: Player);
-    render(): any;
-    color(color: BossBarColor): any;
+    color(color: BossBarColor): IBossBar;
     style(style: BossBarStyle): any;
     text(msg: string): any;
     progress(progress: number): any;

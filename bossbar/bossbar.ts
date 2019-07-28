@@ -1,6 +1,6 @@
 export interface IBossBar {
-	render()
-	color(color: BossBarColor)
+	// render()
+	color(color: BossBarColor): IBossBar
 	style(style: BossBarStyle)
 	text(msg: string)
 	progress(progress: number)

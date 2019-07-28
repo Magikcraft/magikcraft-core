@@ -1,11 +1,14 @@
 import * as environment from '../environment'
-
 const hasBukkitBossBar = environment.HAS_BOSSBAR_BUKKIT
+
+const BarColor = Java.type('org.bukkit.boss.BarColor')
+const BarStyle = Java.type('org.bukkit.boss.BarStyle')
 
 const BossBarAPI = hasBukkitBossBar
 	? Java.type(environment.BUKKIT_BOSSBAR_TYPE)
 	: { Color: {}, Style: {} }
 
+const NamespacedKey = Java.type('org.bukkit.NamespacedKey')
 type TextComponent = any
 
 import { logger } from '../log'
@@ -14,7 +17,7 @@ import { IBossBar, BossBarStyle, BossBarColor } from './bossbar'
 const log = logger(__filename)
 
 export class BukkitBossBar implements IBossBar {
-	private bar
+	private bar: KeyedBossBar
 	private barColor
 	private barStyle
 	private init = false
@@ -34,43 +37,55 @@ export class BukkitBossBar implements IBossBar {
 		YELLOW: any
 	}
 
-	constructor(player = global.self) {
+	constructor(player = global.self, namespace: string, key: string) {
 		this.player = player
+		const nsKey = new NamespacedKey(namespace, key)
+
 		this.BossBarStyle = {
-			NOTCHED_10: BossBarAPI.Style.NOTCHED_10,
-			NOTCHED_12: BossBarAPI.Style.NOTCHED_12,
-			NOTCHED_20: BossBarAPI.Style.NOTCHED_20,
+			NOTCHED_10: BarStyle.SEGMENTED_10,
+			NOTCHED_12: BarStyle.SEGMENTED_12,
+			NOTCHED_20: BarStyle.SEGMENTED_20,
 		}
 		this.BossBarColor = {
-			BLUE: BossBarAPI.Color.BLUE,
-			GREEN: BossBarAPI.Color.GREEN,
-			PINK: BossBarAPI.Color.PINK,
-			PURPLE: BossBarAPI.Color.PURPLE,
-			RED: BossBarAPI.Color.RED,
-			WHITE: BossBarAPI.Color.WHITE,
-			YELLOW: BossBarAPI.Color.YELLOW,
+			BLUE: BarColor.BLUE,
+			GREEN: BarColor.GREEN,
+			PINK: BarColor.PINK,
+			PURPLE: BarColor.PURPLE,
+			RED: BarColor.RED,
+			WHITE: BarColor.WHITE,
+			YELLOW: BarColor.YELLOW,
 		}
 		this.barColor = this.BossBarColor.RED
 		this.barStyle = this.BossBarStyle.NOTCHED_20
+		const existingBar = __plugin.server.getBossBar(nsKey)
+		this.bar = existingBar
+			? existingBar
+			: __plugin.server.createBossBar(
+					nsKey,
+					'',
+					this.barColor,
+					this.barStyle
+			  )
+		this.bar.addPlayer(player)
 	}
 
-	public render() {
-		if (this.init) {
-			return this
-		}
-		this.barTextComponent = this.hasTextComponent
-			? new TextComponent(this.barTextComponent)
-			: new TextComponent(this.msg + '')
-		this.bar = BossBarAPI.addBar(
-			this.player,
-			this.barTextComponent,
-			this.barColor,
-			this.barStyle,
-			this.barProgress // Progress (0.0 - 1.0)
-		)
-		this.init = true
-		return this
-	}
+	// public render() {
+	// 	if (this.init) {
+	// 		return this
+	// 	}
+	// 	this.barTextComponent = this.hasTextComponent
+	// 		? new TextComponent(this.barTextComponent)
+	// 		: new TextComponent(this.msg + '')
+	// 	this.bar = BossBarAPI.addBar(
+	// 		this.player,
+	// 		this.barTextComponent,
+	// 		this.barColor,
+	// 		this.barStyle,
+	// 		this.barProgress // Progress (0.0 - 1.0)
+	// 	)
+	// 	this.init = true
+	// 	return this
+	// }
 	public color(color: BossBarColor) {
 		this.barColor = this.BossBarColor[color]
 		if (this.init) {
@@ -85,27 +100,15 @@ export class BukkitBossBar implements IBossBar {
 		}
 		return this
 	}
-	public textComponent(msg: TextComponent) {
-		this.barTextComponent = msg
-		this.hasTextComponent = true
-		this.msg = null
-		if (this.init) {
-			this.bar.setTitle()
-			this.render()
-		}
-		return this
-	}
+
 	public text(msg: string) {
-		this.msg = msg + ''
-		// this.barTextComponent = null
-		// this.hasTextComponent = false
+		this.msg = msg
 		if (this.init) {
-			this.bar.setTitle(new TextComponent(this.msg + ''))
-			// this.remove()
-			// this.render()
+			this.bar.setTitle(msg)
 		}
 		return this
 	}
+
 	public progress(progress: number = 50) {
 		const _progress = Math.min(progress / 100, 0.99)
 		const progressRounded = Math.round(_progress * 100) / 100

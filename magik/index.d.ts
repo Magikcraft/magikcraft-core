@@ -1,3 +1,4 @@
+/// <reference types="@scriptcraft/types" />
 /**
  * Magik API
  *
@@ -39,8 +40,8 @@ declare const _default: {
     exsultus: typeof exsultus;
     exmemento: typeof exmemento;
     fromJSON: typeof locationFromJSON;
-    getPlayer: (player: any) => any;
-    getPlugin: () => any;
+    getPlayer: (player: any) => Player | null;
+    getPlugin: () => Plugin;
     getSender: typeof getSender;
     hic: () => any;
     iacta: typeof iacta;

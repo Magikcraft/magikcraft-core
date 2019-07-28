@@ -17,9 +17,9 @@ var BossBar = /** @class */ (function () {
     function BossBar(player) {
         this.BossBarImpl = new BossBarImpl(player);
     }
-    BossBar.prototype.render = function () {
-        return this.BossBarImpl.render();
-    };
+    // render() {
+    // 	return this.BossBarImpl.render()
+    // }
     BossBar.prototype.color = function (color) {
         return this.BossBarImpl.color(color);
     };

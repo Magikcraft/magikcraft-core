@@ -151,7 +151,7 @@ function queue() {
     var PollIntervalMs = 500;
     var ready = false;
     function doCheck() {
-        ready = __plugin.server.getPluginCommand('mv');
+        ready = !!__plugin.server.getPluginCommand('mv');
         if (!ready) {
             log('Not ready to import worlds yet...');
             return setTimeout(doCheck, PollIntervalMs);
