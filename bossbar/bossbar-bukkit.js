@@ -25,10 +25,12 @@ var BukkitBossBar = /** @class */ (function () {
             var b = bossBars.next();
             b.removeAll();
             var key = b.getKey();
-            console.log(key.toString());
             keys.push(key);
         }
-        keys.forEach(function (k) { return __plugin.server.removeBossBar(k); });
+        keys.forEach(function (k) {
+            console.log("Removing " + k.toString());
+            __plugin.server.removeBossBar(k);
+        });
     };
     BukkitBossBar.prototype.color = function (color) {
         this.bar.setColor(BarColor[color]);
