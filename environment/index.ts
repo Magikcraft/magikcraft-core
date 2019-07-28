@@ -23,18 +23,21 @@ export const BUKKIT_BOSSBAR_TYPE = 'org.bukkit.boss' // 'org.inventivetalent.bos
 export const NUKKIT_BOSSBAR_TYPE = 'io.magikcraft.BossBarAPI.BossBar'
 
 let hasBossBar = true
-let bossBarBukkit = false
+let bossBarBukkit = true
 let bossBarNukkit = false
 
 // Here we test if the plugin is loaded. It can be present but not loaded, so we instantiate it
 // to ensure that it really is loaded.
-try {
-	Java.type(BUKKIT_BOSSBAR_TYPE)
-	hasBossBar = true
-	bossBarBukkit = true
-} catch (e) {
-	bossBarBukkit = false
-}
+
+// @TODO - Rewrite Bukkit / Nukkit detection
+
+// try {
+// 	Java.type(BUKKIT_BOSSBAR_TYPE)
+// 	hasBossBar = true
+// 	bossBarBukkit = true
+// } catch (e) {
+// 	bossBarBukkit = false
+// }
 
 try {
 	Java.type(NUKKIT_BOSSBAR_TYPE)
