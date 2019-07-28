@@ -1,5 +1,5 @@
 export declare const fs: {
-    copyDir(srcPath: string, destPath: string): Promise<unknown>;
+    copyDir(srcPath: string, destPath: string): Promise<{}>;
     readDir(path: any): string[];
     /**
      * exists

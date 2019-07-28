@@ -1,5 +1,5 @@
 import * as environment from '../environment'
-import { IBossBar, BossBarColor, BossBarStyle } from './bossbar'
+import { IBossBar, BossBarColorIndex, BossBarStyleIndex } from './bossbar'
 
 let BossBarImpl: new (
 	player: Player,
@@ -22,19 +22,8 @@ if (environment.HAS_BOSSBAR_NUKKIT) {
 // }
 
 export class BossBar implements IBossBar {
-	static Color: { [index: string]: BossBarColor } = {
-		BLUE: 'BLUE',
-		GREEN: 'GREEN',
-		PINK: 'PINK',
-		PURPLE: 'PURPLE',
-		RED: 'RED',
-		WHITE: 'WHITE',
-	}
-	static Style: { [index: string]: BossBarStyle } = {
-		NOTCHED_10: 'NOTCHED_10',
-		NOTCHED_12: 'NOTCHED_12',
-		NOTCHED_20: 'NOTCHED_20',
-	}
+	static Color = BossBarColorIndex
+	static Style = BossBarStyleIndex
 	private BossBarImpl: IBossBar
 	constructor(player: Player, namespace: string, key: string) {
 		this.BossBarImpl = new BossBarImpl(player, namespace, key)
@@ -42,10 +31,10 @@ export class BossBar implements IBossBar {
 	// render() {
 	// 	return this.BossBarImpl.render()
 	// }
-	color(color: BossBarColor) {
+	color(color: BossBarColorIndex) {
 		return this.BossBarImpl.color(color)
 	}
-	style(style: BossBarStyle) {
+	style(style: BossBarStyleIndex) {
 		return this.BossBarImpl.style(style)
 	}
 	text(msg: string) {
@@ -53,9 +42,6 @@ export class BossBar implements IBossBar {
 	}
 	progress(progress: number) {
 		return this.BossBarImpl.progress(progress)
-	}
-	removeAllBars() {
-		return this.BossBarImpl.removeAllBars()
 	}
 	remove() {
 		return this.BossBarImpl.remove()

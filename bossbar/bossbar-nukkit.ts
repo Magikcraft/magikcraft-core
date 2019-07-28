@@ -34,12 +34,12 @@ export class NukkitBossBar implements IBossBar {
 	private id: number
 	private player: NukkitPlayer
 
-	constructor(msg: string, player: Player) {
+	constructor(player: Player) {
 		this.id = barID
 		barID++
 		this.bar = new NukkitBossBar.BossBar(
 			player.getName() + this.id,
-			msg,
+			'',
 			0,
 			100
 		)
