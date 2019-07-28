@@ -70,5 +70,7 @@
 	},
 	"repository": "Magikcraft/core",
 	"license": "Apache-2.0",
-	"dependencies": {}
+	"dependencies": {
+		"typescript": "^3.5.3"
+	}
 }
