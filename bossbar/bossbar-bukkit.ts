@@ -20,10 +20,12 @@ export class BukkitBossBar implements IBossBar {
 			const b = bossBars.next()
 			b.removeAll()
 			const key = b.getKey()
-			console.log(key.toString())
 			keys.push(key)
 		}
-		keys.forEach(k => __plugin.server.removeBossBar(k))
+		keys.forEach(k => {
+			console.log(`Removing ${k.toString()}`)
+			__plugin.server.removeBossBar(k)
+		})
 	}
 
 	constructor(player = global.self, namespace: string, key: string) {
