@@ -23,11 +23,6 @@ export declare enum TextColor {
     'YELLOW'
 }
 export declare const TextComponent: any;
-/**
- *
- * new ComponentBuilder( "Hello " ).color( ChatColor.RED ).bold( true )
- * .append( "world" ).color( ChatColor.BLUE ).append( "!" ).color( ChatColor.RED ).create();
- */
 export declare const ComponentBuilderClass: any;
 export declare const ComponentBuilder: (msg: string) => IComponentBuilder;
 interface IComponentBuilder {

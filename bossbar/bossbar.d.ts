@@ -12,7 +12,8 @@ export declare enum BossBarColorIndex {
     PINK = "PINK",
     PURPLE = "PURPLE",
     RED = "RED",
-    WHITE = "WHITE"
+    WHITE = "WHITE",
+    YELLOW = "YELLOW"
 }
 export declare enum BossBarStyleIndex {
     NOTCHED_10 = "SEGMENTED_10",

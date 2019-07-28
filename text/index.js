@@ -1,10 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var environment = require("../environment");
-var hasBukkitBossBar = environment.HAS_BOSSBAR_BUKKIT;
-var JavaChatColor = hasBukkitBossBar
-    ? Java.type('net.md_5.bungee.api.ChatColor')
-    : {};
+var JavaChatColor = Java.type('net.md_5.bungee.api.ChatColor');
 var TextColor;
 (function (TextColor) {
     TextColor[TextColor["AQUA"] = JavaChatColor.AQUA] = "AQUA";
@@ -31,17 +27,8 @@ var TextColor;
     TextColor[TextColor["YELLOW"] = JavaChatColor.YELLOW] = "YELLOW";
 })(TextColor = exports.TextColor || (exports.TextColor = {}));
 // Requires the Spigot server or a plugin that provides this
-exports.TextComponent = hasBukkitBossBar
-    ? Java.type('net.md_5.bungee.api.chat.TextComponent')
-    : undefined;
-/**
- *
- * new ComponentBuilder( "Hello " ).color( ChatColor.RED ).bold( true )
- * .append( "world" ).color( ChatColor.BLUE ).append( "!" ).color( ChatColor.RED ).create();
- */
-exports.ComponentBuilderClass = hasBukkitBossBar
-    ? Java.type('net.md_5.bungee.api.chat.ComponentBuilder')
-    : undefined;
+exports.TextComponent = Java.type('net.md_5.bungee.api.chat.TextComponent');
+exports.ComponentBuilderClass = Java.type('net.md_5.bungee.api.chat.ComponentBuilder');
 exports.ComponentBuilder = function (msg) {
     return new exports.ComponentBuilderClass(msg);
 };

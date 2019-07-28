@@ -1,10 +1,4 @@
-import * as environment from '../environment'
-
-const hasBukkitBossBar = environment.HAS_BOSSBAR_BUKKIT
-
-const JavaChatColor = hasBukkitBossBar
-	? Java.type('net.md_5.bungee.api.ChatColor')
-	: {}
+const JavaChatColor = Java.type('net.md_5.bungee.api.ChatColor')
 
 export enum TextColor {
 	'AQUA' = JavaChatColor.AQUA,
@@ -32,18 +26,11 @@ export enum TextColor {
 }
 
 // Requires the Spigot server or a plugin that provides this
-export const TextComponent = hasBukkitBossBar
-	? Java.type('net.md_5.bungee.api.chat.TextComponent')
-	: undefined
+export const TextComponent = Java.type('net.md_5.bungee.api.chat.TextComponent')
 
-/**
- *
- * new ComponentBuilder( "Hello " ).color( ChatColor.RED ).bold( true )
- * .append( "world" ).color( ChatColor.BLUE ).append( "!" ).color( ChatColor.RED ).create();
- */
-export const ComponentBuilderClass = hasBukkitBossBar
-	? Java.type('net.md_5.bungee.api.chat.ComponentBuilder')
-	: undefined
+export const ComponentBuilderClass = Java.type(
+	'net.md_5.bungee.api.chat.ComponentBuilder'
+)
 export const ComponentBuilder = (msg: string): IComponentBuilder =>
 	new ComponentBuilderClass(msg)
 

@@ -15,6 +15,7 @@ var BossBarColorIndex;
     BossBarColorIndex["PURPLE"] = "PURPLE";
     BossBarColorIndex["RED"] = "RED";
     BossBarColorIndex["WHITE"] = "WHITE";
+    BossBarColorIndex["YELLOW"] = "YELLOW";
 })(BossBarColorIndex = exports.BossBarColorIndex || (exports.BossBarColorIndex = {}));
 var BossBarStyleIndex;
 (function (BossBarStyleIndex) {
