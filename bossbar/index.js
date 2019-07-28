@@ -14,8 +14,8 @@ if (environment.HAS_BOSSBAR_NUKKIT) {
 // 	style: BossBarStyle,
 // }
 var BossBar = /** @class */ (function () {
-    function BossBar(player) {
-        this.BossBarImpl = new BossBarImpl(player);
+    function BossBar(player, namespace, key) {
+        this.BossBarImpl = new BossBarImpl(player, namespace, key);
     }
     // render() {
     // 	return this.BossBarImpl.render()

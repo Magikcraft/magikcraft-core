@@ -8,7 +8,7 @@ export declare class BossBar implements IBossBar {
         [index: string]: BossBarStyle;
     };
     private BossBarImpl;
-    constructor(player: Player);
+    constructor(player: Player, namespace: string, key: string);
     color(color: BossBarColor): IBossBar;
     style(style: BossBarStyle): any;
     text(msg: string): any;
