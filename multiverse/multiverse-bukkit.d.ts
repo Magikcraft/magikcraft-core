@@ -8,9 +8,9 @@ export declare class BukkitWorldManager {
     constructor();
     getWorldPath(worldName: string): string;
     worldExistsOnDisk(worldName: string): boolean;
-    destroyWorld(worldName: string): Promise<{}>;
+    destroyWorld(worldName: string): Promise<unknown>;
     importWorld(worldName: string): Promise<any>;
-    cloneWorld(worldName: string, templateWorldName: string): Promise<{} | undefined>;
+    cloneWorld(worldName: string, templateWorldName: string): Promise<unknown>;
     getMVWorld(name: string): World | null;
     unloadWorld(name: string): boolean;
 }

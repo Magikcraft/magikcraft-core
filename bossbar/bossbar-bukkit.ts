@@ -14,14 +14,16 @@ export class BukkitBossBar implements IBossBar {
 	static removeAll() {
 		log('Removing all Boss Bars')
 		// Cancel all BossBars on plugin refresh()
+		const keys: NamespacedKey[] = []
 		const bossBars = __plugin.server.getBossBars()
 		while (bossBars.hasNext()) {
 			const b = bossBars.next()
 			b.removeAll()
-			console.log(b as any)
 			const key = b.getKey()
 			console.log(key.toString())
+			keys.push(key)
 		}
+		keys.forEach(k => __plugin.server.removeBossBar(k))
 	}
 
 	constructor(player = global.self, namespace: string, key: string) {

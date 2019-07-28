@@ -19,14 +19,16 @@ var BukkitBossBar = /** @class */ (function () {
     BukkitBossBar.removeAll = function () {
         log('Removing all Boss Bars');
         // Cancel all BossBars on plugin refresh()
+        var keys = [];
         var bossBars = __plugin.server.getBossBars();
         while (bossBars.hasNext()) {
             var b = bossBars.next();
             b.removeAll();
-            console.log(b);
             var key = b.getKey();
             console.log(key.toString());
+            keys.push(key);
         }
+        keys.forEach(function (k) { return __plugin.server.removeBossBar(k); });
     };
     BukkitBossBar.prototype.color = function (color) {
         this.bar.setColor(BarColor[color]);
