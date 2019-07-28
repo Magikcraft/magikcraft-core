@@ -10,6 +10,21 @@ const log = logger(__filename)
 export class BukkitBossBar implements IBossBar {
 	private bar: KeyedBossBar
 	player: Player
+
+	static removeAll() {
+		log('Removing all Boss Bars')
+		// Cancel all BossBars on plugin refresh()
+		const bossBars = __plugin.server.getBossBars()
+		while (bossBars.hasNext()) {
+			const b = bossBars.next()
+			b.removeAll()
+			console.log(b as any)
+			const key = b.getKey()
+			console.log(key.toString())
+			__plugin.server.removeBossBar(key)
+		}
+	}
+
 	constructor(player = global.self, namespace: string, key: string) {
 		const nsKey = new NamespacedKey(namespace, key)
 		const existingBar = __plugin.server.getBossBar(nsKey)

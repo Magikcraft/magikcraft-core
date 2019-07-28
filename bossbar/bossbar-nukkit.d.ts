@@ -5,7 +5,7 @@ export declare class NukkitBossBar implements IBossBar {
     private bar;
     private id;
     private player;
-    constructor(msg: string, player: Player);
+    constructor(player: Player);
     render(): this;
     color(color: any): this;
     style(): this;

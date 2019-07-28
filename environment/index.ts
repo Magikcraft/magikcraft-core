@@ -3,7 +3,7 @@ import server from '../server'
 // The various plugins
 const pluginManager = __plugin.server.pluginManager
 export const plugins = {
-	BossBarAPI: pluginManager.getPlugin('BossBarAPI'),
+	// BossBarAPI: pluginManager.getPlugin('BossBarAPI'),
 	Pokkit: pluginManager.getPlugin('Pokkit'),
 	Scriptcraft: pluginManager.getPlugin('Scriptcraft'), // this doesn't work in Nukkit - the Nukkit Plugin manager wraps Bukkit plugins, so it returns nl.rutgerkok.pokkit.plugin.PokkitPlugin$NukkitPluginWrapper@55e4d821
 	ScriptcraftMultiEngine: pluginManager.getPlugin('Scriptcraft-ME'),
@@ -19,10 +19,10 @@ export const IS_SCRIPTCRAFT = plugins.Scriptcraft != null
 
 // HAS_BOSSBAR - when the BossBar plugin is loaded
 // Test not only for the plugin, but that it's loaded.
-export const BUKKIT_BOSSBAR_TYPE = 'org.inventivetalent.bossbar.BossBarAPI'
+export const BUKKIT_BOSSBAR_TYPE = 'org.bukkit.boss' // 'org.inventivetalent.bossbar.BossBarAPI'
 export const NUKKIT_BOSSBAR_TYPE = 'io.magikcraft.BossBarAPI.BossBar'
 
-let hasBossBar = plugins.BossBarAPI != null
+let hasBossBar = false
 let bossBarBukkit = false
 let bossBarNukkit = false
 

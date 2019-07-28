@@ -1,12 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var environment = require("../environment");
+var bossbar_1 = require("./bossbar");
 var BossBarImpl;
-if (environment.HAS_BOSSBAR_BUKKIT) {
-    BossBarImpl = require('./bossbar-bukkit').BukkitBossBar; // tslint:disable-line
-}
 if (environment.HAS_BOSSBAR_NUKKIT) {
     BossBarImpl = require('./bossbar-nukkit').NukkitBossBar; // tslint:disable-line
+}
+else {
+    BossBarImpl = require('./bossbar-bukkit').BukkitBossBar; // tslint:disable-line
 }
 // export let BossBar = {
 // 	bar,
@@ -32,25 +33,15 @@ var BossBar = /** @class */ (function () {
     BossBar.prototype.progress = function (progress) {
         return this.BossBarImpl.progress(progress);
     };
-    BossBar.prototype.removeAllBars = function () {
-        return this.BossBarImpl.removeAllBars();
-    };
     BossBar.prototype.remove = function () {
         return this.BossBarImpl.remove();
     };
-    BossBar.Color = {
-        BLUE: 'BLUE',
-        GREEN: 'GREEN',
-        PINK: 'PINK',
-        PURPLE: 'PURPLE',
-        RED: 'RED',
-        WHITE: 'WHITE',
+    BossBar.removeAll = function () {
+        // No support for static methods in interfaces in TypeScript - boo!
+        return BossBarImpl.removeAll();
     };
-    BossBar.Style = {
-        NOTCHED_10: 'NOTCHED_10',
-        NOTCHED_12: 'NOTCHED_12',
-        NOTCHED_20: 'NOTCHED_20',
-    };
+    BossBar.Color = bossbar_1.BossBarColorIndex;
+    BossBar.Style = bossbar_1.BossBarStyleIndex;
     return BossBar;
 }());
 exports.BossBar = BossBar;

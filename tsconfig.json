@@ -14,6 +14,7 @@
 		"paths": {
 			"@magikcraft/core": ["."]
 		},
-		"types": ["@scriptcraft/types", "jasmine"]
+		"types": ["@scriptcraft/types", "jasmine"],
+		"experimentalDecorators": true
 	}
 }

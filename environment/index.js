@@ -4,7 +4,7 @@ var server_1 = require("../server");
 // The various plugins
 var pluginManager = __plugin.server.pluginManager;
 exports.plugins = {
-    BossBarAPI: pluginManager.getPlugin('BossBarAPI'),
+    // BossBarAPI: pluginManager.getPlugin('BossBarAPI'),
     Pokkit: pluginManager.getPlugin('Pokkit'),
     Scriptcraft: pluginManager.getPlugin('Scriptcraft'),
     ScriptcraftMultiEngine: pluginManager.getPlugin('Scriptcraft-ME'),
@@ -16,9 +16,9 @@ exports.IS_BUKKIT = !exports.IS_NUKKIT;
 exports.IS_SCRIPTCRAFT = exports.plugins.Scriptcraft != null;
 // HAS_BOSSBAR - when the BossBar plugin is loaded
 // Test not only for the plugin, but that it's loaded.
-exports.BUKKIT_BOSSBAR_TYPE = 'org.inventivetalent.bossbar.BossBarAPI';
+exports.BUKKIT_BOSSBAR_TYPE = 'org.bukkit.boss'; // 'org.inventivetalent.bossbar.BossBarAPI'
 exports.NUKKIT_BOSSBAR_TYPE = 'io.magikcraft.BossBarAPI.BossBar';
-var hasBossBar = exports.plugins.BossBarAPI != null;
+var hasBossBar = false;
 var bossBarBukkit = false;
 var bossBarNukkit = false;
 // Here we test if the plugin is loaded. It can be present but not loaded, so we instantiate it

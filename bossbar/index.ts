@@ -1,18 +1,16 @@
 import * as environment from '../environment'
 import { IBossBar, BossBarColorIndex, BossBarStyleIndex } from './bossbar'
 
-let BossBarImpl: new (
-	player: Player,
-	namespace: string,
-	key: string
-) => IBossBar
-
-if (environment.HAS_BOSSBAR_BUKKIT) {
-	BossBarImpl = require('./bossbar-bukkit').BukkitBossBar // tslint:disable-line
+interface Type<T> extends Function {
+	new (...args: any[]): T
 }
+
+let BossBarImpl: Type<IBossBar>
 
 if (environment.HAS_BOSSBAR_NUKKIT) {
 	BossBarImpl = require('./bossbar-nukkit').NukkitBossBar // tslint:disable-line
+} else {
+	BossBarImpl = require('./bossbar-bukkit').BukkitBossBar // tslint:disable-line
 }
 
 // export let BossBar = {
@@ -45,5 +43,9 @@ export class BossBar implements IBossBar {
 	}
 	remove() {
 		return this.BossBarImpl.remove()
+	}
+	static removeAll() {
+		// No support for static methods in interfaces in TypeScript - boo!
+		return (BossBarImpl as any).removeAll()
 	}
 }

@@ -22,10 +22,10 @@ var NukkitColors = {
     WHITE: 6,
 };
 var NukkitBossBar = /** @class */ (function () {
-    function NukkitBossBar(msg, player) {
+    function NukkitBossBar(player) {
         this.id = barID;
         barID++;
-        this.bar = new NukkitBossBar.BossBar(player.getName() + this.id, msg, 0, 100);
+        this.bar = new NukkitBossBar.BossBar(player.getName() + this.id, '', 0, 100);
         this.player = toNukkitPlayer(player);
         return this;
     }

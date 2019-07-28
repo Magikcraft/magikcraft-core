@@ -6,6 +6,13 @@ export interface IBossBar {
 	remove()
 }
 
+/* class decorator */
+export function staticImplements<T>() {
+	return <U extends T>(constructor: U) => {
+		constructor
+	}
+}
+
 export enum BossBarColorIndex {
 	BLUE = 'BLUE',
 	GREEN = 'GREEN',
