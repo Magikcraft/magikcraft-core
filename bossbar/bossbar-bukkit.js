@@ -12,8 +12,8 @@ var log_1 = require("../log");
 var log = log_1.logger(__filename);
 var BukkitBossBar = /** @class */ (function () {
     function BukkitBossBar(player, namespace, key) {
-        var _this = this;
         if (player === void 0) { player = global.self; }
+        var _this = this;
         this.init = false;
         this.barProgress = 0.5;
         this.hasTextComponent = false;

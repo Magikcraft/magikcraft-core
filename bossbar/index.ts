@@ -1,7 +1,11 @@
 import * as environment from '../environment'
 import { IBossBar, BossBarColor, BossBarStyle } from './bossbar'
 
-let BossBarImpl: new (player: Player) => IBossBar
+let BossBarImpl: new (
+	player: Player,
+	namespace: string,
+	key: string
+) => IBossBar
 
 if (environment.HAS_BOSSBAR_BUKKIT) {
 	BossBarImpl = require('./bossbar-bukkit').BukkitBossBar // tslint:disable-line
@@ -32,8 +36,8 @@ export class BossBar implements IBossBar {
 		NOTCHED_20: 'NOTCHED_20',
 	}
 	private BossBarImpl: IBossBar
-	constructor(player: Player) {
-		this.BossBarImpl = new BossBarImpl(player)
+	constructor(player: Player, namespace: string, key: string) {
+		this.BossBarImpl = new BossBarImpl(player, namespace, key)
 	}
 	// render() {
 	// 	return this.BossBarImpl.render()
