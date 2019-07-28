@@ -22,29 +22,28 @@ export const IS_SCRIPTCRAFT = plugins.Scriptcraft != null
 export const BUKKIT_BOSSBAR_TYPE = 'org.bukkit.boss' // 'org.inventivetalent.bossbar.BossBarAPI'
 export const NUKKIT_BOSSBAR_TYPE = 'io.magikcraft.BossBarAPI.BossBar'
 
-let hasBossBar = false
+let hasBossBar = true
 let bossBarBukkit = false
 let bossBarNukkit = false
 
 // Here we test if the plugin is loaded. It can be present but not loaded, so we instantiate it
 // to ensure that it really is loaded.
-if (hasBossBar) {
-	try {
-		Java.type(BUKKIT_BOSSBAR_TYPE)
-		hasBossBar = true
-		bossBarBukkit = true
-	} catch (e) {
-		bossBarBukkit = false
-	}
-
-	try {
-		Java.type(NUKKIT_BOSSBAR_TYPE)
-		hasBossBar = true
-		bossBarNukkit = true
-	} catch (e) {
-		bossBarNukkit = false
-	}
+try {
+	Java.type(BUKKIT_BOSSBAR_TYPE)
+	hasBossBar = true
+	bossBarBukkit = true
+} catch (e) {
+	bossBarBukkit = false
 }
+
+try {
+	Java.type(NUKKIT_BOSSBAR_TYPE)
+	hasBossBar = true
+	bossBarNukkit = true
+} catch (e) {
+	bossBarNukkit = false
+}
+
 export const HAS_BOSSBAR = hasBossBar
 export const HAS_BOSSBAR_BUKKIT = bossBarBukkit
 export const HAS_BOSSBAR_NUKKIT = bossBarNukkit
