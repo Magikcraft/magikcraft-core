@@ -10,7 +10,7 @@ export declare const IS_SCRIPTCRAFT: boolean;
 export declare const BUKKIT_BOSSBAR_TYPE = "org.bukkit.boss";
 export declare const NUKKIT_BOSSBAR_TYPE = "io.magikcraft.BossBarAPI.BossBar";
 export declare const HAS_BOSSBAR = true;
-export declare const HAS_BOSSBAR_BUKKIT: boolean;
+export declare const HAS_BOSSBAR_BUKKIT = true;
 export declare const HAS_BOSSBAR_NUKKIT: boolean;
 export declare const NUKKIT_HOLOGRAM_TYPE = "gt.creeperface.holograms.api.HologramAPI";
 export declare const HAS_HOLOGRAM: boolean;

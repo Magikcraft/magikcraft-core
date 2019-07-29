@@ -19,18 +19,18 @@ exports.IS_SCRIPTCRAFT = exports.plugins.Scriptcraft != null;
 exports.BUKKIT_BOSSBAR_TYPE = 'org.bukkit.boss'; // 'org.inventivetalent.bossbar.BossBarAPI'
 exports.NUKKIT_BOSSBAR_TYPE = 'io.magikcraft.BossBarAPI.BossBar';
 var hasBossBar = true;
-var bossBarBukkit = false;
+var bossBarBukkit = true;
 var bossBarNukkit = false;
 // Here we test if the plugin is loaded. It can be present but not loaded, so we instantiate it
 // to ensure that it really is loaded.
-try {
-    Java.type(exports.BUKKIT_BOSSBAR_TYPE);
-    hasBossBar = true;
-    bossBarBukkit = true;
-}
-catch (e) {
-    bossBarBukkit = false;
-}
+// @TODO - Rewrite Bukkit / Nukkit detection
+// try {
+// 	Java.type(BUKKIT_BOSSBAR_TYPE)
+// 	hasBossBar = true
+// 	bossBarBukkit = true
+// } catch (e) {
+// 	bossBarBukkit = false
+// }
 try {
     Java.type(exports.NUKKIT_BOSSBAR_TYPE);
     hasBossBar = true;
