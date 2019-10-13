@@ -12,14 +12,14 @@ export function getItem<T = any>(key = defaultKey): T | undefined {
 }
 export function _setItem<T>(key: string, value: T): T {
 	if (!value) {
-		value = key
+		value = (key as any)
 		key = defaultKey
 	}
 	memory().put(key, value)
 	if (value instanceof Java.type('org.bukkit.Location')) {
 		echo(self, gettext('I remembered this place as %s', key))
 	} else {
-		echo(self, gettext('I remembered %s as %s', value, key))
+		echo(self, gettext('I remembered %s as %s', value as unknown as string, key))
 	}
 	return value
 }

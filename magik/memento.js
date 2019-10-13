@@ -25,6 +25,7 @@ function _setItem(key, value) {
     else {
         echo(self, gettext_1.gettext('I remembered %s as %s', value, key));
     }
+    return value;
 }
 exports._setItem = _setItem;
 exports.memento = _setItem;
