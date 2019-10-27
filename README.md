@@ -2,6 +2,10 @@
 
 > Core Magikcraft utilities for SMA plugins
 
+This repository contains the Magikcraft API - `magikcraft.io` - as well as the reusable utilities that are used to implement the Magikcraft API.
+
+To see how methods like `magik.dixit` and `magik.exsultus` are implemented, take a look in the [`magik` directory](https://github.com/Magikcraft/magikcraft-core/tree/master/magik).
+
 ## Installation
 
 ```bash
