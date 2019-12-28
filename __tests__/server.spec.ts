@@ -18,7 +18,8 @@ describe('Server', () => {
 	})
 	it('can retrieve a plugin', () => {
 		const plugin =
-			server.getPlugin('Scriptcraft') || server.getPlugin('scriptcraft')
+			server.getPlugin('Scriptcraft-ME') ||
+			server.getPlugin('scriptcraft')
 		expect(plugin).toBeTruthy()
 	})
 })

@@ -17,7 +17,8 @@ describe('Server', function () {
         expect("" + worldDir).toEqual(expectedWorldDir);
     });
     it('can retrieve a plugin', function () {
-        var plugin = __1.server.getPlugin('Scriptcraft') || __1.server.getPlugin('scriptcraft');
+        var plugin = __1.server.getPlugin('Scriptcraft-ME') ||
+            __1.server.getPlugin('scriptcraft');
         expect(plugin).toBeTruthy();
     });
 });

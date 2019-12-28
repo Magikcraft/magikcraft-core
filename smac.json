@@ -1,11 +1,15 @@
 {
 	"name": "magikcraft-core-test",
 	"version": "1.0.0",
-	"keywords": ["scriptcraft", "scriptcraft-sma", "server"],
+	"keywords": [
+		"scriptcraft",
+		"scriptcraft-sma",
+		"server"
+	],
 	"author": "",
 	"license": "ISC",
 	"smaServerConfig": {
-		"dockerTag": "latest",
+		"dockerTag": "1.15",
 		"port": "25565",
 		"serverName": "magikcraft-core-test",
 		"serverType": "bukkit",
