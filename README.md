@@ -28,6 +28,10 @@ Then run the tests:
 npm test
 ```
 
+## Roll-up declaration
+
+[API Extractor](https://api-extractor.com/pages/setup/configure_rollup/) is used to generate a single declaration file for [play.magikcraft.io](https://play.magikcraft.io).
+
 ## License
 
 Apache-2.0 © [Josh Wulf](https://github.com/Magikcraft)

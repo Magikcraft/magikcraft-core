@@ -1,0 +1,1 @@
+{"version":3,"file":"BukkitServer.d.ts","sourceRoot":"","sources":["../../../src/server/BukkitServer.ts"],"names":[],"mappings":";AAEA,qBAAa,YAAY;IACxB,MAAM,EAAE,GAAG,CAAA;IACX,QAAQ,UAAO;IACf,QAAQ,UAAQ;;IAIhB,cAAc,CAAC,OAAO,KAAA;IAGtB,SAAS,CAAC,UAAU,KAAA;IAGpB,UAAU;IAGV,WAAW;IAGX,eAAe,CAAC,IAAI,EAAE,MAAM;IAG5B,SAAS,IAAI,KAAK,EAAE;CAGpB"}

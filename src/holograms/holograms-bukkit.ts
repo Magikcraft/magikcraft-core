@@ -331,7 +331,7 @@ export interface VisibilityManager {
 	setVisibleByDefault(visibleByDefault: boolean): void
 
 	/**
-	 * Shows the hologram to a player, overriding the value of {@link #isVisibleByDefault()}.
+	 * Shows the hologram to a player, overriding the value of isVisibleByDefault().
 	 * This is persistent if the players goes offline.
 	 *
 	 * @param player the involved player
@@ -339,23 +339,23 @@ export interface VisibilityManager {
 	showTo(player: Player): void
 
 	/**
-	 * Hides the hologram to a player, overriding the value of {@link #isVisibleByDefault()}.
+	 * Hides the hologram to a player, overriding the value of isVisibleByDefault().
 	 * This is persistent if the players goes offline.
 	 *
-	 * @param player the involved player
+	 * @param player - the involved player
 	 */
 	hideTo(player: Player): void
 
 	/**
 	 * Checks if a hologram is visible to a player.
 	 *
-	 * @param player the involved player
+	 * @param player - the involved player
 	 * @return if the player can see the hologram
 	 */
 	isVisibleTo(player: Player): boolean
 
 	/**
-	 * Resets the visibility to the default value. If you previously called {@link #showTo(Player)}
+	 * Resets the visibility to the default value. If you previously called showTo(Player)
 	 * or {@link #hideTo(Player)} to override the default visibility, this method will reset it
 	 * to reflect the value of {@link #isVisibleByDefault()}.
 	 *

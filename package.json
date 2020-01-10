@@ -67,7 +67,7 @@
 		]
 	},
 	"scripts": {
-		"test": "tsc && smac start -t -e",
+		"test": "tsc && cd __tests__ && tsc && cd .. && smac start -t -e",
 		"start": "tsc -w",
 		"prepublish": "tsc && api-extractor run --local",
 		"docs": "typedoc --out ./docs --tsconfig ./tsconfig.json --excludePrivate --excludeNotExported --mode file"
