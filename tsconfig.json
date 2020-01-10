@@ -5,16 +5,21 @@
 		"module": "commonjs",
 		"lib": ["es2015", "es2018.promise"],
 		"declaration": true,
+		"declarationMap": true,
 		"removeComments": false,
 		"strict": true,
 		"noImplicitAny": false,
 		"noImplicitThis": false,
 		"alwaysStrict": true,
-		"baseUrl": ".",
+		"outDir": "lib",
+		"rootDir": "src",
+		"baseUrl": "src",
 		"paths": {
-			"@magikcraft/core": ["."]
+			"@magikcraft/core": ["src"]
 		},
 		"types": ["@scriptcraft/types", "jasmine"],
+
 		"experimentalDecorators": true
-	}
+	},
+	"exclude": ["dist/**"]
 }

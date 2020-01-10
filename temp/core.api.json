@@ -1,0 +1,1352 @@
+{
+	"metadata": {
+		"toolPackage": "@microsoft/api-extractor",
+		"toolVersion": "7.7.2",
+		"schemaVersion": 1003,
+		"oldestForwardsCompatibleVersion": 1001
+	},
+	"kind": "Package",
+	"canonicalReference": "@magikcraft/core!",
+	"docComment": "",
+	"name": "@magikcraft/core",
+	"members": [
+		{
+			"kind": "EntryPoint",
+			"canonicalReference": "@magikcraft/core!",
+			"name": "",
+			"members": [
+				{
+					"kind": "Function",
+					"canonicalReference": "@magikcraft/core!actionbar:function(1)",
+					"docComment": "",
+					"excerptTokens": [
+						{
+							"kind": "Content",
+							"text": "export declare function actionbar(playername: "
+						},
+						{
+							"kind": "Content",
+							"text": "string"
+						},
+						{
+							"kind": "Content",
+							"text": ", text: "
+						},
+						{
+							"kind": "Content",
+							"text": "string"
+						},
+						{
+							"kind": "Content",
+							"text": ", color: "
+						},
+						{
+							"kind": "Reference",
+							"text": "TextColor",
+							"canonicalReference": "@magikcraft/core!TextColor:enum"
+						},
+						{
+							"kind": "Content",
+							"text": "): "
+						},
+						{
+							"kind": "Content",
+							"text": "void"
+						},
+						{
+							"kind": "Content",
+							"text": ";"
+						}
+					],
+					"returnTypeTokenRange": {
+						"startIndex": 7,
+						"endIndex": 8
+					},
+					"releaseTag": "Public",
+					"overloadIndex": 1,
+					"parameters": [
+						{
+							"parameterName": "playername",
+							"parameterTypeTokenRange": {
+								"startIndex": 1,
+								"endIndex": 2
+							}
+						},
+						{
+							"parameterName": "text",
+							"parameterTypeTokenRange": {
+								"startIndex": 3,
+								"endIndex": 4
+							}
+						},
+						{
+							"parameterName": "color",
+							"parameterTypeTokenRange": {
+								"startIndex": 5,
+								"endIndex": 6
+							}
+						}
+					],
+					"name": "actionbar"
+				},
+				{
+					"kind": "Class",
+					"canonicalReference": "@magikcraft/core!BossBar:class",
+					"docComment": "",
+					"excerptTokens": [
+						{
+							"kind": "Content",
+							"text": "export declare class BossBar implements "
+						},
+						{
+							"kind": "Reference",
+							"text": "IBossBar",
+							"canonicalReference": "@magikcraft/core!IBossBar:interface"
+						},
+						{
+							"kind": "Content",
+							"text": " "
+						}
+					],
+					"releaseTag": "Public",
+					"name": "BossBar",
+					"members": [
+						{
+							"kind": "Constructor",
+							"canonicalReference": "@magikcraft/core!BossBar:constructor(1)",
+							"docComment": "/**\n * Constructs a new instance of the `BossBar` class\n */\n",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "constructor(player: "
+								},
+								{
+									"kind": "Reference",
+									"text": "Player",
+									"canonicalReference": "!Player:interface"
+								},
+								{
+									"kind": "Content",
+									"text": ", namespace: "
+								},
+								{
+									"kind": "Content",
+									"text": "string"
+								},
+								{
+									"kind": "Content",
+									"text": ", key: "
+								},
+								{
+									"kind": "Content",
+									"text": "string"
+								},
+								{
+									"kind": "Content",
+									"text": ");"
+								}
+							],
+							"releaseTag": "Public",
+							"overloadIndex": 1,
+							"parameters": [
+								{
+									"parameterName": "player",
+									"parameterTypeTokenRange": {
+										"startIndex": 1,
+										"endIndex": 2
+									}
+								},
+								{
+									"parameterName": "namespace",
+									"parameterTypeTokenRange": {
+										"startIndex": 3,
+										"endIndex": 4
+									}
+								},
+								{
+									"parameterName": "key",
+									"parameterTypeTokenRange": {
+										"startIndex": 5,
+										"endIndex": 6
+									}
+								}
+							]
+						},
+						{
+							"kind": "Method",
+							"canonicalReference": "@magikcraft/core!BossBar#color:member(1)",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "color(color: "
+								},
+								{
+									"kind": "Reference",
+									"text": "BossBarColorIndex",
+									"canonicalReference": "@magikcraft/core!BossBarColorIndex:enum"
+								},
+								{
+									"kind": "Content",
+									"text": "): "
+								},
+								{
+									"kind": "Reference",
+									"text": "IBossBar",
+									"canonicalReference": "@magikcraft/core!IBossBar:interface"
+								},
+								{
+									"kind": "Content",
+									"text": ";"
+								}
+							],
+							"isStatic": false,
+							"returnTypeTokenRange": {
+								"startIndex": 3,
+								"endIndex": 4
+							},
+							"releaseTag": "Public",
+							"overloadIndex": 1,
+							"parameters": [
+								{
+									"parameterName": "color",
+									"parameterTypeTokenRange": {
+										"startIndex": 1,
+										"endIndex": 2
+									}
+								}
+							],
+							"name": "color"
+						},
+						{
+							"kind": "Property",
+							"canonicalReference": "@magikcraft/core!BossBar.Color:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "static Color: "
+								},
+								{
+									"kind": "Content",
+									"text": "typeof "
+								},
+								{
+									"kind": "Reference",
+									"text": "BossBarColorIndex",
+									"canonicalReference": "@magikcraft/core!BossBarColorIndex:enum"
+								},
+								{
+									"kind": "Content",
+									"text": ";"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "Color",
+							"propertyTypeTokenRange": {
+								"startIndex": 1,
+								"endIndex": 3
+							},
+							"isStatic": true
+						},
+						{
+							"kind": "Method",
+							"canonicalReference": "@magikcraft/core!BossBar#progress:member(1)",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "progress(progress: "
+								},
+								{
+									"kind": "Content",
+									"text": "number"
+								},
+								{
+									"kind": "Content",
+									"text": "): "
+								},
+								{
+									"kind": "Content",
+									"text": "any"
+								},
+								{
+									"kind": "Content",
+									"text": ";"
+								}
+							],
+							"isStatic": false,
+							"returnTypeTokenRange": {
+								"startIndex": 3,
+								"endIndex": 4
+							},
+							"releaseTag": "Public",
+							"overloadIndex": 1,
+							"parameters": [
+								{
+									"parameterName": "progress",
+									"parameterTypeTokenRange": {
+										"startIndex": 1,
+										"endIndex": 2
+									}
+								}
+							],
+							"name": "progress"
+						},
+						{
+							"kind": "Method",
+							"canonicalReference": "@magikcraft/core!BossBar#remove:member(1)",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "remove(): "
+								},
+								{
+									"kind": "Content",
+									"text": "any"
+								},
+								{
+									"kind": "Content",
+									"text": ";"
+								}
+							],
+							"isStatic": false,
+							"returnTypeTokenRange": {
+								"startIndex": 1,
+								"endIndex": 2
+							},
+							"releaseTag": "Public",
+							"overloadIndex": 1,
+							"parameters": [],
+							"name": "remove"
+						},
+						{
+							"kind": "Method",
+							"canonicalReference": "@magikcraft/core!BossBar.removeAll:member(1)",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "static removeAll(): "
+								},
+								{
+									"kind": "Content",
+									"text": "any"
+								},
+								{
+									"kind": "Content",
+									"text": ";"
+								}
+							],
+							"isStatic": true,
+							"returnTypeTokenRange": {
+								"startIndex": 1,
+								"endIndex": 2
+							},
+							"releaseTag": "Public",
+							"overloadIndex": 1,
+							"parameters": [],
+							"name": "removeAll"
+						},
+						{
+							"kind": "Method",
+							"canonicalReference": "@magikcraft/core!BossBar#style:member(1)",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "style(style: "
+								},
+								{
+									"kind": "Reference",
+									"text": "BossBarStyleIndex",
+									"canonicalReference": "@magikcraft/core!BossBarStyleIndex:enum"
+								},
+								{
+									"kind": "Content",
+									"text": "): "
+								},
+								{
+									"kind": "Content",
+									"text": "any"
+								},
+								{
+									"kind": "Content",
+									"text": ";"
+								}
+							],
+							"isStatic": false,
+							"returnTypeTokenRange": {
+								"startIndex": 3,
+								"endIndex": 4
+							},
+							"releaseTag": "Public",
+							"overloadIndex": 1,
+							"parameters": [
+								{
+									"parameterName": "style",
+									"parameterTypeTokenRange": {
+										"startIndex": 1,
+										"endIndex": 2
+									}
+								}
+							],
+							"name": "style"
+						},
+						{
+							"kind": "Property",
+							"canonicalReference": "@magikcraft/core!BossBar.Style:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "static Style: "
+								},
+								{
+									"kind": "Content",
+									"text": "typeof "
+								},
+								{
+									"kind": "Reference",
+									"text": "BossBarStyleIndex",
+									"canonicalReference": "@magikcraft/core!BossBarStyleIndex:enum"
+								},
+								{
+									"kind": "Content",
+									"text": ";"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "Style",
+							"propertyTypeTokenRange": {
+								"startIndex": 1,
+								"endIndex": 3
+							},
+							"isStatic": true
+						},
+						{
+							"kind": "Method",
+							"canonicalReference": "@magikcraft/core!BossBar#text:member(1)",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "text(msg: "
+								},
+								{
+									"kind": "Content",
+									"text": "string"
+								},
+								{
+									"kind": "Content",
+									"text": "): "
+								},
+								{
+									"kind": "Content",
+									"text": "any"
+								},
+								{
+									"kind": "Content",
+									"text": ";"
+								}
+							],
+							"isStatic": false,
+							"returnTypeTokenRange": {
+								"startIndex": 3,
+								"endIndex": 4
+							},
+							"releaseTag": "Public",
+							"overloadIndex": 1,
+							"parameters": [
+								{
+									"parameterName": "msg",
+									"parameterTypeTokenRange": {
+										"startIndex": 1,
+										"endIndex": 2
+									}
+								}
+							],
+							"name": "text"
+						}
+					],
+					"implementsTokenRanges": [
+						{
+							"startIndex": 1,
+							"endIndex": 3
+						}
+					]
+				},
+				{
+					"kind": "Variable",
+					"canonicalReference": "@magikcraft/core!commando:var",
+					"docComment": "",
+					"excerptTokens": [
+						{
+							"kind": "Content",
+							"text": "commando: "
+						},
+						{
+							"kind": "Content",
+							"text": "any"
+						}
+					],
+					"releaseTag": "Public",
+					"name": "commando",
+					"variableTypeTokenRange": {
+						"startIndex": 1,
+						"endIndex": 2
+					}
+				},
+				{
+					"kind": "Variable",
+					"canonicalReference": "@magikcraft/core!environment:var",
+					"docComment": "",
+					"excerptTokens": [
+						{
+							"kind": "Content",
+							"text": "environment: "
+						},
+						{
+							"kind": "Content",
+							"text": "{\n    DISABLE_WATCH_RELOAD: boolean;\n    plugins: {\n        Pokkit: "
+						},
+						{
+							"kind": "Reference",
+							"text": "Plugin",
+							"canonicalReference": "!Plugin:interface"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n        Scriptcraft: "
+						},
+						{
+							"kind": "Reference",
+							"text": "Plugin",
+							"canonicalReference": "!Plugin:interface"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n        ScriptcraftMultiEngine: "
+						},
+						{
+							"kind": "Reference",
+							"text": "Plugin",
+							"canonicalReference": "!Plugin:interface"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    };\n    HEALTHCHECKS_IO_URL: string | null;\n    HAS_HOLOGRAM_BUKKIT: boolean;\n    NUKKIT_HOLOGRAM_TYPE: string;\n    HAS_HOLOGRAM_NUKKIT: boolean;\n    HAS_HOLOGRAM: boolean;\n    HAS_BOSSBAR_NUKKIT: boolean;\n    HAS_BOSSBAR_BUKKIT: boolean;\n    HAS_BOSSBAR: boolean;\n    NUKKIT_BOSSBAR_TYPE: string;\n    BUKKIT_BOSSBAR_TYPE: string;\n    IS_SCRIPTCRAFT: boolean;\n    IS_BUKKIT: boolean;\n    IS_NUKKIT: boolean;\n}"
+						}
+					],
+					"releaseTag": "Public",
+					"name": "environment",
+					"variableTypeTokenRange": {
+						"startIndex": 1,
+						"endIndex": 8
+					}
+				},
+				{
+					"kind": "Variable",
+					"canonicalReference": "@magikcraft/core!fs:var",
+					"docComment": "",
+					"excerptTokens": [
+						{
+							"kind": "Content",
+							"text": "fs: "
+						},
+						{
+							"kind": "Content",
+							"text": "{\n    copyDir(srcPath: string, destPath: string): "
+						},
+						{
+							"kind": "Reference",
+							"text": "Promise",
+							"canonicalReference": "!Promise:interface"
+						},
+						{
+							"kind": "Content",
+							"text": "<unknown>;\n    readDir(path: any): string[];\n    exists(filename: any): boolean;\n    readFile(filename: any): string;\n    remove(filename: any): void;\n    writeFile(filename: string, content: string): void;\n    readJson(path: string, options?: {\n        throwException: boolean;\n    }): any;\n    writeJSON(path: string, json: object): void;\n}"
+						}
+					],
+					"releaseTag": "Public",
+					"name": "fs",
+					"variableTypeTokenRange": {
+						"startIndex": 1,
+						"endIndex": 4
+					}
+				},
+				{
+					"kind": "Variable",
+					"canonicalReference": "@magikcraft/core!holograms:var",
+					"docComment": "",
+					"excerptTokens": [
+						{
+							"kind": "Content",
+							"text": "Holograms: "
+						},
+						{
+							"kind": "Reference",
+							"text": "HologramManager",
+							"canonicalReference": "@magikcraft/core!~HologramManager:class"
+						}
+					],
+					"releaseTag": "Public",
+					"name": "holograms",
+					"variableTypeTokenRange": {
+						"startIndex": 1,
+						"endIndex": 2
+					}
+				},
+				{
+					"kind": "Variable",
+					"canonicalReference": "@magikcraft/core!log:var",
+					"docComment": "/**\n * This function returns a namespaced log function. The log function takes one argument and an optional second argument.\n *\n * @param  - namespace\n *\n * @example\n *\n * import Logger from '@magikcraft/log' const log = Logger('my_module') log('A message') log('Players:', players)\n */\n",
+					"excerptTokens": [
+						{
+							"kind": "Content",
+							"text": "logger: "
+						},
+						{
+							"kind": "Content",
+							"text": "(namespace: string) => (msg: string, toLog?: any) => void"
+						}
+					],
+					"releaseTag": "Public",
+					"name": "log",
+					"variableTypeTokenRange": {
+						"startIndex": 1,
+						"endIndex": 2
+					}
+				},
+				{
+					"kind": "Variable",
+					"canonicalReference": "@magikcraft/core!magik:var",
+					"docComment": "",
+					"excerptTokens": [
+						{
+							"kind": "Content",
+							"text": "MagikcraftAPI: "
+						},
+						{
+							"kind": "Content",
+							"text": "{\n    aspecto: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "aspecto",
+							"canonicalReference": "@magikcraft/core!aspecto:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    celeritate: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "celeritate",
+							"canonicalReference": "@magikcraft/core!celeritate:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    clearInterval: (handle: number) => void;\n    clearTimeout: (handle: number) => void;\n    declaro: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "declaro",
+							"canonicalReference": "@magikcraft/core!declaro:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    dixit: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "dixit",
+							"canonicalReference": "@magikcraft/core!dixit:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    do: (iterations?: number) => "
+						},
+						{
+							"kind": "Reference",
+							"text": "Doable",
+							"canonicalReference": "@magikcraft/core!Doable:class"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    doNTimes: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "doNTimes",
+							"canonicalReference": "@magikcraft/core!doNTimes:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    DurableMap: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "DurableMap",
+							"canonicalReference": "@magikcraft/core!DurableMap:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    exsultus: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "exsultus",
+							"canonicalReference": "@magikcraft/core!exsultus:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    exmemento: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "exmemento",
+							"canonicalReference": "@magikcraft/core!exmemento:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    fromJSON: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "locationFromJSON",
+							"canonicalReference": "@magikcraft/core!locationFromJSON:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    getPlayer: (player: any) => "
+						},
+						{
+							"kind": "Reference",
+							"text": "Player",
+							"canonicalReference": "!Player:interface"
+						},
+						{
+							"kind": "Content",
+							"text": " | null;\n    getPlugin: () => "
+						},
+						{
+							"kind": "Reference",
+							"text": "Plugin",
+							"canonicalReference": "!Plugin:interface"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    getSender: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "getSender",
+							"canonicalReference": "@magikcraft/core!getSender:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    hic: () => "
+						},
+						{
+							"kind": "Reference",
+							"text": "Location",
+							"canonicalReference": "!Location:interface"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    iacta: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "iacta",
+							"canonicalReference": "@magikcraft/core!iacta:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    ianuae: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "ianuae",
+							"canonicalReference": "@magikcraft/core!ianuae:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    icePath: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "icePath",
+							"canonicalReference": "@magikcraft/core!icePath:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    incendium: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "incendium",
+							"canonicalReference": "@magikcraft/core!incendium:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    infierno: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "infierno",
+							"canonicalReference": "@magikcraft/core!infierno:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    memento: typeof import(\"./memento\")."
+						},
+						{
+							"kind": "Reference",
+							"text": "_setItem",
+							"canonicalReference": "@magikcraft/core!_setItem"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    noxvida: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "noxvida",
+							"canonicalReference": "@magikcraft/core!noxvida:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    random: (min?: number, max?: number) => number;\n    satio: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "satio",
+							"canonicalReference": "@magikcraft/core!satio:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    setInterval: (callbackFn: any, delay: any) => number;\n    setTimeout: (callbackFn: any, delay: any) => number;\n    shakti: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "shakti",
+							"canonicalReference": "@magikcraft/core!shakti:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    spectris: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "spectris",
+							"canonicalReference": "@magikcraft/core!spectris:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    stella: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "stella",
+							"canonicalReference": "@magikcraft/core!stella:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    toJSON: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "locationToJSON",
+							"canonicalReference": "@magikcraft/core!locationToJSON:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    type: (name: any) => any;\n    viburnum: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "viburnum",
+							"canonicalReference": "@magikcraft/core!viburnum:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n    volare: typeof "
+						},
+						{
+							"kind": "Reference",
+							"text": "volare",
+							"canonicalReference": "@magikcraft/core!volare:function"
+						},
+						{
+							"kind": "Content",
+							"text": ";\n}"
+						}
+					],
+					"releaseTag": "Public",
+					"name": "magik",
+					"variableTypeTokenRange": {
+						"startIndex": 1,
+						"endIndex": 58
+					}
+				},
+				{
+					"kind": "Variable",
+					"canonicalReference": "@magikcraft/core!multiverse:var",
+					"docComment": "",
+					"excerptTokens": [
+						{
+							"kind": "Content",
+							"text": "Multiverse: "
+						},
+						{
+							"kind": "Reference",
+							"text": "WorldManager",
+							"canonicalReference": "@magikcraft/core!~WorldManager:class"
+						}
+					],
+					"releaseTag": "Public",
+					"name": "multiverse",
+					"variableTypeTokenRange": {
+						"startIndex": 1,
+						"endIndex": 2
+					}
+				},
+				{
+					"kind": "Variable",
+					"canonicalReference": "@magikcraft/core!server:var",
+					"docComment": "",
+					"excerptTokens": [
+						{
+							"kind": "Content",
+							"text": "server: "
+						},
+						{
+							"kind": "Reference",
+							"text": "Server",
+							"canonicalReference": "@magikcraft/core!~Server:class"
+						}
+					],
+					"releaseTag": "Public",
+					"name": "server",
+					"variableTypeTokenRange": {
+						"startIndex": 1,
+						"endIndex": 2
+					}
+				},
+				{
+					"kind": "Enum",
+					"canonicalReference": "@magikcraft/core!TextColor:enum",
+					"docComment": "",
+					"excerptTokens": [
+						{
+							"kind": "Content",
+							"text": "export declare enum TextColor "
+						}
+					],
+					"releaseTag": "Public",
+					"name": "TextColor",
+					"members": [
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.AQUA:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'AQUA'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "AQUA",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.BLACK:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'BLACK'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "BLACK",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.BLUE:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'BLUE'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "BLUE",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.BOLD:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'BOLD'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "BOLD",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.DARK_AQUA:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'DARK_AQUA'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "DARK_AQUA",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.DARK_BLUE:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'DARK_BLUE'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "DARK_BLUE",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.DARK_GRAY:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'DARK_GRAY'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "DARK_GRAY",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.DARK_GREEN:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'DARK_GREEN'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "DARK_GREEN",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.DARK_PURPLE:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'DARK_PURPLE'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "DARK_PURPLE",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.DARK_RED:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'DARK_RED'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "DARK_RED",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.GOLD:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'GOLD'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "GOLD",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.GRAY:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'GRAY'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "GRAY",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.GREEN:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'GREEN'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "GREEN",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.ITALIC:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'ITALIC'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "ITALIC",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.LIGHT_PURPLE:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'LIGHT_PURPLE'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "LIGHT_PURPLE",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.MAGIC:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'MAGIC'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "MAGIC",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.RED:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'RED'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "RED",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.RESET:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'RESET'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "RESET",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.STRIKETHROUGH:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'STRIKETHROUGH'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "STRIKETHROUGH",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.UNDERLINE:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'UNDERLINE'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "UNDERLINE",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.WHITE:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'WHITE'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "WHITE",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						},
+						{
+							"kind": "EnumMember",
+							"canonicalReference": "@magikcraft/core!TextColor.YELLOW:member",
+							"docComment": "",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "'YELLOW'"
+								}
+							],
+							"releaseTag": "Public",
+							"name": "YELLOW",
+							"initializerTokenRange": {
+								"startIndex": 0,
+								"endIndex": 0
+							}
+						}
+					]
+				},
+				{
+					"kind": "Variable",
+					"canonicalReference": "@magikcraft/core!utils:var",
+					"docComment": "",
+					"excerptTokens": [
+						{
+							"kind": "Content",
+							"text": "utils: "
+						},
+						{
+							"kind": "Content",
+							"text": "{\n    convert: {\n        HashMapToJSObject: (hm: any) => any;\n        sizeOf: (object: any) => number;\n    };\n    reflection: {\n        getMethods(object: any): any[];\n        getMethodsDetailed(object: any): any;\n        getFieldsDetailed(object: any): any;\n        getFields(object: any): any[];\n        getType(thing: any): any;\n    };\n}"
+						}
+					],
+					"releaseTag": "Public",
+					"name": "utils",
+					"variableTypeTokenRange": {
+						"startIndex": 1,
+						"endIndex": 2
+					}
+				}
+			]
+		}
+	]
+}

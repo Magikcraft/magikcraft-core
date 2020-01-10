@@ -1,0 +1,1 @@
+{"version":3,"file":"NukkitServer.d.ts","sourceRoot":"","sources":["../../src/server/NukkitServer.ts"],"names":[],"mappings":";AAAA,qBAAa,YAAY;IACxB,QAAQ,UAAQ;IAChB,QAAQ,UAAO;IACf,MAAM,EAAE,GAAG,CAAA;IACX,MAAM,EAAE,GAAG,CAAA;;IAKX,cAAc,CAAC,OAAO,KAAA;IAGtB,SAAS,CAAC,UAAU,KAAA;IAGpB,UAAU;IAGV,WAAW;IAIX,eAAe,CAAC,IAAI,EAAE,MAAM;IAI5B,SAAS,IAAI,KAAK,EAAE;CAGpB"}
