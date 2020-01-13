@@ -1,1 +1,1 @@
-export declare function dixit(msg: string | any, playerName?: any): void;
+export declare function dixit(msg: string | any, playerName?: string): void;

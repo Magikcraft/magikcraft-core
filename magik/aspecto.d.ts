@@ -1,1 +1,2 @@
-export declare function aspecto(): any;
+/// <reference types="@scriptcraft/types" />
+export declare function aspecto(): Location | null;

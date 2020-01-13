@@ -5,6 +5,7 @@ export declare class NukkitWorldManager {
     getWorldPath(worldName: string): string;
     getMVWorld(worldName: string): any;
     cloneWorld(worldName: string, templateWorldName: string): Promise<unknown>;
+    importAdventureWorld(worldName: string): Promise<void>;
     importWorld(worldName: string): Promise<void>;
     unloadWorld(worldName: string): void;
     destroyWorld(worldName: string): Promise<unknown>;

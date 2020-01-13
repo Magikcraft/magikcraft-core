@@ -6,7 +6,7 @@ export declare class BukkitServer {
     constructor();
     executeCommand(command: any): any;
     getPlugin(pluginName: any): any;
-    getBaseDir(): any;
+    getBaseDir(): string;
     getWorldDir(): any;
     isPluginEnabled(name: string): any;
     getWorlds(): World[];

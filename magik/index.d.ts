@@ -30,8 +30,8 @@ import { volare } from './volare';
 declare const _default: {
     aspecto: typeof aspecto;
     celeritate: typeof celeritate;
-    clearInterval: (handle: any) => void;
-    clearTimeout: (handle: any) => void;
+    clearInterval: (handle: number) => void;
+    clearTimeout: (handle: number) => void;
     declaro: typeof declaro;
     dixit: typeof dixit;
     do: (iterations?: number) => Doable;
@@ -43,7 +43,7 @@ declare const _default: {
     getPlayer: (player: any) => Player | null;
     getPlugin: () => Plugin;
     getSender: typeof getSender;
-    hic: () => any;
+    hic: () => Location;
     iacta: typeof iacta;
     ianuae: typeof ianuae;
     icePath: typeof icePath;

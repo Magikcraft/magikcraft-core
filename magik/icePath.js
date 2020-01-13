@@ -16,24 +16,25 @@ function icePath() {
         var feetBlock = event.from.block.getRelative(0, 0, 0);
         var blockBeneath = event.from.block.getRelative(0, -1, 0);
         var block2Beneath = event.from.block.getRelative(0, -2, 0);
-        if (headBlock.type == 'ICE')
+        if (headBlock.type == Material.ICE)
             headBlock.setType(Material.AIR);
-        if (feetBlock.type == 'ICE')
+        if (feetBlock.type == Material.ICE)
             feetBlock.setType(Material.AIR);
         if (event.player.isSneaking() && !sneakDebounce) {
-            if (blockBeneath.type == 'ICE') {
+            if (blockBeneath.type == Material.ICE) {
                 sneakDebounce = true;
                 blockBeneath.setType(Material.AIR);
-                setTimeout(function () { return sneakDebounce = false; }, 100);
+                setTimeout(function () { return (sneakDebounce = false); }, 100);
             }
-            if (block2Beneath.type == 'AIR') {
+            if (block2Beneath.type == Material.AIR) {
                 var type_1 = block2Beneath.type;
                 block2Beneath.setType(Material.ICE);
                 setTimeout(function () { return block2Beneath.setType(type_1); }, 20000);
             }
         }
         else {
-            if (blockBeneath.type == 'AIR' || blockBeneath.type == 'WATER') {
+            if (blockBeneath.type == Material.AIR ||
+                blockBeneath.type == Material.WATER) {
                 var type_2 = blockBeneath.type;
                 setTimeout(function () { return blockBeneath.setType(type_2); }, 20000);
                 blockBeneath.setType(Material.ICE);

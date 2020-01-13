@@ -1,3 +1,4 @@
+/// <reference types="@scriptcraft/types" />
 import { NukkitWorldManager } from './multiworld-nukkit';
 import { BukkitWorldManager } from './multiverse-bukkit';
 declare class WorldManager {
@@ -5,7 +6,8 @@ declare class WorldManager {
     constructor();
     getMVWorld(worldName: string): any;
     getWorldPath(worldName: string): string;
-    importWorld(worldName: string): Promise<any>;
+    importWorld(worldName: string): Promise<void> | Promise<World>;
+    importAdventureWorld(worldName: string): Promise<void> | Promise<World>;
     destroyWorld(worldName: string): Promise<unknown>;
     unloadWorld(worldName: string): boolean | void;
 }

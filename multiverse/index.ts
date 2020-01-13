@@ -25,6 +25,10 @@ class WorldManager {
 		return this.implementation.importWorld(worldName)
 	}
 
+	importAdventureWorld(worldName: string) {
+		return this.implementation.importAdventureWorld(worldName)
+	}
+
 	async destroyWorld(worldName: string) {
 		return this.implementation.destroyWorld(worldName)
 	}

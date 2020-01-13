@@ -5,9 +5,9 @@ function spectris() {
     var player = self;
     if (!self)
         return;
-    if (player.gameMode == 'SPECTATOR')
+    if (player.getGameMode() == GameMode.SPECTATOR)
         return;
-    var gameMode = player.gameMode;
+    var gameMode = player.getGameMode();
     var isFlying = player.isFlying();
     player.setGameMode(GameMode.SPECTATOR);
     var count = 5;
@@ -18,7 +18,7 @@ function spectris() {
         count--;
         if (count === 0) {
             clearInterval(timer);
-            player.setGameMode(GameMode[gameMode]);
+            player.setGameMode(gameMode);
             player.setFlying(isFlying);
         }
     }, 1000);

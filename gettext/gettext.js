@@ -1,4 +1,11 @@
 "use strict";
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Return a localiser.
@@ -15,7 +22,7 @@ exports.localiser = function (locale) {
         for (var _i = 1; _i < arguments.length; _i++) {
             args[_i - 1] = arguments[_i];
         }
-        return getlocalisedtext.apply(void 0, [_locale, msg].concat(args));
+        return getlocalisedtext.apply(void 0, __spreadArrays([_locale, msg], args));
     };
     function getlocalisedtext(locale, msg) {
         var args = [];
@@ -23,14 +30,14 @@ exports.localiser = function (locale) {
             args[_i - 2] = arguments[_i];
         }
         if (locale === 'en') {
-            return interpolate.apply(void 0, [msg].concat(args));
+            return interpolate.apply(void 0, __spreadArrays([msg], args));
         }
         var localisedStrings = _strings[locale];
         // Use a localised message if we have one, otherwise return the original string
         var stringFromLocale = function (msgid) { return localisedStrings && localisedStrings[msgid] ? localisedStrings[msgid] : msgid; };
         var localisedString = stringFromLocale(msg);
         // Replace all %s occurrences with the args
-        return interpolate.apply(void 0, [localisedString].concat(args));
+        return interpolate.apply(void 0, __spreadArrays([localisedString], args));
     }
     ;
     /**

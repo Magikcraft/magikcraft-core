@@ -1,1 +1,2 @@
-export declare const hic: () => any;
+/// <reference types="@scriptcraft/types" />
+export declare const hic: () => Location;

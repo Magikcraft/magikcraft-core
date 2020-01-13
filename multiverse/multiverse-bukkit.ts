@@ -2,6 +2,7 @@ import * as utils from 'utils'
 import { fs } from '../fs'
 import { logger } from '../log'
 import server from '../server'
+import * as events from 'events'
 
 const log = logger(__filename)
 
@@ -9,7 +10,9 @@ const log = logger(__filename)
 
 export class BukkitWorldManager {
 	multiversePlugin: MultiverseCorePlugin
-	worldmanager: WorldManager
+	MVWorldManager: MVWorldManager
+	worldListeners: { [worldName: string]: any }
+
 	q: { queueOperation(fn: () => void): Promise<unknown> }
 	constructor() {
 		this.multiversePlugin = server.getPlugin('Multiverse-Core')
@@ -18,8 +21,9 @@ export class BukkitWorldManager {
 				'Multiverse-Core plugin not found! Is it installed on this server?'
 			)
 		}
-		this.worldmanager = this.multiversePlugin.getMVWorldManager()
+		this.MVWorldManager = this.multiversePlugin.getMVWorldManager()
 		this.q = queue()
+		this.worldListeners = {}
 	}
 
 	getWorldPath(worldName: string) {
@@ -38,7 +42,7 @@ export class BukkitWorldManager {
 		const world = utils.world(worldName)
 		if (world) {
 			log(`Deleting world ${worldName} from registry...`)
-			this.worldmanager.deleteWorld(worldName, true, true)
+			this.MVWorldManager.deleteWorld(worldName, true, true)
 			log(`Done.`)
 		}
 		if (this.worldExistsOnDisk(worldName)) {
@@ -51,7 +55,51 @@ export class BukkitWorldManager {
 		return new Promise(resolve => setTimeout(() => resolve(), 1))
 	}
 
-	async importWorld(worldName: string) {
+	async reloadAdventureWorld(worldName: string): Promise<World> {
+		const alreadyImportedWorld = await this.getMVWorld(worldName)
+		if (!alreadyImportedWorld) {
+			return this.importAdventureWorld(worldName)
+		}
+		const players = alreadyImportedWorld.getPlayers()
+		const safePoint = (await this.getMVWorld('world'))?.getSpawnLocation()
+		if (!safePoint) {
+			throw new Error('No safe point found to teleport players out of this world!')
+		}
+		players.stream().toArray().forEach(player => {
+			player.teleport(safePoint)
+		})
+		return new Promise(resolve => setTimeout(() => {
+			this.destroyWorld(worldName)
+			resolve(this.importAdventureWorld(worldName))
+		}, 1000))
+	}
+
+	async importAdventureWorld(worldName: string): Promise<World> {
+		if (this.worldListeners[worldName]) {
+			const alreadyImportedWorld = await this.getMVWorld(worldName)
+			if (alreadyImportedWorld) {
+				log(`World ${worldName} is already imported. If you want to re-import it, destroy it first.`)
+				return alreadyImportedWorld
+			}
+		}
+		const newAdventureWorld = await this.cloneWorld(worldName, `${worldName}.template`)
+		this.worldListeners[worldName]?.unregister()
+		delete this.worldListeners[worldName]
+		this.worldListeners = events.playerChangedWorld(event => {
+			if (event.getFrom().getName() !== worldName) {
+				return
+			}
+			const players = newAdventureWorld.getPlayers()
+			if (players.length === 0) {
+				this.worldListeners[worldName]?.unregister()
+				delete this.worldListeners[worldName]
+				this.importAdventureWorld(worldName)
+			}
+		})
+		return newAdventureWorld
+	}
+
+	async importWorld(worldName: string): Promise<World> {
 		log(`Importing world ${worldName}...`)
 		let world, err
 		world = utils.world(worldName)
@@ -77,13 +125,12 @@ export class BukkitWorldManager {
 		return new Promise(resolve => setTimeout(() => resolve(world), 1))
 	}
 
-	async cloneWorld(worldName: string, templateWorldName: string) {
+	async cloneWorld(worldName: string, templateWorldName: string): Promise<World> {
 		await this.destroyWorld(worldName)
 		log(`Cloning world ${worldName}`)
 		const templateWorld = await this.importWorld(templateWorldName)
 		if (!templateWorld) {
-			log(`Cannot clone ${worldName}. ${templateWorldName} not found.`)
-			return
+			throw new Error(`Cannot clone ${worldName}. ${templateWorldName} not found.`)
 		}
 
 		const cloned = this.multiversePlugin.cloneWorld(
@@ -92,8 +139,8 @@ export class BukkitWorldManager {
 			'normal'
 		)
 		if (!cloned) {
-			log(`Failed to clone world ${templateWorldName}`)
-			return
+			throw new Error(`Failed to clone world ${templateWorldName}`)
+
 		}
 		const world = utils.world(worldName)
 		log(`World clone complete for ${worldName}`)
@@ -103,11 +150,11 @@ export class BukkitWorldManager {
 	}
 
 	getMVWorld(name: string) {
-		return this.worldmanager.getMVWorld(name)
+		return this.MVWorldManager.getMVWorld(name)
 	}
 
 	unloadWorld(name: string) {
-		return this.worldmanager.unloadWorld(name, true)
+		return this.MVWorldManager.unloadWorld(name, true)
 	}
 }
 
@@ -152,10 +199,10 @@ interface MultiverseCorePlugin {
 		worldName: string,
 		mode: 'normal'
 	): World
-	getMVWorldManager(): WorldManager
+	getMVWorldManager(): MVWorldManager
 }
 
-interface WorldManager {
+interface MVWorldManager {
 	deleteWorld(
 		worldName: string,
 		removeFromConfig: boolean,

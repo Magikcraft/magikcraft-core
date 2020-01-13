@@ -16,5 +16,5 @@ export declare const NUKKIT_HOLOGRAM_TYPE = "gt.creeperface.holograms.api.Hologr
 export declare const HAS_HOLOGRAM: boolean;
 export declare const HAS_HOLOGRAM_NUKKIT: boolean;
 export declare const HAS_HOLOGRAM_BUKKIT: boolean;
-export declare const HEALTHCHECKS_IO_URL: any;
+export declare const HEALTHCHECKS_IO_URL: string | null;
 export declare const DISABLE_WATCH_RELOAD: boolean;

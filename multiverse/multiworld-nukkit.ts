@@ -42,6 +42,11 @@ export class NukkitWorldManager {
 		return new Promise(resolve => setTimeout(() => resolve(world), 1))
 	}
 
+	async importAdventureWorld(worldName: string) {
+		console.log('Adventure Worlds are not implemented fully yet...')
+		return this.importWorld(worldName)
+	}
+
 	importWorld(worldName: string) {
 		this.server.loadLevel(worldName)
 		return Promise.resolve()

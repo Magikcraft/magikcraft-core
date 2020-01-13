@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -39,6 +40,7 @@ var utils = require("utils");
 var fs_1 = require("../fs");
 var log_1 = require("../log");
 var server_1 = require("../server");
+var events = require("events");
 var log = log_1.logger(__filename);
 // https://github.com/Multiverse/Multiverse-Core
 var BukkitWorldManager = /** @class */ (function () {
@@ -47,8 +49,9 @@ var BukkitWorldManager = /** @class */ (function () {
         if (!this.multiversePlugin) {
             throw new Error('Multiverse-Core plugin not found! Is it installed on this server?');
         }
-        this.worldmanager = this.multiversePlugin.getMVWorldManager();
+        this.MVWorldManager = this.multiversePlugin.getMVWorldManager();
         this.q = queue();
+        this.worldListeners = {};
     }
     BukkitWorldManager.prototype.getWorldPath = function (worldName) {
         var worldDir = server_1.default.getWorldDir();
@@ -64,7 +67,7 @@ var BukkitWorldManager = /** @class */ (function () {
         var world = utils.world(worldName);
         if (world) {
             log("Deleting world " + worldName + " from registry...");
-            this.worldmanager.deleteWorld(worldName, true, true);
+            this.MVWorldManager.deleteWorld(worldName, true, true);
             log("Done.");
         }
         if (this.worldExistsOnDisk(worldName)) {
@@ -74,6 +77,76 @@ var BukkitWorldManager = /** @class */ (function () {
         }
         log("Successfully Destroyed world " + worldName + ".");
         return new Promise(function (resolve) { return setTimeout(function () { return resolve(); }, 1); });
+    };
+    BukkitWorldManager.prototype.reloadAdventureWorld = function (worldName) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function () {
+            var alreadyImportedWorld, players, safePoint;
+            var _this = this;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, this.getMVWorld(worldName)];
+                    case 1:
+                        alreadyImportedWorld = _b.sent();
+                        if (!alreadyImportedWorld) {
+                            return [2 /*return*/, this.importAdventureWorld(worldName)];
+                        }
+                        players = alreadyImportedWorld.getPlayers();
+                        return [4 /*yield*/, this.getMVWorld('world')];
+                    case 2:
+                        safePoint = (_a = (_b.sent())) === null || _a === void 0 ? void 0 : _a.getSpawnLocation();
+                        if (!safePoint) {
+                            throw new Error('No safe point found to teleport players out of this world!');
+                        }
+                        players.stream().toArray().forEach(function (player) {
+                            player.teleport(safePoint);
+                        });
+                        return [2 /*return*/, new Promise(function (resolve) { return setTimeout(function () {
+                                _this.destroyWorld(worldName);
+                                resolve(_this.importAdventureWorld(worldName));
+                            }, 1000); })];
+                }
+            });
+        });
+    };
+    BukkitWorldManager.prototype.importAdventureWorld = function (worldName) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function () {
+            var alreadyImportedWorld, newAdventureWorld;
+            var _this = this;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        if (!this.worldListeners[worldName]) return [3 /*break*/, 2];
+                        return [4 /*yield*/, this.getMVWorld(worldName)];
+                    case 1:
+                        alreadyImportedWorld = _b.sent();
+                        if (alreadyImportedWorld) {
+                            log("World " + worldName + " is already imported. If you want to re-import it, destroy it first.");
+                            return [2 /*return*/, alreadyImportedWorld];
+                        }
+                        _b.label = 2;
+                    case 2: return [4 /*yield*/, this.cloneWorld(worldName, worldName + ".template")];
+                    case 3:
+                        newAdventureWorld = _b.sent();
+                        (_a = this.worldListeners[worldName]) === null || _a === void 0 ? void 0 : _a.unregister();
+                        delete this.worldListeners[worldName];
+                        this.worldListeners = events.playerChangedWorld(function (event) {
+                            var _a;
+                            if (event.getFrom().getName() !== worldName) {
+                                return;
+                            }
+                            var players = newAdventureWorld.getPlayers();
+                            if (players.length === 0) {
+                                (_a = _this.worldListeners[worldName]) === null || _a === void 0 ? void 0 : _a.unregister();
+                                delete _this.worldListeners[worldName];
+                                _this.importAdventureWorld(worldName);
+                            }
+                        });
+                        return [2 /*return*/, newAdventureWorld];
+                }
+            });
+        });
     };
     BukkitWorldManager.prototype.importWorld = function (worldName) {
         return __awaiter(this, void 0, void 0, function () {
@@ -122,13 +195,11 @@ var BukkitWorldManager = /** @class */ (function () {
                     case 2:
                         templateWorld = _a.sent();
                         if (!templateWorld) {
-                            log("Cannot clone " + worldName + ". " + templateWorldName + " not found.");
-                            return [2 /*return*/];
+                            throw new Error("Cannot clone " + worldName + ". " + templateWorldName + " not found.");
                         }
                         cloned = this.multiversePlugin.cloneWorld(templateWorldName, worldName, 'normal');
                         if (!cloned) {
-                            log("Failed to clone world " + templateWorldName);
-                            return [2 /*return*/];
+                            throw new Error("Failed to clone world " + templateWorldName);
                         }
                         world = utils.world(worldName);
                         log("World clone complete for " + worldName);
@@ -139,10 +210,10 @@ var BukkitWorldManager = /** @class */ (function () {
         });
     };
     BukkitWorldManager.prototype.getMVWorld = function (name) {
-        return this.worldmanager.getMVWorld(name);
+        return this.MVWorldManager.getMVWorld(name);
     };
     BukkitWorldManager.prototype.unloadWorld = function (name) {
-        return this.worldmanager.unloadWorld(name, true);
+        return this.MVWorldManager.unloadWorld(name, true);
     };
     return BukkitWorldManager;
 }());
