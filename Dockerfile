@@ -17,7 +17,7 @@ ARG EULA_SETTING=true
 ENV TEST_MODE=$TEST_MODE_SETTING
 ENV MINECRAFT_EULA_ACCEPTED=$EULA_SETTING
 
-RUN curl https://sitapatis-sydney-storage.s3.amazonaws.com/MCT1/mct1-worlds-0.2.0.zip --output /_server_/worlds/mct1-worlds-0.2.0.zip && \
+RUN mkdir /_server_/worlds && curl https://sitapatis-sydney-storage.s3.amazonaws.com/MCT1/mct1-worlds-0.2.0.zip --output /_server_/worlds/mct1-worlds-0.2.0.zip && \
    unzip mct1-worlds-0.2.0.zip
 # Run the tests
 RUN /_server_/start.sh
