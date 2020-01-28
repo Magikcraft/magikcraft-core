@@ -10,6 +10,10 @@ COPY package.json ./
 RUN npm i
 # Copy the whitelisted files
 COPY . ./scriptcraft-plugins/@magikcraft/core/
-TEST_MODE=true
+
+# From here: https://vsupalov.com/docker-build-time-env-values/
+ARG TEST_MODE_SETTING=true
+ENV TEST_MODE=$TEST_MODE_SETTING
+
 # Run the tests
 RUN /_server_/start.sh
